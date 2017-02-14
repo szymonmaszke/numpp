@@ -1,0 +1,45 @@
+sudo: required
+
+services:
+  - docker
+
+language: c++
+
+matrix:
+  include:
+
+    # 1/ Linux Clang Builds
+
+    - os: linux
+      compiler: clang
+      addons: &clang39
+      apt:
+        sources: ['llvm-toolchain-precise-3.8', 'ubuntu-toolchain-r-test']
+        packages: ['clang-3.8']
+      env: COMPILER='clang++-3.9' BUILD_TYPE='Release' CPP11=0
+
+    - os: linux
+      compiler: clang
+      addons: *clang39
+      env: COMPILER='clang++-3.9' BUILD_TYPE='Debug' CPP11=0
+
+
+        # 2/ Linux GCC Builds
+    - os: linux
+      compiler: gcc
+      addons: &gcc6
+      apt:
+        sources: ['ubuntu-toolchain-r-test']
+        packages: ['g++-6']
+      env: COMPILER='g++-6' BUILD_TYPE='Release' CPP11=0
+
+    - os: linux
+      compiler: gcc
+      addons: *gcc6
+      env: COMPILER='g++-6' BUILD_TYPE='Debug' CPP11=0
+
+before_script:
+  cd ./tests
+
+script:
+  make
