@@ -6,14 +6,14 @@ TEST_CASE(
 		"[structures][matrix][normal][compile-time]"
 ){
 	constexpr int ROWS = 4, COLUMNS = 5;
-	constexpr numerics::matrix::normal<double, ROWS, COLUMNS> mat_a{
+	constexpr numpp::matrix::normal<double, ROWS, COLUMNS> mat_a{
 		1.2, -4.5, 12412.3, 12512., 294.2352,
 		2, 5.35, -412.3, 12, 0,
 		-34, 0, 0, 0, 4.5,
 		3, 1.3, 1.7, 0, 0
 	};
 
-	numerics::matrix::normal<double, ROWS, COLUMNS> mat_b{};
+	numpp::matrix::normal<double, ROWS, COLUMNS> mat_b{};
 
 	SECTION("comparing two different matrixes"){
 		REQUIRE_FALSE(mat_a == mat_b);
@@ -24,7 +24,7 @@ TEST_CASE(
 	}
 
 	SECTION("constexpr copy-constructor"){
-		constexpr numerics::matrix::normal<double, ROWS, COLUMNS> mat_c{mat_a};
+		constexpr numpp::matrix::normal<double, ROWS, COLUMNS> mat_c{mat_a};
 		REQUIRE(mat_c == mat_a);
 	}
 

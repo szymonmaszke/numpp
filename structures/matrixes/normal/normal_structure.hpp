@@ -5,7 +5,7 @@
 #include<iterator>
 #include<memory>
 
-namespace numerics{
+namespace numpp{
 	namespace matrix{
 		template<typename T, std::size_t Rows, std::size_t Columns>
 			class normal{
