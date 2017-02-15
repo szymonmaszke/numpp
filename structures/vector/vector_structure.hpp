@@ -36,7 +36,7 @@ namespace numpp{
 					>
 				>
 					constexpr vector(U&&... args):
-						vector_{std::forward<std::common_type_t<T, U...>>(args)...}
+						vector_{std::forward<T>(args)...}
 				{}
 				//COPY/MOVE WHEN VECTOR HAS DIFFERENT TRANSPOSITION
 				explicit constexpr vector(const vector<T,Size, !Transposition>& transposed):
