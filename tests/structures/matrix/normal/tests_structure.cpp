@@ -23,6 +23,11 @@ TEST_CASE(
 		}
 	}
 
+	SECTION("constexpr copy-constructor"){
+		constexpr numerics::matrix::normal<double, ROWS, COLUMNS> mat_c{mat_a};
+		REQUIRE(mat_c == mat_a);
+	}
+
 	SECTION("size functions"){
 		REQUIRE(mat_a.size() == 20);
 		REQUIRE(mat_a.max_size() == mat_a.size());
