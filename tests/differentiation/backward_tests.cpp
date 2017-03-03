@@ -1,7 +1,7 @@
 #include "../catch.hpp"
 #include "../../differentiation/backward.hpp"
 
-#ifdef __GNUC__
+#if (defined(__GNUC__) || defined(__GNUG__)) && !(defined(__clang__) || defined(__INTEL_COMPILER))
   TEST_CASE(
       "backward finite difference tests",
       "[differentiation][backward]"
