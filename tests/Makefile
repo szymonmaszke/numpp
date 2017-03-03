@@ -5,10 +5,16 @@ all: clean tests_matrix_normal_structure \
 	tests_vector_structure \
 	tests_differentiation_forward \
 	tests_differentiation_backward \
-	tests_differentiation_central
+	tests_differentiation_central \
+	tests_root_finding_bisection
 
 #Flags
-CXXFLAGS = -std=c++14
+CXXFLAGS = -std=c++1z
+
+tests_root_finding_bisection: tests_main.o
+	$(CXX) tests_main.o $(CXXFLAGS) ./root_finding/bisection.cpp \
+		-o tests_root_finding_bisection\
+		&& ./tests_root_finding_bisection -r compact
 
 tests_differentiation_central: tests_main.o
 	$(CXX) tests_main.o $(CXXFLAGS) ./differentiation/central_tests.cpp \
@@ -43,4 +49,5 @@ clean:
 									 tests_vector_structure \
 									 tests_differentiation_forward \
 									 tests_differentiation_backward \
-									 tests_differentiation_central
+									 tests_differentiation_central \
+									 tests_root_finding_bisection
