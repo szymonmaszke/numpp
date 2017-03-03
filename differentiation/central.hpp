@@ -12,7 +12,7 @@ namespace numpp{
 			typename T
 		>
 			constexpr auto central(Func&& f, T&& x, T&& h){
-				return (f(x+(1/2)*h)-f(x-(1/2)*h))/h;
+				return (f(x+0.5*h)-f(x-0.5*h))/h;
 			}
 
 		template<
@@ -22,7 +22,7 @@ namespace numpp{
 		>
 			constexpr auto central(Func&& f, T x){
 				auto h = x*std::sqrt(std::numeric_limits<T>::epsilon());
-				return (f(x+(1/2)*h)-f(x-(1/2)*h))/h;
+				return (f(x+0.5*h)-f(x-0.5*h))/h;
 			}
   }
 }
