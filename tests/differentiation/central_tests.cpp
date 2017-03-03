@@ -8,12 +8,12 @@ TEST_CASE(
 
   class example_function{
     public:
-      constexpr double operator()(double x){
+      constexpr double operator()(const double x) const{
         return std::pow(std::pow(x,3.33)/(x+123),4)
           /std::hypot(std::sqrt(x+12.1) ,std::pow(x-3.14, 2));
       }
   };
-  example_function f{};
+  constexpr example_function f{};
 
   SECTION("basic result tests"){
     constexpr auto result1 = numpp::derivative::central(f, 2.53, 0.00001);

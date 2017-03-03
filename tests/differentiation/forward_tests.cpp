@@ -8,11 +8,11 @@ TEST_CASE(
 
   class example_function{
     public:
-      constexpr double operator()(double x){
+      constexpr double operator()(const double x) const{
         return (12.3*x*x)/std::sqrt(x);
       }
   };
-  example_function f{};
+  constexpr example_function f{};
 
   SECTION("basic result tests"){
     constexpr auto result1 = numpp::derivative::forward(f, 12., 0.0000001);

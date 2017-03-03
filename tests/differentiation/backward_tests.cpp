@@ -8,12 +8,12 @@ TEST_CASE(
 
   class example_function{
     public:
-      constexpr double operator()(double x){
+      constexpr double operator()(const double x)const{
         return (((x*(x+4))*3)*x)
           /((x+13.37)*7);
       }
   };
-  example_function f{};
+  constexpr example_function f{};
 
   SECTION("basic result tests"){
     constexpr auto result1 = numpp::derivative::backward(f, 3.1415, 0.00001);
