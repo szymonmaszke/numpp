@@ -11,7 +11,7 @@ namespace numpp{
 			typename Func,
 			typename T
 		>
-			constexpr auto forward(Func&& f, T&& x, T&& h){
+			constexpr auto central(Func&& f, T&& x, T&& h){
 				return (f(x+(1/2)*h)-f(x-(1/2)*h))/h;
 			}
 
@@ -20,7 +20,7 @@ namespace numpp{
 			typename T,
 			typename = std::enable_if_t<std::is_floating_point<T>::value>
 		>
-			constexpr auto forward(Func&& f, T x){
+			constexpr auto central(Func&& f, T x){
 				auto h = x*std::sqrt(std::numeric_limits<T>::epsilon());
 				return (f(x+(1/2)*h)-f(x-(1/2)*h))/h;
 			}
