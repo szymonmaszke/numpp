@@ -44,8 +44,8 @@ namespace numpp{
 		>
 			constexpr auto bisection(
 					Func&& f,
-					T&& lower_bound,
-					T&& upper_bound,
+					T lower_bound,
+					T upper_bound,
 					std::size_t iterations=1000
 			){
 				const auto epsilon=
