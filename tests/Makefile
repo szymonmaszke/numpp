@@ -4,10 +4,16 @@
 all: clean tests_matrix_normal_structure \
 	tests_vector_structure \
 	tests_differentiation_forward \
-	tests_differentiation_backward
+	tests_differentiation_backward \
+	tests_differentiation_central
 
 #Flags
 CXXFLAGS = -std=c++14
+
+tests_differentiation_central: tests_main.o
+	$(CXX) tests_main.o $(CXXFLAGS) ./differentiation/central_tests.cpp \
+		-o tests_differentiation_central\
+		&& ./tests_differentiation_central -r compact
 
 tests_differentiation_backward: tests_main.o
 	$(CXX) tests_main.o $(CXXFLAGS) ./differentiation/backward_tests.cpp \
@@ -36,4 +42,5 @@ clean:
 	rm -rf *.o *.gch tests_matrix_normal_structure \
 									 tests_vector_structure \
 									 tests_differentiation_forward \
-									 tests_differentiation_backward
+									 tests_differentiation_backward \
+									 tests_differentiation_central
