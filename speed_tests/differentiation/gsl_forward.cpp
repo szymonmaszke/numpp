@@ -1,6 +1,6 @@
 #include<gsl/gsl_deriv.h>
 #include <gsl/gsl_math.h>
-#include"../differentiation/forward.hpp"
+#include"../../differentiation/forward.hpp"
 #include<iostream>
 #include<chrono>
 
