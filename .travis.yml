@@ -24,3 +24,4 @@ before_script:
 
 script:
   make
+  make clean
