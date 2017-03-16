@@ -1,4 +1,4 @@
-#include "../../catch.hpp"
+#include "../../test_utilities/catch.hpp"
 #include "../../../structures/vector/vector_structure.hpp"
 
 TEST_CASE(

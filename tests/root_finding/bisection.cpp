@@ -1,4 +1,4 @@
-#include "../catch.hpp"
+#include "../test_utilities/catch.hpp"
 #include"../../root_finding/bisection.hpp"
 
 TEST_CASE(
