@@ -17,15 +17,15 @@ all: root_finding_bisection \
 CXXFLAGS = -std=c++1z
 
 differentiation_forward: catch_tests setup_tests
-	python ./differentiation/forward_test.py -t ./differentiation/test_templates/test_template -c 100 -e 15 -nl -100 -nh 100 -al -100 -ah 100 >> ./differentiation/log/forward/test.log
+	python ./differentiation/forward_test.py -t ./differentiation/test_templates/test_template -c 10000 -e 15 -nl -100 -nh 100 -al -100 -ah 100 >> ./differentiation/log/forward/test.log
 	./test_utilities/test_success.sh ./differentiation/log/forward/test.log 0.01
 
 differentiation_backward: catch_tests setup_tests
-	python ./differentiation/backward_test.py -t ./differentiation/test_templates/test_template -c 100 -e 15 -nl -100 -nh 100 -al -100 -ah 100 1> ./differentiation/log/backward/test.log
+	python ./differentiation/backward_test.py -t ./differentiation/test_templates/test_template -c 10000 -e 15 -nl -100 -nh 100 -al -100 -ah 100 1> ./differentiation/log/backward/test.log
 	./test_utilities/test_success.sh ./differentiation/log/backward/test.log 0.01
 
 differentiation_central: catch_tests setup_tests
-	python ./differentiation/central_test.py -t ./differentiation/test_templates/test_template -c 100 -e 15 -nl -100 -nh 100 -al -100 -ah 100 1> ./differentiation/log/central/test.log
+	python ./differentiation/central_test.py -t ./differentiation/test_templates/test_template -c 10000 -e 15 -nl -100 -nh 100 -al -100 -ah 100 1> ./differentiation/log/central/test.log
 	./test_utilities/test_success.sh ./differentiation/log/central/test.log 0.01
 
 root_finding_bisection: catch_tests
