@@ -1,6 +1,4 @@
-language: python
-python:
-  - "3.5"
+language: generic
 
 matrix:
   include:
@@ -11,6 +9,7 @@ matrix:
           packages:
             - libgsl0-dev
             - g++-6
+            - python3
           sources: &sources
             - llvm-toolchain-precise-3.9
             - ubuntu-toolchain-r-test
