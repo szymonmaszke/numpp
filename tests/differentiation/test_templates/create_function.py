@@ -1,4 +1,4 @@
-#!usr/bin/env python
+#!usr/bin/python3
 #create_function.py
 import random
 import decimal

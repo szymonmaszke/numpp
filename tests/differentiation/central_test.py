@@ -1,4 +1,4 @@
-#!usr/bin/env python
+#!usr/bin/python3
 import argparse
 from test_templates.test import run_test
 
