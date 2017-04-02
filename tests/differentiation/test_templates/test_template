@@ -1,0 +1,52 @@
+#include <gsl/gsl_deriv.h>
+#include <gsl/gsl_math.h>
+#include "../test_utilities/catch.hpp"
+#include <chrono>
+#include <iostream>
+//NUMPP INCLUDE
+
+double gsl_func(const double x, void* params){
+  (void)(params); /* avoid unused parameter warning */
+  TEST FUNCTION PLACEHOLDER
+
+}
+
+class numpp_function{
+  public:
+    constexpr auto operator()(const double x)const{
+      TEST FUNCTION PLACEHOLDER
+
+    }
+};
+
+TEST_CASE("Differentiation test"){
+  auto gsl_begin = std::chrono::high_resolution_clock::now();
+  gsl_function F;
+  double result_gsl, abserr;
+
+  F.function = &gsl_func;
+  F.params = 0;
+
+  GSL FUNCTION PLACEHOLDER
+
+  auto gsl_end = std::chrono::high_resolution_clock::now();
+  auto gsl_time = std::chrono::duration_cast<std::chrono::nanoseconds>
+    (gsl_end-gsl_begin).count();
+
+  auto numpp_begin = std::chrono::high_resolution_clock::now();
+
+  NUMPP FUNCTION PLACEHOLDER
+
+  auto numpp_end = std::chrono::high_resolution_clock::now();
+  auto numpp_time = std::chrono::duration_cast<std::chrono::nanoseconds>
+    (numpp_end-numpp_begin).count();
+
+  SECTION("result tests"){
+      auto gsl_approximation = Approx(result_gsl).margin(abserr);
+      CHECK(result_numpp == gsl_approximation);
+  }
+  SECTION("runtime speed tests"){
+    REQUIRE(numpp_time < gsl_time);
+    std::cout << "TIME_COMPARISON: " << numpp_time << " " << gsl_time << std::endl;
+  }
+}
