@@ -24,10 +24,10 @@ namespace numpp{
 					std::size_t i=0;
 					while(epsilon < std::abs(root) && i<iterations){
 						root = f(x);
-						if(root*f(upper_bound)<0)
-							lower_bound=x;
-						else
-							upper_bound=x;
+            if(root<0)
+              lower_bound=x;
+            else
+              upper_bound=x;
 
 						x=(upper_bound+lower_bound)/2;
 						++i;

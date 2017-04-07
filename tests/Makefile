@@ -5,7 +5,7 @@ all: root_finding_bisection \
 		matrix_normal_structure \
 
 #Flags
-CXXFLAGS = -std=c++1z
+CXXFLAGS = -std=c++17
 
 differentiation_forward: catch_tests setup_tests
 	python ./differentiation/forward_test.py -t ./differentiation/test_templates/test_template -c 10000 -e 15 -nl -100 -nh 100 -al -100 -ah 100 >> ./differentiation/log/forward/test.log
