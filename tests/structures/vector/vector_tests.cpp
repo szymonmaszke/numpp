@@ -1,5 +1,5 @@
 #include "../../test_utilities/catch.hpp"
-#include "../../../structures/vector/vector_structure.hpp"
+#include "../../../structures/vector/vector_operations.hpp"
 
 TEST_CASE(
 		"vector basic functionality tests",
@@ -24,6 +24,7 @@ TEST_CASE(
 		REQUIRE(temp.transposed() == false);
 		REQUIRE(temp.size() == 3);
 		REQUIRE(temp.size() == temp.max_size());
+    REQUIRE(numpp::get<0>(vec1) == Approx(3));
 	}
 
 	SECTION("Comparison functions test"){
@@ -33,7 +34,6 @@ TEST_CASE(
 		REQUIRE_FALSE(vec2 == vec3);
 		REQUIRE(temp != vec1);
 	}
-
 	SECTION("Reference operators"){
 		REQUIRE(vec1(2) == Approx(123));
 		REQUIRE(vec2(4) == Approx(0.1));
@@ -43,4 +43,16 @@ TEST_CASE(
 
 	SECTION("Iterators tests TBD non-constexpr begin(), end() for now -.-"){
 	}
+
+  SECTION("Constexpr basic arithmethic between vectors"){
+	  constexpr numpp::vector<double, 6> temp{7.5, -24, 43.34, 15, 2.137, 0.2};
+    constexpr auto temp2 = temp + vec1;
+    REQUIRE(temp2(5) == Approx(1.4));
+    constexpr auto temp3 = temp2 / 2.137;
+    REQUIRE(temp3(4) == Approx(1.));
+    constexpr auto temp4 = vec1 - temp;
+    REQUIRE(temp4(1) == Approx(28.545));
+    constexpr auto temp5 = 2*temp;
+    REQUIRE(temp5(0) == Approx(15.));
+  }
 }
