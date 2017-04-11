@@ -1,6 +1,8 @@
 # -*- MakeFile -*-
 
-all: root_finding_bisection \
+all: \
+		matrix_normal_operations \
+		root_finding_bisection \
 		vector_structure \
 		matrix_normal_structure \
 
@@ -19,6 +21,11 @@ differentiation_central: catch_tests setup_tests
 	python ./differentiation/central_test.py -t ./differentiation/test_templates/test_template -c 10000 -e 15 -nl -100 -nh 100 -al -100 -ah 100 1> ./differentiation/log/central/test.log
 	./test_utilities/test_success.sh ./differentiation/log/central/test.log 0.01
 
+matrix_normal_operations: catch_tests
+	$(CXX) ./test_utilities/tests_main.o $(CXXFLAGS) ./structures/matrix/normal/operations_tests.cpp \
+		-o temp_matrix_normal_operations \
+		&& ./temp_matrix_normal_operations -r compact
+
 root_finding_bisection: catch_tests
 	$(CXX) ./test_utilities/tests_main.o $(CXXFLAGS) ./root_finding/bisection.cpp \
 		-o temp_root_finding_bisection\
@@ -30,7 +37,7 @@ vector_structure: catch_tests
 		&& ./temp_vector_structure -r compact
 
 matrix_normal_structure: catch_tests
-	$(CXX) ./test_utilities/tests_main.o  $(CXXFLAGS) ./structures/matrix/normal/tests_structure.cpp \
+	$(CXX) ./test_utilities/tests_main.o  $(CXXFLAGS) ./structures/matrix/normal/structure_tests.cpp \
  		-o temp_matrix_normal_structure \
  		&& ./temp_matrix_normal_structure -r compact
 

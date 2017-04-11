@@ -61,8 +61,8 @@ namespace numpp{
 		typename T,
 		typename U,
 		std::size_t Size,
-		bool Transposition,
-		typename = std::enable_if_t<std::is_arithmetic<U>{}>
+		bool Transposition
+		/* typename = std::enable_if_t<std::is_arithmetic<U>{}> */
 	>
 		constexpr auto operator*(
 				const vector<T,Size,Transposition>& vec,
@@ -77,8 +77,8 @@ namespace numpp{
 		typename T,
 		typename U,
 		std::size_t Size,
-		bool Transposition,
-		typename = std::enable_if_t<std::is_arithmetic<U>{}>
+		bool Transposition
+		/* typename = std::enable_if_t<std::is_arithmetic<U>{}> */
 	>
 		constexpr auto operator*(
 				const U scalar,
@@ -91,8 +91,8 @@ namespace numpp{
 		typename T,
 		typename U,
 		std::size_t Size,
-		bool Transposition,
-		typename = std::enable_if_t<std::is_arithmetic<U>{}>
+		bool Transposition
+		/* typename = std::enable_if_t<std::is_arithmetic<U>{}> */
 	>
 		constexpr auto operator/(
 				const vector<T,Size,Transposition>& vec,
