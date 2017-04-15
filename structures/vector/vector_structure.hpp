@@ -78,7 +78,7 @@ namespace numpp{
 				}
 
 				//ADD [] operators?
-				reference operator()(size_type pos){
+				constexpr reference operator()(size_type pos){
 					return vector_[pos];
 				}
 
