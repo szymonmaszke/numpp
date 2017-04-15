@@ -54,11 +54,5 @@ TEST_CASE(
     REQUIRE(temp4(1) == Approx(28.545));
     constexpr auto temp5 = 2*temp;
     REQUIRE(temp5(0) == Approx(15.));
-	  constexpr numpp::vector<double, 6, true> temp6{4.3,952.3,53.4,66.34,1.49348, -3.141516};
-    constexpr auto temp8 = temp*temp6;
-    REQUIRE(temp8(1,3) == Approx(-24*66.34));
-    REQUIRE(temp8(4,0) == Approx(2.137*4.3));
-    REQUIRE(temp8(5,5) == Approx(0.2*-3.141515));
-    REQUIRE(temp8(2,2) == Approx(43.34*53.4));
   }
 }
