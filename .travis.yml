@@ -20,8 +20,8 @@ before_script:
   cd ./tests
 
 script:
-  make root_finding_bisection && \
-  make vector_structure && \
+  make root_finding_bisection &&
+  make vector_structure &&
   make matrix_normal_structure
 
 after_script:
