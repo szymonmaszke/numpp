@@ -25,6 +25,14 @@ TEST_CASE(
 		3385, 1, 19.5820, 1, 0
   };
 
+	constexpr numpp::matrix::normal<double, 5, 3> mat_d{
+		1.2, -4.5, 12412.3,
+		2, 5.35, -412.3,
+		-34, 0, 0,
+    924.535, 39.58395, -21892,
+    -1e-6, 35.424,0.00024
+	};
+
 
 	SECTION("std::get tests"){
 		REQUIRE(numpp::matrix::get<0>(mat_a) == Approx(1.2));
@@ -53,5 +61,9 @@ TEST_CASE(
     REQUIRE(temp2(3,2) == Approx(mat_c(3,2)));
     constexpr auto temp3 = 5 * temp2;
     REQUIRE(temp3(1,0) == Approx(temp2(1,0)*5));
+
+    constexpr auto temp4 = mat_c * mat_d;
+    REQUIRE(temp4(3,0) == Approx(4322.747));
+    REQUIRE(temp4(1,1) == Approx(201496.8092));
   }
 }
