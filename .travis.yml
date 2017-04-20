@@ -8,14 +8,13 @@ matrix:
         apt:
           packages:
             - libgsl0-dev
-            - g++-6
+            - g++-7
           sources: &sources
             - llvm-toolchain-precise-3.9
             - ubuntu-toolchain-r-test
 
 before_install:
 - sudo apt-get update
-- sudo apt-get install python3
 
 before_script:
   cd ./tests
