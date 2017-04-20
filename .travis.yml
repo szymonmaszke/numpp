@@ -20,9 +20,8 @@ before_script:
   cd ./tests
 
 script:
-  make root_finding_bisection &&
-  make vector_structure &&
-  make matrix_normal_structure
+  make root_finding_bisection
+  # Cannot test any vector/matrix algorithms (gcc7 required)
 
 after_script:
   make clean
