@@ -9,6 +9,18 @@ all: \
 #Flags
 CXXFLAGS = -std=c++17
 
+matrix_multiplication_speed: setup_tests
+	python ./structures/matrix/normal/generate_speed_test.py -c 50 -s 100 -t ./structures/matrix/normal/test_templates/eigen_template -al -100 -ah 100 -l ./structures/matrix/normal/log/eigen_compilation >> ./structures/matrix/normal/log/eigen_runtime
+	python ./structures/matrix/normal/generate_speed_test.py -c 50 -s 100 -t ./structures/matrix/normal/test_templates/numpp_template -al -100 -ah 100 -l ./structures/matrix/normal/log/numpp_compilation >> ./structures/matrix/normal/log/numpp_runtime
+	python ./test_utilities/average_compile_time.py ./structures/matrix/normal/log/numpp_compilation ./structures/matrix/normal/log/eigen_compilation
+	python ./test_utilities/average_runtime.py ./structures/matrix/normal/log/numpp_runtime ./structures/matrix/normal/log/eigen_runtime
+
+# matrix_multiply_eigen_speed: setup_tests
+# 	python ./structures/matrix/normal/generate_speed_test.py -c 1000 -s 100 -t ./structures/matrix/normal/test_templates/eigen_template -al -100 -ah 100 -l ./structures/matrix/normal/log/eigen_compilation >> ./structures/matrix/normal/log/eigen_runtime
+
+# matrix_multiply_numpp_speed: setup_tests
+# 	python ./structures/matrix/normal/generate_speed_test.py -c 1000 -s 100 -t ./structures/matrix/normal/test_templates/numpp_template -al -100 -ah 100 -l ./structures/matrix/normal/log/numpp_compilation >> ./structures/matrix/normal/log/numpp_runtime
+
 differentiation_forward: catch_tests setup_tests
 	python ./differentiation/forward_test.py -t ./differentiation/test_templates/test_template -c 10000 -e 15 -nl -100 -nh 100 -al -100 -ah 100 >> ./differentiation/log/forward/test.log
 	./test_utilities/test_success.sh ./differentiation/log/forward/test.log 0.01
