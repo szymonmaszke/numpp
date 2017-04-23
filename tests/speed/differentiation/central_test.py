@@ -30,10 +30,10 @@ parser.add_argument('--arghigh', '-ah', required=True,
 args = parser.parse_args()
 run_test(
         args,
-        '#include"../differentiation/central.hpp"\n', 5,
+        '#include"../../../differentiation/central.hpp"\n', 5,
         'gsl_deriv_central(&F, ', 29,
         '''constexpr auto result_numpp =
         numpp::derivative::central(numpp_function{}, ''', 37,
         9, 16,
-        "./differentiation/log/central/compile.log"
+        "./differentiation/logs/central/compile"
         )

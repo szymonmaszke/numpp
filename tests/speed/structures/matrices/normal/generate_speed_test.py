@@ -1,4 +1,5 @@
 #!usr/bin/python3
+import sys
 import random
 import subprocess
 import argparse
@@ -37,6 +38,7 @@ if __name__ == '__main__':
     logging.basicConfig(filename=args.log,level=logging.DEBUG)
 
     for i in range(0, args.cases):
+        print('Running test: ' + str(i) + '/' + str(args.cases), end='\r', file=sys.stderr)
         with open(args.template, "r") as template:
             template_content=template.readlines()
 

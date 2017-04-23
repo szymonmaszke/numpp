@@ -43,7 +43,7 @@ def run_test(args, include, include_number,
             with open("./differentiation/temp_test.cpp", "w+") as test:
                 test.writelines(template_content)
             compilation_status = subprocess.run(["g++",
-                "./test_utilities/tests_main.o",
+                "../utilities/tests_main.o",
                 "./differentiation/temp_test.cpp", "-o", "./differentiation/temp_test", "-lgsl","-lgslcblas", "-lm"])
             if compilation_status.returncode == 0:
                 test_status = subprocess.run(["./differentiation/temp_test"])

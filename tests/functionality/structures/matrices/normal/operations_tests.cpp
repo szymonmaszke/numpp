@@ -1,5 +1,5 @@
-#include "../../../test_utilities/catch.hpp"
-#include "../../../../structures/matrices/normal/normal_operations.hpp"
+#include "../../../../utilities/catch.hpp"
+#include "../../../../../structures/matrices/normal/normal_operations.hpp"
 
 TEST_CASE(
 		"normal matrix operations tests",

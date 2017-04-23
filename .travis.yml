@@ -17,11 +17,10 @@ before_install:
 - sudo apt-get update
 
 before_script:
-  cd ./tests
+  cd ./tests/functionality
 
 script:
   make root_finding_bisection
-  # Cannot test any vector/matrix algorithms (gcc7 required)
 
 after_script:
   make clean
