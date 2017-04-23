@@ -3,7 +3,7 @@
 all: \
 		matrix_normal_operations \
 		root_finding_bisection \
-		vector_structure \
+		vector \
 		matrix_normal_structure \
 
 #Flags
@@ -19,10 +19,10 @@ root_finding_bisection: catch_tests
 		-o temp_root_finding_bisection\
 		&& ./temp_root_finding_bisection -r compact
 
-vector_structure: catch_tests
+vector: catch_tests
 	$(CXX) ../utilities/tests_main.o $(CXXFLAGS) ./structures/vector/vector_tests.cpp \
-		-o temp_vector_structure \
-		&& ./temp_vector_structure -r compact
+		-o temp_vector \
+		&& ./temp_vector -r compact
 
 matrix_normal_structure: catch_tests
 	$(CXX) ../utilities/tests_main.o  $(CXXFLAGS) ./structures/matrices/normal/structure_tests.cpp \

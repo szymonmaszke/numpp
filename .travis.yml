@@ -20,7 +20,7 @@ before_script:
   cd ./tests/functionality
 
 script:
-  make
+  make root_finding_bisection
 
 after_script:
   make clean
