@@ -1,6 +1,6 @@
 #include <gsl/gsl_deriv.h>
 #include <gsl/gsl_math.h>
-#include "../test_utilities/catch.hpp"
+#include "../../utilities/catch.hpp"
 #include <chrono>
 #include <iostream>
 //NUMPP INCLUDE

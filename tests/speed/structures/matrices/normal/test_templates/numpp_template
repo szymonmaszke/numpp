@@ -1,0 +1,28 @@
+#include "../../structures/matrices/normal/normal_operations.hpp"
+#include<chrono>
+#include<iostream>
+
+int main(){
+  auto numpp_begin = std::chrono::high_resolution_clock::now();
+
+
+
+  constexpr numpp::matrix::normal<double, 10, 10> numppA{0
+
+  };
+
+  constexpr numpp::matrix::normal<double, 10, 10> numppB{0
+
+  };
+
+  constexpr auto numpp_result = numppA * numppB * numppA * numppB;
+  auto numpp_end = std::chrono::high_resolution_clock::now();
+
+  auto numpp_time = std::chrono::duration_cast<std::chrono::nanoseconds>
+    (numpp_end-numpp_begin).count();
+
+  std::cout << numpp_time << std::endl;
+
+  return 0;
+
+}
