@@ -8,7 +8,7 @@ services:
 before_install:
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
-  - travis_wait 90 docker build -t vyzyv/numpp .
+  - docker build -t vyzyv/numpp .
   - docker run vyzyv/numpp /bin/sh -c "cd /tmp/numpp/tests/functionality; make"
 
 script:
