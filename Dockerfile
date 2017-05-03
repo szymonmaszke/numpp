@@ -20,3 +20,5 @@ USER user
 RUN cd /tmp/gcc-git && git clone https://aur.archlinux.org/gcc-git.git && cd /tmp/gcc-git/gcc-git && makepkg -sric --noconfirm  && rm -rf /tmp/gcc-git
 
 USER root
+
+RUN pacman -Rsc git
