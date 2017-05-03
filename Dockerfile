@@ -6,3 +6,6 @@ COPY root_finding /usr/include/numpp/root_finding
 COPY structures /usr/include/numpp/structures
 
 COPY tests/ /tmp/numpp/tests
+
+WORKDIR /tmp/numpp/tests/functionality
+CMD ["make"]
