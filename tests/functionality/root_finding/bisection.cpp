@@ -1,5 +1,6 @@
 #include "../../utilities/catch.hpp"
-#include"../../../root_finding/bisection.hpp"
+/* #include"../../../root_finding/bisection.hpp" */
+#include"numpp/root_finding/bisection.hpp"
 
 TEST_CASE(
     "bisection basic tests"
