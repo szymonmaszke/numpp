@@ -1,5 +1,6 @@
 #include "../../../utilities/catch.hpp"
-#include "../../../../structures/vector/vector_operations.hpp"
+#include "numpp/structures/vector/vector_operations.hpp"
+/* #include "../../../../structures/vector/vector_operations.hpp" */
 
 TEST_CASE(
 		"vector basic functionality tests",

@@ -1,26 +1,18 @@
+sudo: required
+
 language: generic
 
-matrix:
-  include:
-    - os: linux
-      env: COMPILER_NAME=gcc CXX=g++-6 CC=gcc-6
-      addons:
-        apt:
-          packages:
-            - libgsl0-dev
-            - g++-6
-          sources: &sources
-            - llvm-toolchain-precise-3.9
-            - ubuntu-toolchain-r-test
+services:
+  - docker
 
 before_install:
-- sudo apt-get update
-
-before_script:
-  cd ./tests/functionality
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
+  - docker build -t numpp .
 
 script:
-  make root_finding_bisection
+  - docker run numpp
 
-after_script:
-  make clean
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push vyzyv/numpp
