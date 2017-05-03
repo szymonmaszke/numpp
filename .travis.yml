@@ -11,6 +11,9 @@ before_install:
   - docker build -t vyzyv/numpp .
   - docker run vyzyv/numpp /bin/sh -c "cd /tmp/numpp/tests/functionality; make"
 
+install:
+  - travis_wait 90 mvn install
+
 script:
   - make
 
