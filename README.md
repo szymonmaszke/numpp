@@ -2,6 +2,8 @@
 
 Current build status on Travis:  ![Build Status](https://travis-ci.org/vyzyv/numpp.svg?branch=master)
 
+Docker image (beta infrastructure, based on newest GCC): https://hub.docker.com/r/vyzyv/numpp/
+
 About
 ======
 
