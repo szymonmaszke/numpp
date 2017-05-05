@@ -5,9 +5,15 @@ all: \
 		root_finding_bisection \
 		vector \
 		matrix_normal_structure \
+		matrix_vector_operations
 
 #Flags
-CXXFLAGS = -std=c++17 -O3 -march=native
+CXXFLAGS = -std=c++17 -O3 -march=native -Wall -pedantic
+
+matrix_vector_operations: catch_tests
+	$(CXX) ../utilities/tests_main.o $(CXXFLAGS) ./structures/vector_matrix_tests.cpp \
+		-o temp_matrix_vector_operations\
+		&& ./temp_matrix_vector_operations -r compact
 
 matrix_normal_operations: catch_tests
 	$(CXX) ../utilities/tests_main.o $(CXXFLAGS) ./structures/matrices/normal/operations_tests.cpp \

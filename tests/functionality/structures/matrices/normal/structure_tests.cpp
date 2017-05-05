@@ -1,5 +1,5 @@
 #include "../../../../utilities/catch.hpp"
-#include "numpp/structures/matrices/matrices.hpp"
+#include "numpp/structures/matrices/normal.hpp"
 /* #include "../../../../../structures/matrices/matrices.hpp" */
 
 TEST_CASE(

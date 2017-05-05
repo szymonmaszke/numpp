@@ -103,6 +103,16 @@ namespace numpp::matrix{
       );
     }
 
+  //ELEMENT-WISE MULTIPLICATION
+  template<typename T, typename U, std::size_t Rows, std::size_t Columns>
+    constexpr auto multiply(
+        const normal<T,Rows,Columns>& first,
+        const normal<U,Rows,Columns>& second
+        ){
+      return impl::accumulate(first, second, std::multiplies<>{},
+          std::make_index_sequence<Rows*Columns>{});
+    }
+
 
   template<typename T,typename U,std::size_t Rows,std::size_t Columns>
     constexpr auto operator*(
@@ -117,17 +127,26 @@ namespace numpp::matrix{
   template<typename T, typename U, std::size_t Rows,std::size_t Columns>
     constexpr auto operator*(
         const U scalar,
-        const normal<T,Rows,Columns>& vec
+        const normal<T,Rows,Columns>& matrix
         ){
-      return vec*scalar;
+      return matrix*scalar;
     }
 
   template<typename T, typename U, std::size_t Rows, std::size_t Columns>
     constexpr auto operator/(
-        const normal<T,Rows,Columns>& vec,
+        const normal<T,Rows,Columns>& matrix,
         const U scalar
         ){
-      return impl::accumulate(vec, scalar, std::divides<>{},
+      return impl::accumulate(matrix, scalar, std::divides<>{},
+          std::make_index_sequence<Rows*Columns>{});
+    }
+
+  template<typename T, typename U, std::size_t Rows, std::size_t Columns>
+    constexpr auto operator/(
+        const normal<T,Rows,Columns>& first,
+        const normal<U,Rows,Columns>& second
+        ){
+      return impl::accumulate(first, second, std::divides<>{},
           std::make_index_sequence<Rows*Columns>{});
     }
 }
