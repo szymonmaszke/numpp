@@ -9,11 +9,30 @@ all: \
 #Flags
 CXXFLAGS = -std=c++17 -O3 -march=native
 
+#How many tests
+EIGEN_CASES = 1000
+NUMPP_CASES = 1000
+
+#Size of matrices (number of elements, sqrt(SIZE) has to be int)
+SIZE = 100
+
+#Low and high arguments for random generators
+LOW  = -100
+HIGH =  100
+
+#Path to log folders
+EIGEN_COMPILATION = ./structures/matrices/normal/logs/eigen_compilation
+EIGEN_RUNTIME 		= ./structures/matrices/normal/logs/eigen_runtime
+
+NUMPP_COMPILATION = ./structures/matrices/normal/logs/numpp_compilation
+NUMPP_RUNTIME 		= ./structures/matrices/normal/logs/numpp_runtime
+
+
 matrix_multiplication: setup_tests
-	python ./structures/matrices/normal/generate_speed_test.py -c 1000 -s 100 -t ./structures/matrices/normal/test_templates/eigen_template -al -100 -ah 100 -l ./structures/matrices/normal/logs/eigen_compilation >> ./structures/matrices/normal/logs/eigen_runtime
-	python ./structures/matrices/normal/generate_speed_test.py -c 1000 -s 100 -t ./structures/matrices/normal/test_templates/numpp_template -al -100 -ah 100 -l ./structures/matrices/normal/logs/numpp_compilation >> ./structures/matrices/normal/logs/numpp_runtime
-	python ./utilities/average_compile_time.py ./structures/matrices/normal/logs/numpp_compilation ./structures/matrices/normal/logs/eigen_compilation
-	python ./utilities/average_runtime.py ./structures/matrices/normal/logs/numpp_runtime ./structures/matrices/normal/logs/eigen_runtime
+	python ./structures/matrices/normal/generate_speed_test.py -c $(EIGEN_CASES) -s $(SIZE) -t ./structures/matrices/normal/test_templates/eigen_template -al $(LOW) -ah $(HIGH) -l $(EIGEN_COMPILATION) >> $(EIGEN_RUNTIME)
+	python ./structures/matrices/normal/generate_speed_test.py -c $(NUMPP_CASES) -s $(SIZE) -t ./structures/matrices/normal/test_templates/numpp_template -al $(LOW) -ah $(HIGH) -l $(NUMPP_COMPILATION) >> $(NUMPP_RUNTIME)
+	python ./utilities/average_compile_time.py $(NUMPP_COMPILATION) $(EIGEN_COMPILATION)
+	python ./utilities/average_runtime.py $(NUMPP_RUNTIME) $(EIGEN_RUNTIME)
 
 differentiation_forward: catch_tests setup_tests
 	python ./differentiation/forward_test.py -t ./differentiation/test_templates/test_template -c 10000 -e 15 -nl -100 -nh 100 -al -100 -ah 100 >> ./differentiation/logs/forward/runtime 2>/dev/null
