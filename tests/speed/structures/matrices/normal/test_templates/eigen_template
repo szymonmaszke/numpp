@@ -16,7 +16,7 @@ int main(){
 
   ;
 
-  auto eigen_result = eigenA * eigenB * eigenA * eigenB;
+  auto eigen_result = eigenA * eigenB;
   auto eigen_end = std::chrono::high_resolution_clock::now();
 
   auto eigen_time = std::chrono::duration_cast<std::chrono::nanoseconds>

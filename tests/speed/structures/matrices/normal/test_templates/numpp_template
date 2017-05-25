@@ -15,7 +15,7 @@ int main(){
 
   };
 
-  constexpr auto numpp_result = numppA * numppB * numppA * numppB;
+  constexpr auto numpp_result = numppA * numppB;
   auto numpp_end = std::chrono::high_resolution_clock::now();
 
   auto numpp_time = std::chrono::duration_cast<std::chrono::nanoseconds>
