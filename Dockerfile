@@ -8,4 +8,6 @@ COPY structures /usr/include/numpp/structures
 COPY tests/ /tmp/numpp/tests
 
 WORKDIR /tmp/numpp/tests/functionality
+
+RUN apt-get update && apt-get install -y libeigen3-dev libgsl-dev
 CMD ["make"]
