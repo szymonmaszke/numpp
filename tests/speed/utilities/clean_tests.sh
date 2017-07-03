@@ -1,4 +1,4 @@
-#/bin/env bash
+#!/bin/env bash
 
 find ../ -type f -name 'temp*' -delete
 find ../ -depth -type d -name 'log*' -exec rm -r {} +
