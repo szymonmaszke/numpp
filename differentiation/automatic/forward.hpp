@@ -13,7 +13,7 @@ namespace numpp::differentiation::automatic{
 
       static_assert(std::is_arithmetic<T>(),
           "Current implementation of forward differentiation supports only \
-          arithmetic types. Specialize is_arithmetic IF your class may be equal to 1"
+          arithmetic types. Specialize is_arithmetic if your class may be equal to 1"
           );
 
       public:
@@ -46,7 +46,7 @@ namespace numpp::differentiation::automatic{
 
         template<typename U>
           constexpr auto operator*(U&& other){
-            return forward{value * other, derivative*other};
+            return forward{value * other, derivative * other};
           }
 
         constexpr auto operator*(const forward& other){
@@ -88,7 +88,7 @@ namespace std{
       ){
     return numpp::differentiation::automatic::forward{
       std::pow(number.value, exp),
-      (exp * std::pow(number.value, exp-1))
+      number.derivative*(exp * std::pow(number.value, exp-1))
     };
   }
 
@@ -138,15 +138,4 @@ namespace std{
       number.derivative / std::sqrt(1 - number*number)
     };
   }
-}
-
-
-int main(){
-  using numpp::differentiation::automatic::forward;
-
-  constexpr forward<double, 1> x{1.};
-  constexpr auto result = std::pow(x, 3.) - x;
-  std::cout << result.derivative << std::endl;
-
-  return 0;
 }
