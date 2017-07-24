@@ -8,7 +8,8 @@ all: \
 		matrix_vector_operations
 
 #Flags
-CXXFLAGS = -std=c++17 -O3 -march=native -Wall -pedantic
+# ‑mveclibabi=svml
+CXXFLAGS = -std=c++17 -Wall -Werror -pedantic -Weffc++ -O3 -march=native -fopenmp -fopenmp-simd -fconstexpr-detph=4294967296 -fconstexpr-loop-limit=4294967296
 
 matrix_vector_operations: catch_tests
 	$(CXX) ../utilities/tests_main.o $(CXXFLAGS) ./structures/vector_matrix_tests.cpp \
