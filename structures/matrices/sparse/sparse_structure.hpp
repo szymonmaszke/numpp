@@ -13,11 +13,15 @@
 
 namespace numpp::matrix{
   struct sparse_block{};
+  template<typename T>
+    struct block{
+      public:
+        std::vector<T> data;
+        std::size_t column;
+    };
+  //BLOCK OF CONTIGUOUS DATA IN MATRIX
 
-  template<typename T, std::size_t Rows, std::size_t Columns,
-    std::size_t Elements=static_cast<std::size_t>(Rows*Columns)/8,
-    std::size_t Alignment=64
-      >
+  template<typename T, std::size_t Rows, std::size_t Columns>
       //VERSION WITH MAXIMUM POSSIBLE CACHE HIT
       //ANALYZE BLOCK STRUCTURE WHERE THIS STYLE IS PREFFERED
       class sparse{
@@ -34,26 +38,59 @@ namespace numpp::matrix{
           sparse()=default;
           sparse(const sparse&)=default;
           sparse(sparse&&)=default;
-          sparse& operator=(const sparse&)=default;
           sparse& operator=(sparse&&)=default;
+          sparse& operator=(const sparse&)=default;
 
           sparse(std::initializer_list<std::initializer_list<T>> elements){
-            size_t i = 0;
-            matrix.reserve(Elements);
-            size_t row_index=0;
 
-            for(const auto& row: elements){
-              size_t elements_counter = 0;
+            /* for(auto row=std::begin(elements); row!=std::end(elements); ++row){ */
+            /*   std::size_t elements_counter = 0; */
+            /*   const auto iterator_position{std::distance(std::begin(elements), row)}; */
+
+            /*   for(auto col=row->begin(), end=row->end(); col!=end; ++col){ */
+            /*     if(*col != 0){ */
+            /*       numpp::matrix::block<T> chain{}; */
+            /*       chain.column = elements_counter; */
+
+            /*       while((*col != 0) && (col!=end)){ */
+            /*         chain.data.push_back(*col); */
+            /*         ++elements_counter; */
+            /*         ++col; */
+            /*       } */
+            /*       matrix[iterator_position].emplace_back(chain); */
+            /*     } */
+            /*     ++elements_counter; */
+            /*   } */
+            /* } */
+          /* } */
+
+            for(auto row=std::begin(elements); row!=std::end(elements); ++row){
+             const auto iterator_position{std::distance(std::begin(elements), row)};
+              std::size_t elements_counter = 0;
               bool chain = false;
 
-              for(const auto& element: row){
-                if(element!=0){
+              auto col=std::begin(*row);
+              //FIND FIRST NON-ZERO ELEMENT
+              for(; col!=std::end(*row); ++col){
+                if(*col != 0){
+                  matrix[iterator_position].emplace_back(elements_counter);
+                  matrix[iterator_position].emplace_back(*col);
+                  chain=true;
+                  ++col; ++elements_counter;
+                  break;
+                }
+                ++elements_counter;
+              }
+
+              //CHAIN OTHER NON-ZERO ELEMENTS
+              for(; col!=std::end(*row); ++col){
+                if(*col!=0){
                   if(chain)
-                    matrix.emplace_back(element);
+                    matrix[iterator_position].emplace_back(*col);
                   else{
-                    matrix.emplace_back(0);
-                    matrix.emplace_back(elements_counter);
-                    matrix.emplace_back(element);
+                    matrix[iterator_position].emplace_back(0);
+                    matrix[iterator_position].emplace_back(elements_counter);
+                    matrix[iterator_position].emplace_back(*col);
                     chain = true;
                   }
                 }
@@ -61,8 +98,6 @@ namespace numpp::matrix{
                   chain = false;
                 ++elements_counter;
               }
-
-              rows[row_index++] = matrix.size();
             }
           }
 
@@ -70,11 +105,11 @@ namespace numpp::matrix{
             return matrix.size();
           }
 
-          const std::vector<T>& data() const noexcept{
+          const std::array<std::vector<block<T>>, Rows>& data() const noexcept{
             return matrix;
           }
 
-          std::vector<T>& data() noexcept{
+          std::array<std::vector<block<T>>, Rows>& data() noexcept{
             return matrix;
           }
 
@@ -83,26 +118,32 @@ namespace numpp::matrix{
               vector<U,Rows,false> output{};
 
               #pragma omp for schedule(simd:dynamic)
-              for(int i=0; i<(rows.size()-1); ++i){
+              for(std::size_t row=0; row<Rows; ++row){
 
-                for(size_t j=rows[i], mat_size=rows[i+1]; j<mat_size; ++j){
-                  size_t col = static_cast<size_t>(matrix[j]) % Columns;
+                /* for(std::size_t block=0, block_end=matrix[row].size(); block<block_end; ++block){ */
 
-                  while(matrix[++j]!=0){
+                /*   const std::size_t col=matrix[row][block].column; */
+                /*   const std::size_t element_end=matrix[row][block].data.size(); */
+                /*   #pragma omp simd */
+                /*   for(std::size_t element=0; element<element_end; ++element){ */
+                /*     output(row) += matrix[row][block].data[element]*vec(col+element); */
+                /*   } */
+                /* } */
 
-                    output(i) += matrix[j]*vec(col);
-                    ++col;
-
+                for(std::size_t col=0; col<matrix[row].size(); ++col){
+                  std::size_t col_index = static_cast<std::size_t>(matrix[row][col]);
+                  while(matrix[row][++col]!=0){
+                    output(row) += matrix[row][col]*vec(col_index);
+                    ++col_index;
                   }
                 }
               }
               return output;
             }
 
-
         private:
-          alignas(Alignment) std::vector<T> matrix{};
-          alignas(Alignment) std::array<size_t, Rows> rows{};
+          /* std::array<std::vector<block<T>>, Rows> matrix{}; */
+          std::array<std::vector<T>, Rows> matrix{};
       };
 }
 

@@ -7,7 +7,6 @@
 
 #include"vector_utils.hpp"
 #include"../matrices/normal/normal_operations.hpp" //TEMP
-#include"tuple"
 
 namespace numpp{
   namespace impl{
