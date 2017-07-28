@@ -1,6 +1,6 @@
 #include "../../../../utilities/catch.hpp"
-/* #include "numpp/structures/matrices/normal/normal_functions.hpp" */
-#include "../../../../../structures/matrices/normal/normal_functions.hpp"
+#include "numpp/structures/matrices/normal/normal_functions.hpp"
+/* #include "../../../../../structures/matrices/normal/normal_functions.hpp" */
 
 TEST_CASE(
 		"normal matrix functions tests",
