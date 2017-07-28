@@ -7,7 +7,7 @@ all: \
 	differentiation_central \
 
 #Flags
-CXXFLAGS = -std=c++17 -Wall -Werror -pedantic -Weffc++ -O3 -march=native -fopenmp -fopenmp-simd -fconstexpr-detph=4294967296 -fconstexpr-loop-limit=4294967296
+CXXFLAGS = -std=c++17 -Wall -Werror -pedantic -Weffc++ -O3 -march=native -fopenmp -fopenmp-simd
 
 #How many tests
 EIGEN_CASES = 1000
