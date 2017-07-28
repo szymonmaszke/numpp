@@ -9,7 +9,7 @@ all: \
 
 #Flags
 # ‑mveclibabi=svml
-CXXFLAGS = -std=c++17 -Wall -Werror -pedantic -Weffc++ -O3 -march=native -fopenmp -fopenmp-simd -fconstexpr-depth=4294967296 -fconstexpr-loop-limit=4294967296
+CXXFLAGS = -std=c++17 -Wall -Werror -pedantic -Weffc++ -O3 -march=native -fopenmp -fopenmp-simd
 
 matrix_vector_operations: catch_tests
 	$(CXX) ../utilities/tests_main.o $(CXXFLAGS) ./structures/vector_matrix_tests.cpp \
