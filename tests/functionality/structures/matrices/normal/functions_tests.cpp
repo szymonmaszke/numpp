@@ -19,7 +19,7 @@ TEST_CASE(
 		REQUIRE(transposed_matrix(0,1) == Approx(2));
 		REQUIRE(transposed_matrix(1,0) == Approx(-4.5));
 		REQUIRE(transposed_matrix(1,2) == Approx(0));
-		REQUIRE(transposed_matrix(2,4) == Approx(1.7));
+		REQUIRE(transposed_matrix(2,3) == Approx(1.7));
 		REQUIRE(transposed_matrix(3,2) == Approx(12));
 		REQUIRE(transposed_matrix(4,3) == Approx(0.1));
   }
