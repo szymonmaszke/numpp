@@ -6,22 +6,21 @@ TEST_CASE(
 		"normal matrix functions tests",
 		"[functions][matrix][normal][constexpr]"
 ){
-	constexpr numpp::matrix::normal<double, 4, 5> matrix{
-		1.2, -4.5, 12412.3, 12512., 294.2352,
-		2, 5.35, -412.3, 12, 0,
-		-34, 0, 0, 0, 4.5,
-		3, 1.3, 1.7, 0, 0.1
-	};
+  constexpr numpp::matrix::normal<int, 3, 4> matrix{
+    1,2,3,4,
+    5,6,7,8,
+    9,10,11,12
+  };
+
 
 
 	SECTION("transposition tests"){
 		constexpr auto transposed_matrix = transpose(matrix);
-		REQUIRE(transposed_matrix(0,1) == Approx(2));
-		REQUIRE(transposed_matrix(1,0) == Approx(-4.5));
-		REQUIRE(transposed_matrix(1,2) == Approx(0));
-		REQUIRE(transposed_matrix(2,3) == Approx(1.7));
-		REQUIRE(transposed_matrix(3,2) == Approx(12));
-		REQUIRE(transposed_matrix(4,3) == Approx(0.1));
+		REQUIRE(transposed_matrix(0,1) == Approx(5));
+		REQUIRE(transposed_matrix(1,0) == Approx(2));
+		REQUIRE(transposed_matrix(1,2) == Approx(10));
+		REQUIRE(transposed_matrix(2,1) == Approx(7));
+		REQUIRE(transposed_matrix(3,0) == Approx(4));
   }
 
   SECTION("is matrix square?"){
