@@ -1,3 +1,6 @@
+#ifndef NUMPP_VECTOR_UTILS_HPP_
+#define NUMPP_VECTOR_UTILS_HPP_
+
 #include"vector_structure.hpp"
 
 namespace numpp{
@@ -35,3 +38,5 @@ namespace std {
         using type = T;
     };
 }
+
+#endif

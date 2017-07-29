@@ -1,5 +1,5 @@
-#ifndef VECTOR_STRUCTURE_HPP_
-#define VECTOR_STRUCTURE_HPP_
+#ifndef NUMPP_VECTOR_STRUCTURE_HPP_
+#define NUMPP_VECTOR_STRUCTURE_HPP_
 
 #include<array>
 #include<type_traits>
@@ -28,7 +28,6 @@ namespace numpp{
 				constexpr vector& operator=(const vector&)=default;
 				constexpr vector& operator=(vector&&)=default;
 
-				//WORKAROUND... NEEDED, STILL NOT SO CRYPTING AS COULD BE.
 				template<
 					typename... U,
 					typename = std::enable_if_t<
@@ -77,7 +76,6 @@ namespace numpp{
 					return !(x==*this);
 				}
 
-				//ADD [] operators?
 				constexpr reference operator()(size_type pos){
 					return vector_[pos];
 				}
@@ -86,8 +84,6 @@ namespace numpp{
 					return vector_[pos];
 				}
 
-				//CONSTEXPR SINCE C++17 !
-				//BUGGED UNTIL NEW STANDARD
 				constexpr iterator begin() {
 					return vector_.begin();
 				}

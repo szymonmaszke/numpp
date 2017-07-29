@@ -2,11 +2,11 @@
 /* #error"This file should only be included by vector.hpp" */
 /* #endif */
 
-#ifndef VECTOR_OPERATIONS_HPP_
-#define VECTOR_OPERATIONS_HPP_
+#ifndef NUMPP_VECTOR_OPERATIONS_HPP_
+#define NUMPP_VECTOR_OPERATIONS_HPP_
 
 #include"vector_utils.hpp"
-#include"../matrices/normal/normal_operations.hpp" //TEMP
+#include"../matrices/normal/normal_functions.hpp"
 
 namespace numpp{
   namespace impl{
@@ -93,18 +93,18 @@ namespace numpp{
 
 	template<typename T,typename U, std::size_t Size, bool Transposition>
 		constexpr auto operator*(
-				U&& scalar,
+				U scalar,
 				const vector<T,Size,Transposition>& vec
 		){
       return vec*scalar;
 		}
 
 	template<typename T,typename U, std::size_t Size>
-		constexpr auto operator*(
+		constexpr std::common_type_t<T,U> operator*(
 				const vector<T, Size, true>& first,
 				const vector<U, Size, false>& second
 		){
-      T ret{};
+      std::common_type_t<T,U> ret{};
       for(std::size_t i=0; i<Size; ++i)
         ret += first(i)*second(i);
       return ret;
@@ -123,9 +123,9 @@ namespace numpp{
 	template<typename T, typename U, std::size_t Size, bool Transposition>
 		constexpr auto operator/(
 				const vector<T,Size,Transposition>& vec,
-				U&& scalar
+				U scalar
 		){
-      return impl::accumulate(std::forward<U>(scalar), vec, std::divides<>{},
+      return impl::accumulate(scalar, vec, std::divides<>{},
           std::make_index_sequence<Size>{});
 		}
 }
