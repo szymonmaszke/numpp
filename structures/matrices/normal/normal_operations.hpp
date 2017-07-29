@@ -2,7 +2,7 @@
 #define MATRIX_NORMAL_OPERATIONS_HPP
 
 #include"normal_utils.hpp"
-#include"tuple"
+#include<tuple>
 
 namespace numpp::matrix{
   //IMPLEMENTATION DETAILS
