@@ -75,7 +75,7 @@ namespace numpp::differentiation::automatic{
 
 namespace std{
 
-  constexpr auto relu(const numpp::differentiation::automatic::forward<auto>& number){
+  CONSTEXPR auto relu(const numpp::differentiation::automatic::forward<auto>& number){
     return numpp::differentiation::automatic::forward{
       std::max(0, number.value),
       (((number.value) > 0) ? 1 : 0)
