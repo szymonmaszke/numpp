@@ -5,51 +5,49 @@
 #include<cmath>
 #include"types.hpp"
 #include"arithmetic.hpp"
+#include"simplificator.hpp"
+
+#if defined  __GNUC__ && !defined __clang__
+  #define CONSTEXPR constexpr
+#elif
+  #define CONSTEXPR
+#endif
 
 namespace numpp::differentiation::symbolic{
   template<typename T>
-    class log{
+    class logarithm{
       public:
-        using active = typename T::active;
-        using type = log<T>;
+        template<std::size_t Active>
+          using derivative = simplify_division<typename T::template derivative<Active>, T>;
 
-        using derivative = std::conditional_t<
-          typename T::active{},
-            std::conditional_t<
-              std::is_arithmetic<typename T::type>::value,
-                divide<constant<1>, T>,
-                multiply<divide<constant<1>, T>, typename T::derivative>
-            >,
-            log<T>
-        >;
-        template<typename U>
-          constexpr U operator()(U value)const{
-            return std::log(inner(value));
-          }
-
-      private:
-        const T inner{};
+        CONSTEXPR static auto calculate(auto&& values){
+          return std::log(T::calculate(values));
+        }
     };
 
   template<typename T>
-    class exp{
+    class exponential{
       public:
         using active = typename T::active;
-        using type = exp<T>;
+        using type = exponential<T>;
 
-        using derivative = std::conditional_t<
-              std::is_arithmetic<typename T::type>::value,
-                exp<T>,
-                multiply<exp<T>, typename T::derivative>
-        >;
-        template<typename U>
-          constexpr U operator()(U value)const{
-            return std::exp(inner(value));
-          }
+        template<std::size_t Active>
+        using derivative = multiply<exponential<T>, typename T::template derivative<Active>>;
 
-      private:
-        const T inner{};
+        CONSTEXPR static auto calculate(auto&& values){
+          return std::log(T::calculate(values));
+        }
     };
+
+  template<typename T>
+    CONSTEXPR exponential<T> exp(const T&){
+      return exponential<T>{};
+    }
+
+  template<typename T>
+    CONSTEXPR logarithm<T> log(const T&){
+      return logarithm<T>{};
+    }
 
 }
 
