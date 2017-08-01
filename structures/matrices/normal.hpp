@@ -1,6 +1,6 @@
-#ifndef MATRIXES_HPP
-#define MATRIXES_HPP
+#ifndef NUMPP_NORMAL_MATRIX_HPP_
+#define NUMPP_NORMAL_MATRIX_HPP_
 
-#include"normal/normal_operations.hpp"
+#include"normal/normal_functions.hpp"
 
 #endif
