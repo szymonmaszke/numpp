@@ -6,86 +6,52 @@
 
 #include"arithmetic.hpp"
 
+#if defined  __GNUC__ && !defined __clang__
+#define CONSTEXPR constexpr
+#elif
+#define CONSTEXPR
+#endif
+
 namespace numpp::differentiation::symbolic{
-  template<typename T> class cos;
+  template<typename T> class cosinus;
   template<typename T>
-    class sin{
+    class sinus{
       public:
-        using active = typename T::active;
-        using type = sin<T>;
+        template<std::size_t Active>
+          using derivative = simplify_multiplication<
+          cosinus<T>,
+          typename T::template derivative<Active>
+            >;
 
-        using derivative = std::conditional_t<
-          //ARE WE DIFFERENTIATING BY THIS VALUE?
-          typename T::active{},
-            //YES
-            std::conditional_t<
-              //IS THE TYPE INSIDE AN ARITHMETIC ONE? IF YES, THAN IT'S A SIMPLE DERIVATIVE
-              std::is_arithmetic<typename T::type>::value,
-                //IS NOT FUNCTION, SIMPLE DERIVATIVE
-                cos<T>,
-                //IS FUNCTION, NESTED DERIVATIVE
-                multiply<cos<T>, typename T::derivative>
-            >,
-            //NOT DIFFERENTIATING BY THIS VALUE, RETURN AS IS
-            sin<T>
-        >;
-
-        template<typename U>
-          constexpr U operator()(U value)const{
-            return std::sin(inner(value));
-          }
-
-      private:
-        const T inner{};
+        CONSTEXPR static auto calculate(auto&& values){
+          return std::sin(T::calculate(values));
+        }
     };
 
   template<typename T>
-    class cos{
+    class cosinus{
       public:
-        using active = typename T::active;
-        using type = cos<T>;
+        template<std::size_t Active>
+          using derivative =
+          simplify_multiplication<
+          minus<sinus<T>>,
+          typename T::template derivative<Active>
+            >;
 
-        using derivative = std::conditional_t<
-          typename T::active{},
-            std::conditional_t<
-              std::is_arithmetic<typename T::type>::value,
-                minus<sin<T>>,
-                multiply<minus<sin<T>>, typename T::derivative>
-            >,
-            cos<T>
-        >;
-        template<typename U>
-          constexpr U operator()(U value)const{
-            return std::cos(inner(value));
-          }
-
-      private:
-        const T inner{};
+        CONSTEXPR static auto calculate(auto&& values){
+          return std::sin(T::calculate(values));
+        }
     };
 
-  //TO DO
   template<typename T>
-    class tan{
-      public:
-        using active = typename T::active;
-        using type = cos<T>;
+    CONSTEXPR sinus<T> sin(const T&){
+      return sinus<T>{};
+    }
 
-        using derivative = std::conditional_t<
-          typename T::active{},
-            std::conditional_t<
-              std::is_arithmetic<typename T::type>::value,
-                minus<sin<T>>,
-                multiply<minus<sin<T>>, typename T::derivative>
-            >,
-            cos<T>
-        >;
-        template<typename U>
-          constexpr U operator()(U value)const{
-            return std::cos(inner(value));
-          }
+  template<typename T>
+    CONSTEXPR cosinus<T> cos(const T&){
+      return cosinus<T>{};
+    }
 
-      private:
-        const T inner{};
-    };
 }
 #endif
