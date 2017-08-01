@@ -7,32 +7,29 @@ namespace numpp::krylov{
   template<typename T, typename U, std::size_t Size>
     constexpr auto conjugate_gradient(
         const matrix::normal<T, Size, Size>& A,
-        const vector<U, Size>& b,
         const vector<U, Size>& x,
+        const vector<U, Size>& b,
         std::size_t iterations = Size*Size*Size
         ){
-      const auto residual = b - (A*x);
-      const auto direction{residual};
+
+      auto residual = b - (A*x);
+      auto direction{residual};
 
       auto temp{x};
       for(std::size_t i = 0; i<iterations; ++i){
-        const auto alpha {
-          (transpose(residual) * residual)/
-            (transpose(direction) * (A * direction))};
+        const auto alpha {sum(residual)/(sum(direction, A*direction))};
 
 
-        x += alpha * direction;
+        temp = temp + (alpha * direction);
         auto residual_next = residual - alpha * (A * direction);
         //SPRAWDZENIE ROZMIARU RESIDUAL
-        auto beta =
-          (transpose(residual_next) * residual_next)/
-          (transpose(residual) * residual);
+        auto beta = sum(residual_next)/sum(residual);
 
         direction = residual_next + beta*direction;
         residual = std::move(residual_next);
       }
 
-      return x;
+      return temp;
 
     }
 
