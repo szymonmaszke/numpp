@@ -4,49 +4,37 @@
 #include<type_traits>
 
 namespace numpp::differentiation::symbolic{
-  template<typename T>
-    class variable{
-      public:
-        using active = std::true_type;
-        using derivative = variable<T>;
-        using type = T;
-
-        constexpr T operator()(T value)const{
-          return value;
-        }
-    };
-
-  template<typename T>
-    class inactive{
-      public:
-        using active = std::false_type;
-        using derivative = inactive<T>;
-        using type = T;
-
-        constexpr T operator()(T variable)const{
-          return variable;
-        }
-    };
-
-  class none{
-    template<typename U>
-      constexpr U operator()(U dummy...){
-        return 0;
-      }
-  };
 
   template<int Value>
     class constant{
-      using active = std::false_type;
-      using derivative = none;
-      using type = int;
+      public:
+        using active = std::false_type;
+        template<std::size_t Active> using derivative = constant<0>;
+        using type = int;
 
-      template<typename ...U>
-        constexpr int operator()(U ...){
+        constexpr static int calculate(auto&&){
           return Value;
         }
 
     };
+
+  template<typename T, std::size_t Number>
+    class variable{
+      public:
+        template<std::size_t Active>
+          using derivative = std::conditional_t<
+          Active==Number,
+          constant<1>,
+          constant<0>
+        >;
+
+        constexpr static auto calculate(auto&& values){
+          return values[Number];
+        }
+    };
+
+  template<std::size_t Number> using x = variable<double, Number>;
+
 
 }
 
