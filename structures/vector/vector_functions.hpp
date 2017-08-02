@@ -27,6 +27,36 @@ namespace numpp{
         ret += vec(i)*vec(i);
       return ret;
     }
+
+
+#if defined  __GNUC__ && !defined __clang__
+  #define CONSTEXPR constexpr
+#elif
+  #define CONSTEXPR
+#endif
+
+  namespace norm{
+    template<typename T, std::size_t Size, bool Transposition>
+      CONSTEXPR T euclidean(const vector<T, Size, Transposition>& vec){
+        return std::sqrt(sum(vec));
+      }
+    template<typename T, std::size_t Size, bool Transposition>
+      CONSTEXPR T max(const vector<T, Size, Transposition>& vec){
+        T ret{std::abs(vec[0])};
+        for(std::size_t i=1; i<Size; ++i)
+          if(std::abs(vec[i])>ret)
+            ret = vec[i];
+        return ret;
+      }
+
+    template<typename T, std::size_t Size, bool Transposition>
+      CONSTEXPR T taxicab(const vector<T, Size, Transposition>& vec){
+        T ret{};
+        for(std::size_t i=0; i<Size; ++i)
+          ret += std::abs(vec[i]);
+        return ret;
+      }
+  }
 }
 
 #endif
