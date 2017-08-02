@@ -1,5 +1,5 @@
-#ifndef NUMPP_SYMBOLIC_HPP_
-#define NUMPP_SYMBOLIC_HPP_
+#ifndef NUMPP_DIFFERENTIATION_SYMBOLIC_ARITHMETIC_HPP_
+#define NUMPP_DIFFERENTIATION_SYMBOLIC_ARITHMETIC_HPP_
 
 #include<cmath>
 #include<type_traits>
@@ -48,7 +48,7 @@ namespace numpp::differentiation::symbolic{
                   power<Right, 2>
                 >;
 
-        constexpr static auto calculate(auto&& values){
+        CONSTEXPR static auto calculate(auto&& values){
           return Left::calculate(values) / Right::calculate(values);
         }
     };
@@ -69,7 +69,7 @@ namespace numpp::differentiation::symbolic{
                   >
                 >;
 
-        constexpr static auto calculate(auto&& values){
+        CONSTEXPR static auto calculate(auto&& values){
           return Left::calculate(values) * Right::calculate(values);
         }
     };
@@ -84,7 +84,7 @@ namespace numpp::differentiation::symbolic{
                               typename Right::template derivative<Active>
                              >;
 
-        constexpr static auto calculate(auto&& values){
+        CONSTEXPR static auto calculate(auto&& values){
           return Left::calculate(values) + Right::calculate(values);
         }
     };
@@ -98,7 +98,7 @@ namespace numpp::differentiation::symbolic{
                               typename Right::template derivative<Active>
                              >;
 
-        constexpr static auto calculate(auto&& values){
+        CONSTEXPR static auto calculate(auto&& values){
           return Left::calculate(values) - Right::calculate(values);
         }
 
@@ -110,7 +110,7 @@ namespace numpp::differentiation::symbolic{
         template<std::size_t Active>
           using derivative = simplify_minus<typename T::template derivative<Active>>;
 
-        constexpr static auto calculate(auto&& values){
+        CONSTEXPR static auto calculate(auto&& values){
           return - T::calculate(values);
         }
 

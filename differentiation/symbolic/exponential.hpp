@@ -40,12 +40,12 @@ namespace numpp::differentiation::symbolic{
     };
 
   template<typename T>
-    CONSTEXPR exponential<T> exp(const T&){
+    constexpr exponential<T> exp(const T&){
       return exponential<T>{};
     }
 
   template<typename T>
-    CONSTEXPR logarithm<T> log(const T&){
+    constexpr logarithm<T> log(const T&){
       return logarithm<T>{};
     }
 
