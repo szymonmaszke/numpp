@@ -1,9 +1,5 @@
-/* #ifndef VECTOR_HPP */
-/* #error"This file should only be included by vector.hpp" */
-/* #endif */
-
-#ifndef NUMPP_VECTOR_OPERATIONS_HPP_
-#define NUMPP_VECTOR_OPERATIONS_HPP_
+#ifndef NUMPP_STRUCTURES_VECTOR_OPERATIONS_HPP_
+#define NUMPP_STRUCTURES_VECTOR_OPERATIONS_HPP_
 
 #include"vector_utils.hpp"
 #include"../matrices/normal/normal_functions.hpp"
