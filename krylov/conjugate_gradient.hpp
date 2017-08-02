@@ -3,12 +3,19 @@
 
 #include"../structures/matrix_vector_operations.hpp"
 
+#if defined  __GNUC__ && !defined __clang__
+  #define CONSTEXPR constexpr
+#elif
+  #define CONSTEXPR
+#endif
+
 namespace numpp::krylov{
   template<typename T, typename U, std::size_t Size>
-    constexpr auto conjugate_gradient(
+    CONSTEXPR auto conjugate_gradient(
         const matrix::normal<T, Size, Size>& A,
         const vector<U, Size>& x,
         const vector<U, Size>& b,
+        const double threshold = 0.01,
         std::size_t iterations = Size*Size*Size
         ){
 
@@ -22,7 +29,8 @@ namespace numpp::krylov{
 
         temp = temp + (alpha * direction);
         auto residual_next = residual - alpha * (A * direction);
-        //SPRAWDZENIE ROZMIARU RESIDUAL
+        if(norm::euclidean(residual_next) < threshold)
+          break;
         auto beta = sum(residual_next)/sum(residual);
 
         direction = residual_next + beta*direction;
@@ -34,36 +42,38 @@ namespace numpp::krylov{
     }
 
   template<typename T, typename U, std::size_t Size>
-    constexpr auto conjugate_gradient(
+    CONSTEXPR auto conjugate_gradient(
         const matrix::normal<T, Size, Size>& A,
         const vector<U, Size>& b,
-        vector<U, Size>& x,
+        const vector<U, Size>& x,
         const matrix::normal<T, Size, Size>& preconditioner_matrix,
+        const double threshold = 0.01,
         std::size_t iterations = Size*Size*Size
         ){
       auto residual = b - (A*x);
       auto preconditioner = preconditioner_matrix * residual;
       auto direction{preconditioner};
 
-      for(int i=0; i<iterations; ++i){
-        auto alpha =
-          (transpose(residual) * preconditioner)/
-          (transpose(direction) * (A * direction));
+      auto temp{x};
 
-        x += alpha * direction;
+      for(int i=0; i<iterations; ++i){
+        const auto alpha {sum(residual)/(sum(direction, A*direction))};
+
+        temp += alpha * direction;
         auto residual_next = residual - alpha * (A * direction);
+        if(norm::euclidean(residual_next) < threshold)
+          break;
+
         auto preconditioner_next = preconditioner_matrix * residual_next;
 
-        auto beta =
-          (transpose(preconditioner_next) * residual_next)/
-          (transpode(preconditioner) * residual);
+        auto beta = sum(preconditioner_next, residual_next)/sum(preconditioner, residual);
 
         direction = preconditioner_next + beta*direction;
         residual = std::move(residual_next);
         preconditioner = std::move(preconditioner_next);
       }
 
-      return x;
+      return temp;
 
     }
 }
