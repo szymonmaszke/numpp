@@ -1,28 +1,25 @@
-#ifndef BISECTION_HPP
-#define BISECTION_HPP
+#ifndef NUMPP_ROOTS_BISECTION_HPP_
+#define NUMPP_ROOTS_BISECTION_HPP_
 
 #include<limits>
 #include<cmath>
 #include<utility>
+#include"utils.hpp"
 
-namespace numpp{
-	namespace root_finding{
+namespace numpp::roots{
 		namespace impl{
-			template<
-				typename T,
-				typename Epsilon,
-				typename Func
-			>
+			template<typename T,typename Func>
 				constexpr auto bisection_find_root(
-						Epsilon&& epsilon,
-						T&& lower_bound, T&& upper_bound,
-						Func&& f, const std::size_t iterations
+            Func&& f,
+            T&& lower_bound, T&& upper_bound,
+            const double&& epsilon,
+            const std::size_t iterations
 				){
 					auto x = (lower_bound+upper_bound)/2;
           auto root = f(x);
 
 					std::size_t i=0;
-					while(epsilon < std::abs(root) && i<iterations){
+					while(epsilon < impl::abs(root) && i<iterations){
 						root = f(x);
             if(root<0)
               lower_bound=x;
@@ -38,8 +35,7 @@ namespace numpp{
 		}
 
 		template<
-			typename T,
-			typename Func,
+      typename T, typename Func,
 			typename = std::enable_if_t<std::is_floating_point<T>::value>
 		>
 			constexpr auto bisection(
@@ -50,34 +46,31 @@ namespace numpp{
 			){
 				const auto epsilon=
 					std::numeric_limits<T>::epsilon()*
-					(std::abs(lower_bound)+std::abs(upper_bound))/2.;
+					(impl::abs(lower_bound)+impl::abs(upper_bound))/2.;
 
 				return impl::bisection_find_root(
-						std::move(epsilon),
-						std::forward<T>(lower_bound), std::forward<T>(upper_bound),
-						std::forward<Func>(f), iterations
+						std::forward<Func>(f),
+            std::forward<T>(lower_bound), std::forward<T>(upper_bound),
+						epsilon,
+            iterations
 				);
 			}
 
-		template<
-			typename T,
-			typename Epsilon,
-			typename Func
-		>
+		template<typename T, typename Func>
 			constexpr auto bisection(
 					Func&& f,
 					T&& lower_bound,
 					T&& upper_bound,
 					std::size_t iterations,
-					Epsilon&& epsilon
+					const double epsilon
 			){
 				return impl::bisection_find_root(
-						std::forward<Epsilon>(epsilon),
+						std::forward<Func>(f),
 						std::forward<T>(lower_bound), std::forward<T>(upper_bound),
-						std::forward<Func>(f), iterations
+						epsilon,
+            iterations
 				);
 			}
 	}
-}
 
 #endif
