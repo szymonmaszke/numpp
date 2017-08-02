@@ -1,3 +1,6 @@
+#ifndef NUMPP_STRUCTURES_MATRICES_DENSE_UTILS_HPP_
+#define NUMPP_STRUCTURES_MATRICES_DENSE_UTILS_HPP_
+
 #include"normal_structure.hpp"
 
 namespace numpp::matrix{
@@ -45,3 +48,5 @@ namespace std {
         using type = T;
     };
 }
+
+#endif

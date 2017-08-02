@@ -1,11 +1,12 @@
+#ifndef NUMPP_STRUCTURES_MATRICES_DENSE_MATHEMATICAL_HPP_
+#define NUMPP_STRUCTURES_MATRICES_DENSE_MATHEMATICAL_HPP_
+
 #if defined  __GNUC__ && !defined __clang__
-#define CONSTEXPR constexpr
+  #define CONSTEXPR constexpr
 #elif
-#error"Usage of constexpr mathemathical functions allowed only with GCC compiler (non-conforming standard extension for cmath needed)"
+  #define CONSTEXPR
 #endif
 
-#ifndef NUMPP_MATRIX_DENSE_MATHEMATHICAL_FUNCTIONS_HPP_
-#define NUMPP_MATRIX_DENSE_MATHEMATHICAL_FUNCTIONS_HPP_
 
 #include"./normal_functions.hpp"
 
