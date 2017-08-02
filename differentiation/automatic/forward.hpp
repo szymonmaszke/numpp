@@ -1,16 +1,12 @@
-#include<cmath>
-#include<iostream>
+#ifndef NUMPP_DIFFERENTIATION_AUTOMATIC_FORWARD_HPP_
+#define NUMPP_DIFFERENTIATION_AUTOMATIC_FORWARD_HPP_
+
 #include<cmath>
 #include<type_traits>
-
-//Jerzy Karczmarczuk Foton 2012 numer 117
-//ADD n-th ORDER DERIVATIVE
-//ADD cast operators
 
 namespace numpp::differentiation::automatic{
   template<typename T>
     class forward{
-
       static_assert(std::is_arithmetic<T>(),
           "Current implementation of forward differentiation supports only \
           arithmetic types. Specialize is_arithmetic if your class may be equal to 1"
@@ -77,8 +73,8 @@ namespace std{
 
   constexpr auto relu(const numpp::differentiation::automatic::forward<auto>& number){
     return numpp::differentiation::automatic::forward{
-      std::max(0, number.value),
-      (((number.value) > 0) ? 1 : 0)
+      ((number.value > 0) ? number.value : 0),
+      ((number.value > 0) ? 1 : 0)
     };
   }
 
@@ -139,3 +135,5 @@ namespace std{
     };
   }
 }
+
+#endif
