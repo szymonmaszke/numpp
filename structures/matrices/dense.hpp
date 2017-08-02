@@ -6,5 +6,6 @@
 #include"./normal/operations.hpp"
 #include"./normal/structure.hpp"
 #include"./normal/utils.hpp"
+#include"../vector.hpp"
 
 #endif
