@@ -17,7 +17,7 @@ TEST_CASE(
   SECTION("basic bisection tests"){
     constexpr auto result1 = numpp::roots::bisection(Function{}, 1., 2.);
     constexpr auto result2 = numpp::roots::bisection(Function{}, 1., 2., 16);
-    constexpr auto result3 = numpp::roots::bisection(Function{}, 1., 2., 1000, 0.000001);
+    constexpr auto result3 = numpp::roots::bisection(Function{}, 1., 2., 0.000001, 1000);
     SECTION("correct results"){
       REQUIRE(result2 == Approx(1.5213928));
     }
