@@ -1,7 +1,7 @@
 #ifndef NUMPP_STRUCTURES_VECTOR_FUNCTIONS_HPP_
 #define NUMPP_STRUCTURES_VECTOR_FUNCTIONS_HPP_
 
-#include"vector_operations.hpp"
+#include"operations.hpp"
 
 namespace numpp{
   template<typename T, std::size_t Size, bool Transposition>
