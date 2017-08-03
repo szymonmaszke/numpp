@@ -62,7 +62,7 @@ namespace numpp::roots{
 					T&& lower_bound,
 					T&& upper_bound,
 					const double epsilon,
-          std::size_t iterations=1000
+          std::size_t iterations
 			){
 				return impl::bisection_find_root(
 						std::forward<Func>(f),
