@@ -13,7 +13,7 @@ namespace numpp{
 
       template<typename T, std::size_t Rows, std::size_t Columns, typename Tuple, std::size_t... Elements>
         constexpr auto unpack(Tuple&& tup, std::index_sequence<Elements...>){
-          return matrix::normal<T, Rows, Columns>{
+          return matrix::dense<T, Rows, Columns>{
             std::get<Elements>(tup) ...
           };
       }

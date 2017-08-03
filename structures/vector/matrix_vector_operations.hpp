@@ -7,7 +7,7 @@ namespace numpp{
   namespace impl{
     template<typename T, typename U, std::size_t Rows, std::size_t Columns, std::size_t... Index>
       constexpr auto multiply(
-          const matrix::normal<T,Rows,Columns>& mat,
+          const matrix::dense<T,Rows,Columns>& mat,
           const vector<U,Columns, false>& vec,
           std::size_t row,
           std::index_sequence<Index...>
@@ -17,7 +17,7 @@ namespace numpp{
 
     template<typename T, typename U, size_t Rows, std::size_t Columns, std::size_t... Elements>
       constexpr auto make_vector(
-          const matrix::normal<T, Rows, Columns>& mat,
+          const matrix::dense<T, Rows, Columns>& mat,
           const vector<U,Columns, false>& vec,
           std::index_sequence<Elements...>
           ){
@@ -29,7 +29,7 @@ namespace numpp{
 
   template<typename T, typename U, std::size_t Rows, std::size_t Columns>
     constexpr auto operator*(
-        const matrix::normal<T, Rows, Columns>& mat,
+        const matrix::dense<T, Rows, Columns>& mat,
         const vector<U,Columns, false>& vec
         ){
       return impl::make_vector(mat, vec, std::make_index_sequence<Rows>{});
