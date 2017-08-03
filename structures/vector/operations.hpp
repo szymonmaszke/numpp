@@ -1,8 +1,8 @@
 #ifndef NUMPP_STRUCTURES_VECTOR_OPERATIONS_HPP_
 #define NUMPP_STRUCTURES_VECTOR_OPERATIONS_HPP_
 
-#include"vector_utils.hpp"
-#include"../matrices/normal/normal_functions.hpp"
+#include"utils.hpp"
+#include"../matrices/dense/functions.hpp"
 
 namespace numpp{
   namespace impl{

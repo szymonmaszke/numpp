@@ -1,7 +1,7 @@
 #ifndef NORMAL_VECTOR_OPERATIONS_HPP
 #define NORMAL_VECTOR_OPERATIONS_HPP
 
-#include"vector.hpp"
+#include"../vector.hpp"
 
 namespace numpp{
   namespace impl{
