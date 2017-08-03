@@ -12,7 +12,7 @@ namespace numpp::roots{
 				constexpr auto bisection_find_root(
             Func&& f,
             T&& lower_bound, T&& upper_bound,
-            const double&& epsilon,
+            const double epsilon,
             const std::size_t iterations
 				){
 					auto x = (lower_bound+upper_bound)/2;
@@ -61,8 +61,8 @@ namespace numpp::roots{
 					Func&& f,
 					T&& lower_bound,
 					T&& upper_bound,
-					std::size_t iterations,
-					const double epsilon
+					const double epsilon,
+          std::size_t iterations=1000
 			){
 				return impl::bisection_find_root(
 						std::forward<Func>(f),
