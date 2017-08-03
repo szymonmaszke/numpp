@@ -2,11 +2,11 @@
 #include "numpp/structures/vector.hpp"
 
 TEST_CASE(
-		"vector matrix normal multiplication test",
-		"[structure][vector][normal][matrix][compile-time]"
+		"vector matrix dense multiplication test",
+		"[structure][vector][dense][matrix][compile-time]"
 ){
 	constexpr numpp::vector<int, 6, false> vector{3, 4, 123, 25, 0, 1};
-	constexpr numpp::matrix::normal<double, 3, 6> matrix{
+	constexpr numpp::matrix::dense<double, 3, 6> matrix{
     0, -12, 1244.1337, 25.33, .1, .243125,
     14.3, 32.5351, -4892, 514.3, 0.4515, 9696,
     593.51, -769.34, 0, 0, 589.00024, -12.37
