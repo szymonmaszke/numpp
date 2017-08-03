@@ -1,12 +1,11 @@
 #include "../../../../utilities/catch.hpp"
-#include "numpp/structures/matrices/normal/normal_functions.hpp"
-/* #include "../../../../../structures/matrices/normal/normal_functions.hpp" */
+#include "numpp/structures/matrices/dense.hpp"
 
 TEST_CASE(
-		"normal matrix functions tests",
-		"[functions][matrix][normal][constexpr]"
+		"dense matrix functions tests",
+		"[functions][matrix][dense][constexpr]"
 ){
-  constexpr numpp::matrix::normal<int, 3, 4> matrix{
+  constexpr numpp::matrix::dense<int, 3, 4> matrix{
     1,2,3,4,
     5,6,7,8,
     9,10,11,12
@@ -25,7 +24,7 @@ TEST_CASE(
 
   SECTION("is matrix square?"){
     REQUIRE_FALSE(square(matrix));
-    constexpr numpp::matrix::normal<double, 2,2> foo{1,1,1,1};
+    constexpr numpp::matrix::dense<double, 2,2> foo{1,1,1,1};
     REQUIRE(square(foo));
   }
 }

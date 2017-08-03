@@ -1,32 +1,31 @@
 #include "../../../../utilities/catch.hpp"
-#include "numpp/structures/matrices/normal/normal_operations.hpp"
-/* #include "../../../../../structures/matrices/normal/normal_operations.hpp" */
+#include "numpp/structures/matrices/dense.hpp"
 
 TEST_CASE(
-		"normal matrix operations tests",
-		"[operations][matrix][normal]"
+		"dense matrix operations tests",
+		"[operations][matrix][dense]"
 ){
-	constexpr numpp::matrix::normal<double, 4, 5> mat_a{
+	constexpr numpp::matrix::dense<double, 4, 5> mat_a{
 		1.2, -4.5, 12412.3, 12512., 294.2352,
 		2, 5.35, -412.3, 12, 0,
 		-34, 0, 0, 0, 4.5,
 		3, 1.3, 1.7, 0, 0.1
 	};
 
-	constexpr numpp::matrix::normal<double, 3, 3> mat_b{
+	constexpr numpp::matrix::dense<double, 3, 3> mat_b{
 		1.2, -4.5, 12412.3,
 		2, 5.35, -412.3,
 		-34, 0, 1.1
 	};
 
-	constexpr numpp::matrix::normal<double, 4, 5> mat_c{
+	constexpr numpp::matrix::dense<double, 4, 5> mat_c{
 		13.323, 2481.2, 3., 12512., 2,
 		55.5, 5., 12.3, 5096., 0,
 		-34.4353, 0, 69.99999999999, 0, 9638903.5,
 		3385, 1, 19.5820, 1, 0
   };
 
-	constexpr numpp::matrix::normal<double, 5, 3> mat_d{
+	constexpr numpp::matrix::dense<double, 5, 3> mat_d{
 		1.2, -4.5, 12412.3,
 		2, 5.35, -412.3,
 		-34, 0, 0,
