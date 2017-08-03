@@ -49,7 +49,7 @@ dense_vector: catch_tests $(LIB_PATH)/numpp/structures/vector/matrix_vector_oper
 roots_bisection: catch_tests $(LIB_PATH)/numpp/roots/bisection.hpp
 	$(CXX) ../utilities/catch.o $(CXXFLAGS) ./roots/bisection.cpp \
 		-o roots_bisection.out \
-		&& ./roots_bisection -r compact
+		&& ./roots_bisection.out -r compact
 
 .PHONY: clean
 clean:
