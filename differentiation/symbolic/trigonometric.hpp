@@ -1,5 +1,5 @@
-#ifndef NUMPP_SYMBOLIC_TRIGONOMETRIC_HPP_
-#define NUMPP_SYMBOLIC_TRIGONOMETRIC_HPP_
+#ifndef NUMPP_DIFFERENTIATION_SYMBOLIC_TRIGONOMETRIC_HPP_
+#define NUMPP_DIFFERENTIATION_SYMBOLIC_TRIGONOMETRIC_HPP_
 
 #include<type_traits>
 #include<cmath>
@@ -33,9 +33,9 @@ namespace numpp::differentiation::symbolic{
       public:
         template<std::size_t Active>
           using derivative =
-          simplify_multiplication<
-          minus<sinus<T>>,
-          typename T::template derivative<Active>
+            simplify_multiplication<
+              minus<sinus<T>>,
+              typename T::template derivative<Active>
             >;
 
         CONSTEXPR static auto calculate(auto&& values){
@@ -44,12 +44,12 @@ namespace numpp::differentiation::symbolic{
     };
 
   template<typename T>
-    CONSTEXPR sinus<T> sin(const T&){
+    constexpr sinus<T> sin(const T&){
       return sinus<T>{};
     }
 
   template<typename T>
-    CONSTEXPR cosinus<T> cos(const T&){
+    constexpr cosinus<T> cos(const T&){
       return cosinus<T>{};
     }
 

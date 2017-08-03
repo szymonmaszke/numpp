@@ -1,5 +1,5 @@
-#ifndef CENTRAL_DERIVATIVE_HPP
-#define CENTRAL_DERIVATIVE_HPP
+#ifndef NUMPP_DIFFERENTIATION_FINITE_FORWARD_HPP_
+#define NUMPP_DIFFERENTIATION_FINITE_FORWARD_HPP_
 
 #include<limits>
 #include<type_traits>
@@ -11,26 +11,31 @@ namespace numpp::derivative::finite{
       return (f(x+h)-f(x))/h;
     }
 
+#if defined  __GNUC__ && !defined __clang__
+  #define CONSTEXPR constexpr
+#elif
+  #define CONSTEXPR
+#endif
+
   template<
     typename Func,
     typename T,
     typename = std::enable_if_t<std::is_floating_point<T>::value>
   >
-    constexpr auto forward(Func&& f, T x){
+    CONSTEXPR auto forward(Func&& f, T x){
       auto h = x*std::sqrt(std::numeric_limits<T>::epsilon());
       return (f(x+h)-f(x))/h;
     }
 
   template<
     typename Func,
-    typename T,
-    typename U,
+    typename T, typename U,
     typename = std::enable_if_t<
       std::is_floating_point<T>::value and
       std::is_arithmetic<U>::value
     >
   >
-    constexpr auto forward(Func&& f, T x, U y){
+    CONSTEXPR auto forward(Func&& f, T x, U y){
       auto h = x*std::sqrt(std::numeric_limits<T>::epsilon());
       return (f(x+h)-y)/h;
     }

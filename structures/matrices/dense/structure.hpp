@@ -1,11 +1,11 @@
-#ifndef MATRIXES_NORMAL_HPP
-#define MATRIXES_NORMAL_HPP
+#ifndef NUMPP_STRUCTURES_MATRICES_DENSE_STRUCTURE_HPP_
+#define NUMPP_STRUCTURES_MATRICES_DENSE_STRUCTURE_HPP_
 
 #include<array>
 
 namespace numpp::matrix{
   template<typename T, std::size_t Rows, std::size_t Columns>
-    class normal{
+    class dense{
       public:
         using value_type = T;
         using size_type = std::size_t;
@@ -16,11 +16,11 @@ namespace numpp::matrix{
         using const_pointer = const T*;
 
         //COMPARISON FUNCTIONS
-        constexpr bool operator==(const normal<T,Rows,Columns>& a)const {
+        constexpr bool operator==(const dense<T,Rows,Columns>& a)const {
           return matrix_==a.matrix_;
         }
 
-        constexpr bool operator!=(const normal<T,Rows,Columns>& a)const {
+        constexpr bool operator!=(const dense<T,Rows,Columns>& a)const {
           return !(*this==a);
         }
 

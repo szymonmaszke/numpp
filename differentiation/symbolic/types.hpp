@@ -1,5 +1,5 @@
-#ifndef NUMPP_SYMBOLIC_TYPES_HPP_
-#define NUMPP_SYMBOLIC_TYPES_HPP_
+#ifndef NUMPP_DIFFERENTIATION_SYMBOLIC_TYPES_HPP_
+#define NUMPP_DIFFERENTIATION_SYMBOLIC_TYPES_HPP_
 
 #include<type_traits>
 
@@ -34,7 +34,6 @@ namespace numpp::differentiation::symbolic{
     };
 
   template<std::size_t Number> using x = variable<double, Number>;
-
 
 }
 

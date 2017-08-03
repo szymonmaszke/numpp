@@ -1,20 +1,19 @@
 #include "../../../../utilities/catch.hpp"
-#include "numpp/structures/matrices/normal.hpp"
-/* #include "../../../../../structures/matrices/matrices.hpp" */
+#include "numpp/structures/matrices/dense.hpp"
 
 TEST_CASE(
-		"normal matrix basic functionality tests",
-		"[structures][matrix][normal][compile-time]"
+		"dense matrix basic functionality tests",
+		"[structures][matrix][dense][compile-time]"
 ){
 	constexpr int ROWS = 4, COLUMNS = 5;
-	constexpr numpp::matrix::normal<double, ROWS, COLUMNS> mat_a{
+	constexpr numpp::matrix::dense<double, ROWS, COLUMNS> mat_a{
 		1.2, -4.5, 12412.3, 12512., 294.2352,
 		2, 5.35, -412.3, 12, 0,
 		-34, 0, 0, 0, 4.5,
 		3, 1.3, 1.7, 0, 0
 	};
 
-	numpp::matrix::normal<double, ROWS, COLUMNS> mat_b{};
+	numpp::matrix::dense<double, ROWS, COLUMNS> mat_b{};
 
 	SECTION("comparing two different matrixes"){
 		REQUIRE_FALSE(mat_a == mat_b);
@@ -25,7 +24,7 @@ TEST_CASE(
 	}
 
 	SECTION("constexpr copy-constructor"){
-		constexpr numpp::matrix::normal<double, ROWS, COLUMNS> mat_c{mat_a};
+		constexpr numpp::matrix::dense<double, ROWS, COLUMNS> mat_c{mat_a};
 		REQUIRE(mat_c == mat_a);
 	}
 
@@ -37,16 +36,16 @@ TEST_CASE(
 	}
 
 	SECTION("access operator()"){
-		SECTION("constexpr normal matrix access")
+		SECTION("constexpr dense matrix access")
 			REQUIRE(mat_a(0,1) == Approx(-4.5));
 			REQUIRE(mat_a(1,0) == Approx(2.));
 			REQUIRE(mat_a(1,4) == Approx(0));
 			REQUIRE(mat_a(2,4) == Approx(4.5));
 			REQUIRE(mat_a(3,4) == Approx(0));
 			REQUIRE(mat_a(3,4) == Approx(0));
-		SECTION("normal matrix access"){
+		SECTION("dense matrix access"){
 			REQUIRE(mat_b(2,3) == Approx(0));
-			SECTION("normal matrix assigining"){
+			SECTION("dense matrix assigining"){
 				mat_b(0,0) = 5.5;
 				REQUIRE(mat_b(0,0) == Approx(5.5));
 			}

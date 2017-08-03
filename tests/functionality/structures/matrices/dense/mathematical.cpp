@@ -1,12 +1,11 @@
 #include "../../../../utilities/catch.hpp"
-/* #include "numpp/structures/matrices/normal/normal_functions.hpp" */
-#include "../../../../../structures/matrices/normal/mathemathical.hpp"
+#include "numpp/structures/matrices/dense.hpp"
 
 TEST_CASE(
-		"normal matrix functions tests",
-		"[mathemathical][matrix][normal][constexpr]"
+		"dense matrix functions tests",
+		"[mathemathical][matrix][dense][constexpr]"
 ){
-	constexpr numpp::matrix::normal<double, 4, 5> matrix{
+	constexpr numpp::matrix::dense<double, 4, 5> matrix{
 		1.2, -4.5, 12412.3, 12512., 294.2352,
 		2, 5.35, -412.3, 12, 0,
 		-34, 0, 0, 0, 4.5,

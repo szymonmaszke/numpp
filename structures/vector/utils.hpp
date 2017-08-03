@@ -1,7 +1,7 @@
-#ifndef NUMPP_VECTOR_UTILS_HPP_
-#define NUMPP_VECTOR_UTILS_HPP_
+#ifndef NUMPP_STRUCTURES_VECTOR_UTILS_HPP_
+#define NUMPP_STRUCTURES_VECTOR_UTILS_HPP_
 
-#include"vector_structure.hpp"
+#include"structure.hpp"
 
 namespace numpp{
   template<std::size_t Index, typename T, std::size_t Size, bool Transposition>

@@ -1,12 +1,8 @@
-/* #ifndef VECTOR_HPP */
-/* #error"This file should only be included by vector.hpp" */
-/* #endif */
+#ifndef NUMPP_STRUCTURES_VECTOR_OPERATIONS_HPP_
+#define NUMPP_STRUCTURES_VECTOR_OPERATIONS_HPP_
 
-#ifndef NUMPP_VECTOR_OPERATIONS_HPP_
-#define NUMPP_VECTOR_OPERATIONS_HPP_
-
-#include"vector_utils.hpp"
-#include"../matrices/normal/normal_functions.hpp"
+#include"utils.hpp"
+#include"../matrices/dense/functions.hpp"
 
 namespace numpp{
   namespace impl{
@@ -17,7 +13,7 @@ namespace numpp{
 
       template<typename T, std::size_t Rows, std::size_t Columns, typename Tuple, std::size_t... Elements>
         constexpr auto unpack(Tuple&& tup, std::index_sequence<Elements...>){
-          return matrix::normal<T, Rows, Columns>{
+          return matrix::dense<T, Rows, Columns>{
             std::get<Elements>(tup) ...
           };
       }

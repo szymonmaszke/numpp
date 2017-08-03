@@ -1,10 +1,9 @@
-#ifndef NUMPP_MATRICES_SPARSE_BLOCK_HPP_
-#define NUMPP_MATRICES_SPARSE_BLOCK_HPP_
+#ifndef NUMPP_STRUCTURES_MATRICES_SPARSE_BLOCK_HPP_
+#define NUMPP_STRUCTURES_MATRICES_SPARSE_BLOCK_HPP_
 
 #include<vector>
 
 #include"../../vector/vector_utils.hpp"
-
 
 namespace numpp::matrix::sparse{
   template<typename T, std::size_t Rows, std::size_t Columns>
