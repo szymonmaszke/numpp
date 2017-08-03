@@ -1,5 +1,5 @@
 #include "../../utilities/catch.hpp"
-#include "numpp/structures/matrix_vector_operations.hpp"
+#include "numpp/structures/vector.hpp"
 
 TEST_CASE(
 		"vector matrix normal multiplication test",
