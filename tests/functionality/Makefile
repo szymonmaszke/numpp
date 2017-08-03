@@ -35,7 +35,7 @@ dense_structure: catch_tests $(LIB_PATH)/numpp/structures/matrices/dense/structu
 
 #VECTOR TESTS
 
-vector: catch_tests /numpp/structures/vector/operations.hpp $(LIB_PATH)/numpp/structures/vector/structures.hpp
+vector: catch_tests $(LIB_PATH)/numpp/structures/vector/structures.hpp
 	$(CXX) ../utilities/catch.o $(CXXFLAGS) ./structures/vector/overall.cpp \
 		-o overall.out \
 		&& ./overall.out -r compact
