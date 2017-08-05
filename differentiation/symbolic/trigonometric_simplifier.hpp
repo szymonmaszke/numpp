@@ -12,11 +12,13 @@ namespace numpp::differentiation::symbolic{
   namespace impl{
     template<typename T>
       class simplify_cosinus{
+        public:
         using type = cosinus<T>;
       };
 
     template<int Number>
       class simplify_cosinus<constant<Number>>{
+        public:
         using type = std::conditional_t<
                       Number%2 == 0,
                       constant<1>,
@@ -26,6 +28,7 @@ namespace numpp::differentiation::symbolic{
 
     template<int Number>
       class simplify_cosinus<minus<constant<Number>>>{
+        public:
         using type = std::conditional_t<
                       Number%2 == 0,
                       minus<constant<1>>,
@@ -35,15 +38,17 @@ namespace numpp::differentiation::symbolic{
   }
 
   template<typename T>
-    using simplify_cosinus = typename impl::simplify_cosinus<T>;
+    using simplify_cosinus = typename impl::simplify_cosinus<T>::type;
 
   namespace impl{
     template<typename T>
       class simplify_sinus{
+        public:
         using type = sinus<T>;
       };
     template<int Number>
       class simplify_sinus<constant<Number>>{
+        public:
         using type = std::conditional_t<
                       Number%2 == 0,
                       constant<0>,
@@ -62,7 +67,7 @@ namespace numpp::differentiation::symbolic{
   }
 
   template<typename T>
-    using simplify_sinus = typename impl::simplify_sinus<T>;
+    using simplify_sinus = typename impl::simplify_sinus<T>::type;
 }
 
 #endif

@@ -40,7 +40,7 @@ namespace numpp::differentiation::symbolic{
             >;
 
         CONSTEXPR static auto calculate(auto&& values){
-          return std::sin(T::calculate(values));
+          return std::cos(T::calculate(values));
         }
     };
 

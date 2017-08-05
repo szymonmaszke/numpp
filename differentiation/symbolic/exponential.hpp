@@ -28,14 +28,11 @@ namespace numpp::differentiation::symbolic{
   template<typename T>
     class exponential{
       public:
-        using active = typename T::active;
-        using type = exponential<T>;
-
         template<std::size_t Active>
-        using derivative = multiply<exponential<T>, typename T::template derivative<Active>>;
+        using derivative = simplify_multiplication<exponential<T>, typename T::template derivative<Active>>;
 
         CONSTEXPR static auto calculate(auto&& values){
-          return std::log(T::calculate(values));
+          return std::exp(T::calculate(values));
         }
     };
 
