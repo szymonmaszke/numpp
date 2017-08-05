@@ -5,6 +5,7 @@
 #include<cmath>
 
 #include"arithmetic.hpp"
+#include"./trigonometric_simplifier.hpp"
 
 #if defined  __GNUC__ && !defined __clang__
 #define CONSTEXPR constexpr
@@ -19,7 +20,7 @@ namespace numpp::differentiation::symbolic{
       public:
         template<std::size_t Active>
           using derivative = simplify_multiplication<
-          cosinus<T>,
+          simplify_cosinus<T>,
           typename T::template derivative<Active>
             >;
 
@@ -34,12 +35,12 @@ namespace numpp::differentiation::symbolic{
         template<std::size_t Active>
           using derivative =
             simplify_multiplication<
-              minus<sinus<T>>,
+              simplify_minus<simplify_sinus<T>>,
               typename T::template derivative<Active>
             >;
 
         CONSTEXPR static auto calculate(auto&& values){
-          return std::sin(T::calculate(values));
+          return std::cos(T::calculate(values));
         }
     };
 

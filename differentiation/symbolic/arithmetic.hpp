@@ -5,7 +5,7 @@
 #include<type_traits>
 
 #include"types.hpp"
-#include"simplificator.hpp"
+#include"arithmetic_simplifier.hpp"
 
 #if defined  __GNUC__ && !defined __clang__
   #define CONSTEXPR constexpr

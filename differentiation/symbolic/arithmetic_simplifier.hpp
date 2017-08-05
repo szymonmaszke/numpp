@@ -1,5 +1,5 @@
-#ifndef NUMPP_DIFFERENTIATION_SYMBOLIC_SIMPLIFIER_HPP_
-#define NUMPP_DIFFERENTIATION_SYMBOLIC_SIMPLIFIER_HPP_
+#ifndef NUMPP_DIFFERENTIATION_SYMBOLIC_ARITHMETIC_SIMPLIFIER_HPP_
+#define NUMPP_DIFFERENTIATION_SYMBOLIC_ARITHMETIC_SIMPLIFIER_HPP_
 
 #include"types.hpp"
 
@@ -58,11 +58,11 @@ namespace numpp::differentiation::symbolic{
       };
 
     //VALUE TIMES VALUE MULTIPLICATION
-    template<int left_value, int right_value>
-      class simplify_multiplication<constant<left_value>, constant<right_value>>{
-        public:
-        using type = constant<left_value*right_value>;
-      };
+    /* template<int left_value, int right_value> */
+    /*   class simplify_multiplication<constant<left_value>, constant<right_value>>{ */
+    /*     public: */
+    /*     using type = constant<left_value*right_value>; */
+    /*   }; */
 
     //VALUE OUTSIDE OF FUNCTIONS
     template<typename T, int left_value, int right_value>
