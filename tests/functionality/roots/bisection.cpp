@@ -2,7 +2,7 @@
 #include"numpp/roots/bisection.hpp"
 
 TEST_CASE(
-    "bisection basic tests"
+    "bisection basic tests",
     "[roots][bisection]"
     ){
 

@@ -1,7 +1,6 @@
 #!usr/bin/python3
 #create_function.py
 import random
-import decimal
 
 def _math_function_arguments(
         _math_function, argument_count,
@@ -55,7 +54,6 @@ def create_function(expression_count, number_low, number_high):
     i=0
     while i < int(expression_count):
         function += random.choice(_sign)
-        parentheses = random.randint(0,1)
         function += "("
         function += _number_or_function(number_low, number_high)
         function += ")"
