@@ -28,7 +28,7 @@ jobs:
     - stage: build docker image
       script:
         - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-        - docker build -t numpp_testing -f DockerfileTests.
+        - docker build -t numpp_testing -f DockerfileTests .
         - docker tag tests $DOCKER_USERNAME/numpp
         - docker push $DOCKER_USERNAME/numpp
     - stage: tests
