@@ -12,6 +12,7 @@ jobs:
       script:
         - docker run --name functionality_tests $DOCKER_USERNAME/numpp:tests
         - docker exec functionality_tests make -C /usr/include/numpp/tests/functionality
+    - stage: tests
       script:
         - docker run --name speed_tests vyzyv/numpp:tests
         - docker exec speed_tests make -C /usr/include/numpp/tests/speed
