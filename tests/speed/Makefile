@@ -1,11 +1,11 @@
 # -*- MakeFile -*-
 
 all: \
+	symbolic_differentiation_sympy \
 	matrix_multiplication \
 	finite_differentiation_forward \
 	finite_differentiation_backward \
-	finite_differentiation_central \
-	symbolic_differentiation_sympy
+	finite_differentiation_central
 
 #Flags
 CXXFLAGS = -std=c++17 -Wall -Werror -pedantic -Weffc++ -O3 -march=native -fopenmp -fopenmp-simd
@@ -58,6 +58,20 @@ DIFFERENTIATION_CENTRAL_LOG = ./differentiation/logs/central/runtime
 #HOW MANY SPEED TESTS MAY FAIL IN PERCENT? E.G. 0.01 FOR ONE PERCENT, USUALLY FAILS 0.005
 DIFFERENTIATION_FAILURE_CASES = 0.01
 
+#
+#SYMBOLIC DIFFERENTIATION SPECIFIC PARAMETERS
+#
+
+#RANDOMLY GENERATED ARGUMENTS TO DERIVATIVES
+#LOWEST POSSIBLE VALUE IS ZERO, SYMENG CRASHES OTHERWISE (?)
+SYMENGINE_LOW = 0
+SYMENGINE_HIGH = 200
+
+SYMENGINE_CASES = 100000
+
+#
+#TARGETS
+#
 
 catch_tests: ../utilities/tests_main.cpp ../utilities/catch.hpp
 	$(CXX) $(CXXFLAGS) ../utilities/tests_main.cpp -c -o ../utilities/tests_main.o
@@ -81,7 +95,7 @@ finite_differentiation_central: catch_tests setup_tests
 	./utilities/test_differentiation_success.sh $(DIFFERENTIATION_CENTRAL_LOG) $(DIFFERENTIATION_FAILURE_CASES)
 
 symbolic_differentiation_sympy:
-	make -C ./differentiation/symbolic
+	make -C ./differentiation/symbolic SYMENGINE_LOW=$(SYMENGINE_LOW) SYMENGINE_HIGH=$(SYMENGINE_HIGH) SYMENGINE_CASES=$(SYMENGINE_CASES)
 
 setup_tests:
 	./utilities/setup_tests.sh
