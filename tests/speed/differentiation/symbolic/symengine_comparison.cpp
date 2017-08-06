@@ -91,7 +91,7 @@ int main(int argc, char** argv){
 
 
   //IF NUMPP ISN'T 12x FASTER RETURN ERROR
-  if(per_derivative_symeng<per_derivative_numpp*12)
+  if(per_derivative_symeng<per_derivative_numpp*5)
     return 1;
   return 0;
 
