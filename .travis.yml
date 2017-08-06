@@ -21,7 +21,6 @@
 #   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 #   - docker push vyzyv/numpp
 sudo: true
-dist: trusty
 language: generic
 
 jobs:
