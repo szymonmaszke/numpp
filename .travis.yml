@@ -28,7 +28,7 @@ jobs:
     stage: build docker image
     script:
       - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-      - docker build -t numpp_testing .
+      - docker build -t numpp_testing -f DockerfileTests.
       - docker tag tests $DOCKER_USERNAME/numpp
       - docker push $DOCKER_USERNAME/numpp:tests
     stage: tests
@@ -41,5 +41,5 @@ jobs:
     stage: deploy
     script:
       - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-      - docker build -t numpp_testing .
+      - docker build -t numpp_testing -f DockerfileDeploy .
       - docker push $DOCKER_USERNAME/numpp:latest
