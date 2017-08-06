@@ -1,11 +1,11 @@
 # -*- MakeFile -*-
 
 all: \
-	symbolic_differentiation_sympy \
-	matrix_multiplication \
-	finite_differentiation_forward \
-	finite_differentiation_backward \
-	finite_differentiation_central
+	finite_differentiation_central_gsl \
+	finite_differentiation_forward_gsl \
+	finite_differentiation_backward_gsl \
+	matrix_multiplication_eigen \
+	symbolic_differentiatiation_symengine
 
 #Flags
 CXXFLAGS = -std=c++17 -Wall -Werror -pedantic -Weffc++ -O3 -march=native -fopenmp -fopenmp-simd
@@ -27,8 +27,8 @@ GENERATOR_HIGH = 100
 #
 
 #HOW MANY TESTS MATRIX MULTIPLICATION
-EIGEN_MATRIX_CASES = 20
-NUMPP_MATRIX_CASES = 20
+EIGEN_MATRIX_CASES = 100
+NUMPP_MATRIX_CASES = 100
 
 #SIZE OF MATRICES (number of elements, sqrt(SIZE) has to be int)
 SIZE = 100
@@ -45,18 +45,18 @@ NUMPP_MATRIX_MULTIPLICATION_RUNTIME_LOG 		= ./structures/matrices/normal/logs/nu
 #
 
 #INTEGER VALUE: HOW MANY TESTS FOR FINITE DIFFERENTIATION TESTS
-DIFFERENTIATION_FINITE_CASES = 100
+DIFFERENTIATION_FINITE_CASES = 15
 
 #INTEGER VALUE: HOW MANY EXPRESSIONS IN EACH TEST (DON'T SET TOO HIGH VALUE)
-DIFFERENTIATION_FINITE_EXPRESSIONS = 15
+DIFFERENTIATION_FINITE_EXPRESSIONS = 5
 
 #PATH: DIFFERENTIATION LOGS LOCALIZATION
-DIFFERENTIATION_FORWARD_LOG  = ./differentiation/logs/forward/runtime
-DIFFERENTIATION_BACKWARD_LOG = ./differentiation/logs/backward/runtime
-DIFFERENTIATION_CENTRAL_LOG = ./differentiation/logs/central/runtime
+DIFFERENTIATION_FINITE_FORWARD_LOG_RUNTIME  = ./differentiation/logs/forward/runtime
+DIFFERENTIATION_FINITE_BACKWARD_LOG_RUNTIME = ./differentiation/logs/backward/runtime
+DIFFERENTIATION_FINITE_CENTRAL_LOG_RUNTIME = ./differentiation/logs/central/runtime
 
 #HOW MANY SPEED TESTS MAY FAIL IN PERCENT? E.G. 0.01 FOR ONE PERCENT, USUALLY FAILS 0.005
-DIFFERENTIATION_FAILURE_CASES = 0.01
+DIFFERENTIATION_PASSED_TESTS_RATIO = 0.01
 
 #
 #SYMBOLIC DIFFERENTIATION SPECIFIC PARAMETERS
@@ -76,26 +76,69 @@ SYMENGINE_CASES = 100000
 catch_tests: ../utilities/tests_main.cpp ../utilities/catch.hpp
 	$(CXX) $(CXXFLAGS) ../utilities/tests_main.cpp -c -o ../utilities/tests_main.o
 
-matrix_multiplication: setup_tests
-	python3 ./structures/matrices/normal/generate_speed_test.py -c $(EIGEN_MATRIX_CASES) -s $(SIZE) -t ./structures/matrices/normal/test_templates/eigen_template -al $(LOW) -ah $(HIGH) -l $(EIGEN_MATRIX_MULTIPLICATION_COMPILATION_LOG) >> $(EIGEN_MATRIX_MULTIPLICATION_RUNTIME_LOG)
-	python3 ./structures/matrices/normal/generate_speed_test.py -c $(NUMPP_MATRIX_CASES) -s $(SIZE) -t ./structures/matrices/normal/test_templates/numpp_template -al $(LOW) -ah $(HIGH) -l $(NUMPP_MATRIX_MULTIPLICATION_COMPILATION_LOG) >> $(NUMPP_MATRIX_MULTIPLICATION_RUNTIME_LOG)
-	python3 ./utilities/average_compile_time.py $(NUMPP_MATRIX_MULTIPLICATION_COMPILATION_LOG) $(EIGEN_MATRIX_MULTIPLICATION_COMPILATION_LOG)
-	python3 ./utilities/average_runtime.py $(NUMPP_MATRIX_MULTIPLICATION_RUNTIME_LOG) $(EIGEN_MATRIX_MULTIPLICATION_RUNTIME_LOG)
+matrix_multiplication_eigen: setup_tests
+	python3 ./structures/matrices/normal/generate_speed_test.py \
+					-c $(EIGEN_MATRIX_CASES) -s $(SIZE) \
+					-t ./structures/matrices/normal/test_templates/eigen_template \
+					-al $(LOW) -ah $(HIGH) -l $(EIGEN_MATRIX_MULTIPLICATION_COMPILATION_LOG) \
+					>> $(EIGEN_MATRIX_MULTIPLICATION_RUNTIME_LOG)
+	python3 ./structures/matrices/normal/generate_speed_test.py \
+					-c $(NUMPP_MATRIX_CASES) -s $(SIZE) \
+					-t ./structures/matrices/normal/test_templates/numpp_template \
+					-al $(LOW) -ah $(HIGH) -l $(NUMPP_MATRIX_MULTIPLICATION_COMPILATION_LOG) \
+					>> $(NUMPP_MATRIX_MULTIPLICATION_RUNTIME_LOG)
+	python3 ./utilities/average_time.py \
+					$(NUMPP_MATRIX_MULTIPLICATION_COMPILATION_LOG) \
+					$(EIGEN_MATRIX_MULTIPLICATION_COMPILATION_LOG) \
+					-m Compilation
+	python3 ./utilities/average_time.py \
+					$(NUMPP_MATRIX_MULTIPLICATION_RUNTIME_LOG) \
+					$(EIGEN_MATRIX_MULTIPLICATION_RUNTIME_LOG) \
+					-m Runtime
 
-finite_differentiation_forward: catch_tests setup_tests
-	python3 ./differentiation/forward_test.py -t ./differentiation/test_templates/test_template -c $(DIFFERENTIATION_FINITE_CASES) -e $(DIFFERENTIATION_FINITE_EXPRESSIONS) -nl $(GENERATOR_LOW) -nh $(GENERATOR_HIGH) -al $(LOW) -ah $(HIGH) >> $(DIFFERENTIATION_FORWARD_LOG) 2>/dev/null
-	./utilities/test_differentiation_success.sh $(DIFFERENTIATION_FORWARD_LOG) $(DIFFERENTIATION_FAILURE_CASES)
+finite_differentiation_forward_gsl: catch_tests setup_tests
+	python3 ./differentiation/forward_test.py \
+					-t ./differentiation/test_templates/test_template \
+					-c $(DIFFERENTIATION_FINITE_CASES) \
+					-e $(DIFFERENTIATION_FINITE_EXPRESSIONS) \
+					-nl $(GENERATOR_LOW) -nh $(GENERATOR_HIGH) -al $(LOW) -ah $(HIGH) \
+					>> $(DIFFERENTIATION_FINITE_FORWARD_LOG_RUNTIME) \
+					2> /dev/null
+	python3 ./utilities/test_differentiation_success.py \
+					$(DIFFERENTIATION_PASSED_TESTS_RATIO) \
+					-l $(DIFFERENTIATION_FINITE_FORWARD_LOG_RUNTIME) \
+					-m "Forward finite differentiation"
 
-finite_differentiation_backward: catch_tests setup_tests
-	python3 ./differentiation/backward_test.py -t ./differentiation/test_templates/test_template -c $(DIFFERENTIATION_FINITE_CASES) -e $(DIFFERENTIATION_FINITE_EXPRESSIONS) -nl $(GENERATOR_LOW) -nh $(GENERATOR_HIGH) -al $(LOW) -ah $(HIGH) >> $(DIFFERENTIATION_BACKWARD_LOG) 2>/dev/null
-	./utilities/test_differentiation_success.sh $(DIFFERENTIATION_BACKWARD_LOG) $(DIFFERENTIATION_FAILURE_CASES)
+finite_differentiation_backward_gsl: catch_tests setup_tests
+	python3 ./differentiation/backward_test.py \
+					-t ./differentiation/test_templates/test_template \
+					-c $(DIFFERENTIATION_FINITE_CASES) \
+					-e $(DIFFERENTIATION_FINITE_EXPRESSIONS) \
+					-nl $(GENERATOR_LOW) -nh $(GENERATOR_HIGH) -al $(LOW) -ah $(HIGH) \
+					>> $(DIFFERENTIATION_FINITE_BACKWARD_LOG_RUNTIME) \
+					2> /dev/null
+	python3 ./utilities/test_differentiation_success.py \
+					$(DIFFERENTIATION_PASSED_TESTS_RATIO) \
+					-l $(DIFFERENTIATION_FINITE_BACKWARD_LOG_RUNTIME) \
+					-m "Backward finite differentiation"
 
-finite_differentiation_central: catch_tests setup_tests
-	python3 ./differentiation/central_test.py -t ./differentiation/test_templates/test_template -c $(DIFFERENTIATION_FINITE_CASES) -e $(DIFFERENTIATION_FINITE_EXPRESSIONS) -nl $(GENERATOR_LOW) -nh $(GENERATOR_HIGH) -al $(LOW) -ah $(HIGH) >> $(DIFFERENTIATION_CENTRAL_LOG) 2>/dev/null
-	./utilities/test_differentiation_success.sh $(DIFFERENTIATION_CENTRAL_LOG) $(DIFFERENTIATION_FAILURE_CASES)
+finite_differentiation_central_gsl: catch_tests setup_tests
+	python3 ./differentiation/central_test.py \
+					-t ./differentiation/test_templates/test_template \
+					-c $(DIFFERENTIATION_FINITE_CASES) \
+					-e $(DIFFERENTIATION_FINITE_EXPRESSIONS) \
+					-nl $(GENERATOR_LOW) -nh $(GENERATOR_HIGH) -al $(LOW) -ah $(HIGH) \
+					>> $(DIFFERENTIATION_FINITE_CENTRAL_LOG_RUNTIME) \
+					2> /dev/null
+	python3 ./utilities/test_differentiation_success.py \
+					$(DIFFERENTIATION_PASSED_TESTS_RATIO) \
+					-l $(DIFFERENTIATION_FINITE_CENTRAL_LOG_RUNTIME) \
+					-m "Central finite differentiation"
 
-symbolic_differentiation_sympy:
-	make -C ./differentiation/symbolic SYMENGINE_LOW=$(SYMENGINE_LOW) SYMENGINE_HIGH=$(SYMENGINE_HIGH) SYMENGINE_CASES=$(SYMENGINE_CASES)
+symbolic_differentiatiation_symengine:
+	make -C ./differentiation/symbolic \
+					SYMENGINE_LOW=$(SYMENGINE_LOW) SYMENGINE_HIGH=$(SYMENGINE_HIGH) \
+					SYMENGINE_CASES=$(SYMENGINE_CASES)
 
 setup_tests:
 	./utilities/setup_tests.sh

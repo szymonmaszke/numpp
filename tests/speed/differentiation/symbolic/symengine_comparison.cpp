@@ -90,7 +90,7 @@ int main(int argc, char** argv){
   std::cout << "Overall time in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(numpp_end-numpp_start).count() << std::endl;
 
 
-  //IF NUMPP ISN'T 12x FASTER RETURN ERROR
+  //IF NUMPP ISN'T 5x FASTER RETURN ERROR
   if(per_derivative_symeng<per_derivative_numpp*5)
     return 1;
   return 0;
