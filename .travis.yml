@@ -1,18 +1,45 @@
-sudo: required
+# matrix:
+#   - DOCKERFILE=functionality_dockerfile
+#   - DOCKERFILE=speed_dockerfile
 
-language: generic
+# sudo: required
 
-services:
-  - docker
+# language: generic
 
-before_install:
-  - sudo apt-get update
-  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
-  - docker build -t vyzyv/numpp:latest .
+# services:
+#   - docker
 
-script:
-  - docker run vyzyv/numpp:latest
+# before_install:
+#   - sudo apt-get update
+#   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+#   - docker build -t vyzyv/numpp:latest -f ${DOCKERFILE} .
 
-after_success:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push vyzyv/numpp
+# script:
+#   - docker run vyzyv/numpp:latest
+
+# after_success:
+#   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+#   - docker push vyzyv/numpp
+sudo: true
+dist: trusty
+
+jobs:
+  include:
+    -stage: build docker image
+     script:
+      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      - docker build -t numpp_testing .
+      - docker tag tests $DOCKER_USERNAME/numpp
+      - docker push $DOCKER_USERNAME/numpp:tests
+    -stage: tests
+     script:
+      - docker run --name functionality_tests vyzyv/numpp:tests
+      - docker exec functionality_tests make -C /usr/include/numpp/tests/functionality
+     script:
+      - docker run --name speed_tests vyzyv/numpp:tests
+      - docker exec speed_tests make -C /usr/include/numpp/tests/speed
+
+    -stage: deploy
+      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      - docker build -t numpp_testing -f DockerfileDeploy .
+      - docker push $DOCKER_USERNAME/numpp:latest
