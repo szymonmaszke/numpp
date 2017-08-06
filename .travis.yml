@@ -9,10 +9,13 @@ jobs:
         - docker build -t $DOCKER_USERNAME/numpp:tests -f DockerfileTests .
         - docker push $DOCKER_USERNAME/numpp:tests
     - stage: tests
-      script: docker run --name functionality $DOCKER_USERNAME/numpp:tests make -C /usr/include/numpp/tests/functionality
-      script: docker run --name speed vyzyv/numpp:tests make -C /usr/include/numpp/tests/speed
+      script:
+        - docker run $DOCKER_USERNAME/numpp:tests make -C /usr/include/numpp/tests/functionality
+    - stage: tests
+      script:
+        - docker run $DOCKER_USERNAME/numpp:tests make -C /usr/include/numpp/tests/speed
     - stage: deploy
       script:
         - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-        - docker build -t vyzyv/numpp:latest -f DockerfileDeploy .
+        - docker build -t $DOCKER_USERNAME/numpp:latest -f DockerfileDeploy .
         - docker push $DOCKER_USERNAME/numpp:latest
