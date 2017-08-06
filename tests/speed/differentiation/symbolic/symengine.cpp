@@ -1,15 +1,15 @@
 #include<chrono>
-
-#include <symengine/functions.h>
-#include <symengine/eval_double.h>
-#include<symengine/add.h>
-#include<symengine/pow.h>
-#include<symengine/real_double.h>
-#include<symengine/basic.h>
-#include"../../../../differentiation/symbolic.hpp"
-
 #include<typeinfo>
 #include<random>
+
+#include"symengine/functions.h"
+#include"symengine/eval_double.h"
+#include"symengine/add.h"
+#include"symengine/pow.h"
+#include"symengine/real_double.h"
+#include"symengine/basic.h"
+
+#include"../../../../differentiation/symbolic.hpp"
 
 using SymEngine::RCP;
 using SymEngine::Symbol;
@@ -57,11 +57,12 @@ int main(int argc, char** argv){
 
   //PRINT THE RESULTS
   std::cout << "---------SYMENGINE-------\n\n";
-  std::cout << "Last result of evaluation of derivatives: " << sym_value << std::endl;
+  std::cout << "Last result of derivatives evaluations: " << sym_value << std::endl;
   std::cout << "Two variables creation time in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(sym_create_end-sym_start).count() << std::endl;
   std::cout << "Derivative creation time in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(sym_derivative_end-sym_create_end).count() << std::endl;
   std::cout << TEST_CASES << " derivatives evaluated in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(sym_end-sym_derivative_end).count() << std::endl;
-  std::cout << "Average time per one derivative evaluation in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(sym_end-sym_derivative_end).count()/TEST_CASES << std::endl;
+  auto per_derivative_symeng = std::chrono::duration_cast<std::chrono::nanoseconds>(sym_end-sym_derivative_end).count()/TEST_CASES;
+  std::cout << "Average time per one derivative evaluation in nanoseconds: " << per_derivative_symeng << std::endl;
   std::cout << "Overall time in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(sym_end-sym_start).count() << "\n\n";
 
   //MEASURE FUNCTION CREATION TIME
@@ -80,11 +81,18 @@ int main(int argc, char** argv){
     numpp_value = Derivative::calculate(std::array<double, 2>{dist(engine),dist(engine)});
   auto numpp_end = std::chrono::system_clock::now();
   std::cout << "----------NUMPP----------\n\n";
-  std::cout << "Last result of derivative evaluations: " << numpp_value << std::endl;
+  std::cout << "Last result of derivatives evaluations: " << numpp_value << std::endl;
   std::cout << "Function creation time in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(function_creation-numpp_start).count() << std::endl;
   std::cout << "Derivative creation time in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(derivative_creation-function_creation).count() << std::endl;
   std::cout << TEST_CASES << " derivatives evaluated in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(numpp_end-derivative_creation).count() << std::endl;
-  std::cout << "Average time per one derivative evaluation in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(numpp_end-derivative_creation).count()/TEST_CASES << std::endl;
+  auto per_derivative_numpp = std::chrono::duration_cast<std::chrono::nanoseconds>(numpp_end-derivative_creation).count()/TEST_CASES;
+  std::cout << "Average time per one derivative evaluation in nanoseconds: " << per_derivative_numpp << std::endl;
   std::cout << "Overall time in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(numpp_end-numpp_start).count() << std::endl;
+
+
+  //IF NUMPP ISN'T 12x FASTER RETURN ERROR
+  if(per_derivative_symeng<per_derivative_numpp*12)
+    return 1;
+  return 0;
 
 }

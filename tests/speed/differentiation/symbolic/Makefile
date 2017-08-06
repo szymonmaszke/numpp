@@ -1,7 +1,9 @@
 all: nigga_fag_work
 
-compile_flags=`cmake --find-package -DNAME=SymEngine -DCOMPILER_ID=GNU -DLANGUAGE=CXX -DMODE=COMPILE`
-link_flags=`cmake --find-package -DNAME=SymEngine -DCOMPILER_ID=GNU -DLANGUAGE=CXX -DMODE=LINK`
+SYMPY_COMPILATION=`cmake --find-package -DNAME=SymEngine -DCOMPILER_ID=GNU -DLANGUAGE=CXX -DMODE=COMPILE`
+SYMPY_LINKING=`cmake --find-package -DNAME=SymEngine -DCOMPILER_ID=GNU -DLANGUAGE=CXX -DMODE=LINK`
+
+CXXFLAGS = -std=c++17 -Wall -Werror -Weffc++ -O3 -march=native -fopenmp -fopenmp-simd
 
 nigga_fag_work:
-	g++ $(compile_flags) ./symengine.cpp $(link_flags) -std=c++17
+	g++ $(SYMPY_COMPILATION) $(CXXFLAGS) ./symengine.cpp $(SYMPY_LINKING)
