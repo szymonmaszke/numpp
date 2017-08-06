@@ -22,24 +22,26 @@
 #   - docker push vyzyv/numpp
 sudo: true
 dist: trusty
+language: generic
 
 jobs:
   include:
     -stage: build docker image
-     script:
+    -script:
       - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
       - docker build -t numpp_testing .
       - docker tag tests $DOCKER_USERNAME/numpp
       - docker push $DOCKER_USERNAME/numpp:tests
-    -stage: tests
-     script:
-      - docker run --name functionality_tests vyzyv/numpp:tests
-      - docker exec functionality_tests make -C /usr/include/numpp/tests/functionality
-     script:
-      - docker run --name speed_tests vyzyv/numpp:tests
-      - docker exec speed_tests make -C /usr/include/numpp/tests/speed
+    # -stage: tests
+    # -script:
+    #   - docker run --name functionality_tests vyzyv/numpp:tests
+    #   - docker exec functionality_tests make -C /usr/include/numpp/tests/functionality
+    # -script:
+    #   - docker run --name speed_tests vyzyv/numpp:tests
+    #   - docker exec speed_tests make -C /usr/include/numpp/tests/speed
 
-    -stage: deploy
-      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-      - docker build -t numpp_testing -f DockerfileDeploy .
-      - docker push $DOCKER_USERNAME/numpp:latest
+    # -stage: deploy
+    #  script:
+    #   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    #   - docker build -t numpp_testing .
+    #   - docker push $DOCKER_USERNAME/numpp:latest
