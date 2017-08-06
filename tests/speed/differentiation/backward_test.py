@@ -30,10 +30,10 @@ parser.add_argument('--arghigh', '-ah', required=True,
 args = parser.parse_args()
 run_test(
         args,
-        '#include"../../../differentiation/backward.hpp"\n', 5,
+        '#include"numpp/differentiation/finite.hpp"\n', 5,
         'gsl_deriv_backward(&F, ', 29,
         '''constexpr auto result_numpp =
-        numpp::derivative::backward(numpp_function{}, ''', 37,
+        numpp::derivative::finite::backward(numpp_function{}, ''', 37,
         9, 16,
         "./differentiation/logs/backward/compile"
         )

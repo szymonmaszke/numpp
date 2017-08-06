@@ -1,18 +1,21 @@
-sudo: required
-
+sudo: true
 language: generic
 
-services:
-  - docker
-
-before_install:
-  - sudo apt-get update
-  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
-  - docker build -t vyzyv/numpp:latest .
-
-script:
-  - docker run vyzyv/numpp:latest
-
-after_success:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push vyzyv/numpp
+jobs:
+  include:
+    - stage: build docker image
+      script:
+        - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+        - docker build -t $DOCKER_USERNAME/numpp:tests -f DockerfileTests .
+        - docker push $DOCKER_USERNAME/numpp:tests
+    - stage: tests
+      script:
+        - docker run $DOCKER_USERNAME/numpp:tests make -C /usr/include/numpp/tests/functionality
+    - stage: tests
+      script:
+        - travis_wait 45 docker run $DOCKER_USERNAME/numpp:tests make -C /usr/include/numpp/tests/speed
+    - stage: deploy
+      script:
+        - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+        - docker build -t $DOCKER_USERNAME/numpp:latest -f DockerfileDeploy .
+        - docker push $DOCKER_USERNAME/numpp:latest

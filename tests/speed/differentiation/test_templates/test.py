@@ -44,7 +44,9 @@ def run_test(args, include, include_number,
                 test.writelines(template_content)
             compilation_status = subprocess.run(["g++",
                 "../utilities/tests_main.o",
-                "./differentiation/temp_test.cpp", "-o", "./differentiation/temp_test", "-lgsl","-lgslcblas", "-lm"])
+                "./differentiation/temp_test.cpp", "-o", "./differentiation/temp_test",
+                "-lgsl","-lgslcblas", "-lm", "-Weffc++", "-Werror", "-Wall", "-O3",
+                "-pedantic", "-march=native", "-std=c++17"])
             if compilation_status.returncode == 0:
                 test_status = subprocess.run(["./differentiation/temp_test"])
             else:

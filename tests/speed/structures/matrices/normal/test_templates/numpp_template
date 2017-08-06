@@ -1,4 +1,4 @@
-#include "numpp/structures/matrices/normal.hpp"
+#include"numpp/structures/matrices/dense.hpp"
 #include<chrono>
 #include<iostream>
 
@@ -7,11 +7,11 @@ int main(){
 
 
 
-  constexpr numpp::matrix::normal<double, 10, 10> numppA{0
+  constexpr numpp::matrix::dense<double, 10, 10> numppA{0
 
   };
 
-  constexpr numpp::matrix::normal<double, 10, 10> numppB{0
+  constexpr numpp::matrix::dense<double, 10, 10> numppB{0
 
   };
 
