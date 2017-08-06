@@ -10,6 +10,7 @@ RUN apt-get update && \
             libomp-dev \
             libgmp-dev \
             cmake \
+            bc \
             git && \
     cd /tmp && git clone https://github.com/symengine/symengine && \
     cd ./symengine && cmake . && make && make install
