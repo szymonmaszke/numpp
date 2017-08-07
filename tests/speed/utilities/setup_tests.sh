@@ -1,4 +1,4 @@
-#!/usr/bin/enb bash
+#!/usr/bin/env bash
 
 mkdir -p ./differentiation/logs
 mkdir -p ./differentiation/logs/backward
