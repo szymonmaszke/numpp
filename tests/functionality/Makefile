@@ -6,7 +6,8 @@ all: \
 		dense_structure \
 		vector \
 		dense_vector \
-		roots_bisection
+		roots_bisection \
+		krylov_conjugate_gradient
 
 #Flags
 # ‑mveclibabi=svml
@@ -50,6 +51,12 @@ roots_bisection: catch_tests $(LIB_PATH)/numpp/roots/bisection.hpp
 	$(CXX) ../utilities/catch.o $(CXXFLAGS) ./roots/bisection.cpp \
 		-o roots_bisection.out \
 		&& ./roots_bisection.out -r compact
+
+#KRYLOV TESTS
+krylov_conjugate_gradient: catch_tests $(LIB_PATH)/numpp/krylov/conjugate_gradient.hpp
+	$(CXX) ../utilities/catch.o $(CXXFLAGS) ./krylov/conjugate_gradient.cpp \
+		-o krylov_conjugate_gradient.out \
+		&& ./krylov_conjugate_gradient.out -r compact
 
 .PHONY: clean
 clean:
