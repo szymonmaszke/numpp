@@ -39,30 +39,11 @@ namespace numpp::differentiation::symbolic{
         using type = constant<0>;
       };
 
-    template<typename Left>
-      class simplify_multiplication<Left, minus<constant<0>>>{
-        public:
-        using type = constant<0>;
-      };
-
     template<typename Right>
       class simplify_multiplication<constant<0>, Right>{
         public:
         using type = constant<0>;
       };
-
-    template<typename Right>
-      class simplify_multiplication<minus<constant<0>>, Right>{
-        public:
-        using type = constant<0>;
-      };
-
-    //VALUE TIMES VALUE MULTIPLICATION
-    /* template<int left_value, int right_value> */
-    /*   class simplify_multiplication<constant<left_value>, constant<right_value>>{ */
-    /*     public: */
-    /*     using type = constant<left_value*right_value>; */
-    /*   }; */
 
     //VALUE OUTSIDE OF FUNCTIONS
     template<typename T, int left_value, int right_value>
@@ -115,6 +96,18 @@ namespace numpp::differentiation::symbolic{
         using type = add<Left, Right>;
       };
 
+    template<>
+      class simplify_addition<constant<0>, constant<0>>{
+        public:
+        using type = constant<0>;
+      };
+
+    template<typename Left>
+      class simplify_addition<minus<Left>, constant<0>>{
+        public:
+        using type = Left;
+      };
+
     template<typename Left>
       class simplify_addition<Left, constant<0>>{
         public:
@@ -127,7 +120,20 @@ namespace numpp::differentiation::symbolic{
         using type = Right;
       };
 
+    //AMBIGUOUS OVERLOAD
+    template<typename Right>
+      class simplify_addition<constant<0>, minus<Right>>{
+        public:
+        using type = Right;
+      };
+
     //ADDITION OF MINUS
+    template<typename Left, typename Right>
+      class simplify_addition<minus<Left>, Right>{
+        public:
+        using type = subtract<Right, Left>;
+      };
+
     template<typename Left, typename Right>
       class simplify_addition<Left, minus<Right>>{
         public:

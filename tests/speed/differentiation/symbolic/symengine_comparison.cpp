@@ -46,7 +46,7 @@ int main(int argc, char** argv){
 
   //MEASURE SYMBOLIC DIFFERENTIATION TIME
   auto sym_create_end = std::chrono::system_clock::now();
-  const auto derivative = mul(exp(add(sin(x),cos(y))), log(x))->diff(x);
+  const auto derivative = mul(exp(add(sin(x),cos(y))), log(x))->diff(x)->diff(y)->diff(x)->diff(y);
 
   //MEASURE EVALUATION OF DERIVATIVES FOR RANDOM NUMBERS TEST_CASES TIMES
   auto sym_derivative_end = std::chrono::system_clock::now();
@@ -71,7 +71,7 @@ int main(int argc, char** argv){
 
   //MEASURE SYMBOLIC DIFFERENTIATION TIME
   auto function_creation = std::chrono::system_clock::now();
-  using Derivative = nds::differentiate<Function, 1>::with_respect_to<0>;
+  using Derivative = nds::differentiate<Function, 4>::with_respect_to<0,1,0,1>;
 
 
   //MEASURE EVALUATION OF DERIVATIVES FOR RANDOM NUMBERS TEST_CASES TIMES
@@ -88,6 +88,7 @@ int main(int argc, char** argv){
   auto per_derivative_numpp = std::chrono::duration_cast<std::chrono::nanoseconds>(numpp_end-derivative_creation).count()/TEST_CASES;
   std::cout << "Average time per one derivative evaluation in nanoseconds: " << per_derivative_numpp << std::endl;
   std::cout << "Overall time in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(numpp_end-numpp_start).count() << std::endl;
+  std::cout << "\nCHECK RESULT OF EVALUATION:" << std::endl;
 
 
   //IF NUMPP ISN'T 5x FASTER RETURN ERROR

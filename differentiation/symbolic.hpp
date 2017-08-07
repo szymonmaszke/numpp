@@ -6,7 +6,6 @@
 #include"./symbolic/exponential.hpp"
 #include"./symbolic/functions.hpp"
 #include"./symbolic/trigonometric.hpp"
-#include"./symbolic/trigonometric_simplifier.hpp"
 #include"./symbolic/types.hpp"
 
 #endif
