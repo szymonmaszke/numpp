@@ -143,6 +143,11 @@ namespace numpp::differentiation::symbolic{
       return divide<Left, Right>{};
     }
 
+  template<std::size_t Exp, typename Left>
+    constexpr auto pow(const Left&){
+      return power<Left, Exp>{};
+    }
+
 }
 
 #endif

@@ -36,12 +36,22 @@ namespace numpp::differentiation::automatic{
           };
         }
 
+        template<typename U, typename = std::enable_if_t<std::is_arithmetic<U>::value>>
+          constexpr auto operator+(U other){
+            return forward{value + other, derivative};
+          }
+
         constexpr auto operator-(const forward& other){
           return forward{value-other.value, derivative-other.derivative};
         }
 
-        template<typename U>
-          constexpr auto operator*(U&& other){
+        template<typename U, typename = std::enable_if_t<std::is_arithmetic<U>::value>>
+          constexpr auto operator-(U other){
+            return forward{value - other, derivative};
+          }
+
+        template<typename U, typename = std::enable_if_t<std::is_arithmetic<U>::value>>
+          constexpr auto operator*(U other){
             return forward{value * other, derivative * other};
           }
 
