@@ -124,22 +124,22 @@ namespace numpp::differentiation::symbolic{
     }
 
   template<typename Left, typename Right>
-    constexpr subtract<Left, Right> operator-(const Left&, const Right&){
-      return subtract<Left, Right>{};
+    constexpr auto operator-(const Left&, const Right&){
+      return simplify_subtraction<Left, Right>{};
     }
 
   template<typename T>
-    constexpr minus<T> operator-(const T&){
-      return minus<T>{};
+    constexpr auto operator-(const T&){
+      return simplify_minus<T>{};
     }
 
   template<typename Left, typename Right>
-    constexpr multiply<Left, Right> operator*(const Left&, const Right&){
-      return multiply<Left, Right>{};
+    constexpr auto operator*(const Left&, const Right&){
+      return simplify_multiplication<Left, Right>{};
     }
 
   template<typename Left, typename Right>
-    constexpr divide<Left, Right> operator/(const Left&, const Right&){
+    constexpr auto operator/(const Left&, const Right&){
       return divide<Left, Right>{};
     }
 

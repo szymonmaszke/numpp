@@ -5,7 +5,6 @@
 #include<cmath>
 
 #include"arithmetic.hpp"
-#include"./trigonometric_simplifier.hpp"
 
 #if defined  __GNUC__ && !defined __clang__
 #define CONSTEXPR constexpr
@@ -20,7 +19,7 @@ namespace numpp::differentiation::symbolic{
       public:
         template<std::size_t Active>
           using derivative = simplify_multiplication<
-          simplify_cosinus<T>,
+          cosinus<T>,
           typename T::template derivative<Active>
             >;
 
@@ -35,7 +34,7 @@ namespace numpp::differentiation::symbolic{
         template<std::size_t Active>
           using derivative =
             simplify_multiplication<
-              simplify_minus<simplify_sinus<T>>,
+              simplify_minus<sinus<T>>,
               typename T::template derivative<Active>
             >;
 
