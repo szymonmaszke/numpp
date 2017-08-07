@@ -1,7 +1,7 @@
 #ifndef CONJUGATE_GRADIENT_HPP
 #define CONJUGATE_GRADIENT_HPP
 
-#include"../structures/matrix_vector_operations.hpp"
+#include"../structures/vector/matrix_vector_operations.hpp"
 
 #if defined  __GNUC__ && !defined __clang__
   #define CONSTEXPR constexpr
@@ -12,10 +12,11 @@
 namespace numpp::krylov{
   template<typename T, std::size_t Size>
     CONSTEXPR auto conjugate_gradient(
-        const matrix::normal<T, Size, Size>& A,
+        const matrix::dense<T, Size, Size>& A,
         const vector<T, Size>& x,
         const vector<T, Size>& b,
-        const double threshold = 0.01
+        const double threshold = 0.01,
+        const std::size_t max_iterations= Size > 20 ? Size : 20
         ){
 
       auto residual = b - (A*x);
@@ -42,11 +43,12 @@ namespace numpp::krylov{
 
   template<typename T, std::size_t Size>
     CONSTEXPR auto conjugate_gradient(
-        const matrix::normal<T, Size, Size>& A,
+        const matrix::dense<T, Size, Size>& A,
         const vector<T, Size>& b,
         const vector<T, Size>& x,
-        const matrix::normal<T, Size, Size>& preconditioner_matrix,
-        const double threshold = 0.01
+        const matrix::dense<T, Size, Size>& preconditioner_matrix,
+        const double threshold = 0.01,
+        const std::size_t max_iterations= Size > 20 ? Size : 20
         ){
       auto residual = b - (A*x);
       auto preconditioner = preconditioner_matrix * residual;
@@ -54,7 +56,7 @@ namespace numpp::krylov{
 
       auto temp{x};
 
-      for(int i=0; i<b.size(); ++i){
+      for(int i=0; i<max_iterations; ++i){
         const auto alpha {sum(residual)/(sum(direction, A*direction))};
 
         temp += alpha * direction;
