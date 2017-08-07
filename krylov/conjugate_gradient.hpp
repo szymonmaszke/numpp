@@ -15,7 +15,8 @@ namespace numpp::krylov{
         const matrix::normal<T, Size, Size>& A,
         const vector<T, Size>& x,
         const vector<T, Size>& b,
-        const double threshold = 0.01
+        const double threshold = 0.01,
+        const std::size_t max_iterations= Size > 20 ? Size : 20
         ){
 
       auto residual = b - (A*x);
@@ -46,7 +47,8 @@ namespace numpp::krylov{
         const vector<T, Size>& b,
         const vector<T, Size>& x,
         const matrix::normal<T, Size, Size>& preconditioner_matrix,
-        const double threshold = 0.01
+        const double threshold = 0.01,
+        const std::size_t max_iterations= Size > 20 ? Size : 20
         ){
       auto residual = b - (A*x);
       auto preconditioner = preconditioner_matrix * residual;
@@ -54,7 +56,7 @@ namespace numpp::krylov{
 
       auto temp{x};
 
-      for(int i=0; i<b.size(); ++i){
+      for(int i=0; i<max_iterations; ++i){
         const auto alpha {sum(residual)/(sum(direction, A*direction))};
 
         temp += alpha * direction;
