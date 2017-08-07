@@ -7,6 +7,8 @@ all: \
 		vector \
 		dense_vector \
 		roots_bisection \
+		roots_newton \
+		roots_halley \
 		krylov_conjugate_gradient
 
 #Flags
@@ -51,6 +53,16 @@ roots_bisection: catch_tests $(LIB_PATH)/numpp/roots/bisection.hpp
 	$(CXX) ../utilities/catch.o $(CXXFLAGS) ./roots/bisection.cpp \
 		-o roots_bisection.out \
 		&& ./roots_bisection.out -r compact
+
+roots_newton: catch_tests $(LIB_PATH)/numpp/roots/newton.hpp
+	$(CXX) ../utilities/catch.o $(CXXFLAGS) ./roots/newton.cpp \
+		-o roots_newton.out \
+		&& ./roots_newton.out -r compact
+
+roots_halley: catch_tests $(LIB_PATH)/numpp/roots/halley.hpp
+	$(CXX) ../utilities/catch.o $(CXXFLAGS) ./roots/halley.cpp \
+		-o roots_halley.out \
+		&& ./roots_halley.out -r compact
 
 #KRYLOV TESTS
 krylov_conjugate_gradient: catch_tests $(LIB_PATH)/numpp/krylov/conjugate_gradient.hpp
