@@ -7,7 +7,7 @@ import logging
 import time
 
 def create_random_numbers(string, placement, size, range_low, range_high):
-    for i in range(0, size-1):
+    for _ in range(0, size-1):
         string[placement] += ','
         string[placement] += str(round(random.uniform(range_low, range_high), 4))
 

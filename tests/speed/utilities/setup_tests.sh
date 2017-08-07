@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 mkdir -p ./differentiation/logs
 mkdir -p ./differentiation/logs/backward
 mkdir -p ./differentiation/logs/forward

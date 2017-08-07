@@ -1,7 +1,6 @@
 #!usr/bin/python3
 #test.py
 import random
-import time
 import subprocess
 import logging
 from test_templates.create_function import create_function
@@ -26,7 +25,7 @@ def run_test(args, include, include_number,
         #LOGGING
         logging.basicConfig(filename=log_name,level=logging.DEBUG)
 
-        for i in range(0, int(args.cases)):
+        for _ in range(0, int(args.cases)):
             function = create_function(args.expressions, args.low, args.high)
             template_content[test_function_number_gsl] = function
             template_content[test_function_number_numpp] = function
@@ -48,7 +47,7 @@ def run_test(args, include, include_number,
                 "-lgsl","-lgslcblas", "-lm", "-Weffc++", "-Werror", "-Wall", "-O3",
                 "-pedantic", "-march=native", "-std=c++17"])
             if compilation_status.returncode == 0:
-                test_status = subprocess.run(["./differentiation/temp_test"])
+                subprocess.run(["./differentiation/temp_test"])
             else:
                 logging.warning("Compilation failed for function:\n" +  function)
 
