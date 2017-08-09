@@ -4,8 +4,21 @@
 #include"arithmetic.hpp"
 
 namespace numpp::differentiation::symbolic{
-  //DIFFERENTIATE N-TH ORDER WITH RESPECT TO GIVEN VARIABLES
-  //OVERALL RECURSIVE CASE
+/**
+\ingroup numpp_differentiation_symbolic
+
+\class differentiate
+
+\brief Allows differentiation of N-th order
+
+\tparam Function Function which should be differentiated, see /ref numpp_differentiation_symbolic "tutorial" for more info
+\param Order order of the differentiation, e.g. 3 for 3rd order
+
+\code
+#include"numpp/differentiation/symbolic.hpp"
+\endcode
+
+*/
   template<typename Function, std::size_t Order>
     class differentiate{
       public:

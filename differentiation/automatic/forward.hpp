@@ -1,149 +1,47 @@
 #ifndef NUMPP_DIFFERENTIATION_AUTOMATIC_FORWARD_HPP_
 #define NUMPP_DIFFERENTIATION_AUTOMATIC_FORWARD_HPP_
 
-#include<cmath>
-#include<type_traits>
+/**
+\defgroup numpp_differentiation_forward_automatic Forward Automatic Differentiation
+\ingroup numpp_differentiation_automatic
 
-namespace numpp::differentiation::automatic{
-  template<typename T>
-    class forward{
-      static_assert(std::is_arithmetic<T>(),
-          "Current implementation of forward differentiation supports only \
-          arithmetic types. Specialize is_arithmetic if your class may be equal to 1"
-          );
+\brief First order automatic differentiation in forward mode
 
-      public:
-        using value_type = T;
-				using size_type = std::size_t;
+\code
+#include"numpp/differentiation/automatic/forward.h"
+\endcode
 
-        const T value;
-        const T derivative;
+You can use it almost in the same way as built-in arithmetic types, e.g.
+addition, multiplication and other similiar operations are provided.
 
-        constexpr forward(T value, T derivative = 1):
-            value{value},
-            derivative{derivative}
-        {}
+It is advised to use auto whenever possible to ease the need of explicit
+namespace/class names providing.
 
-        constexpr forward(const forward&) = default;
-        constexpr forward(forward&&) = default;
-        constexpr forward& operator=(const forward&) = default;
-        constexpr forward& operator=(forward&&) = default;
+You can use partial differentiation, but you have to specify the activity
+parameter in the constructor (equal to 0 for inactive node), example shown below.
 
-        constexpr auto operator+(const forward& other){
-          return forward{
-            value+other.value,
-            derivative+other.derivative
-          };
-        }
+/warningIf you need derivatives of higher order it is advised to use symbolic differentiation
+module for it's simplifying ability.
 
-        template<typename U, typename = std::enable_if_t<std::is_arithmetic<U>::value>>
-          constexpr auto operator+(U other){
-            return forward{value + other, derivative};
-          }
+<b>Example: Calculating \f$ \frac{\partial z}{\partial x} \cos(x+y)*\sin(y) + 3 \f$:</b>
+\code
 
-        constexpr auto operator-(const forward& other){
-          return forward{value-other.value, derivative-other.derivative};
-        }
-
-        template<typename U, typename = std::enable_if_t<std::is_arithmetic<U>::value>>
-          constexpr auto operator-(U other){
-            return forward{value - other, derivative};
-          }
-
-        template<typename U, typename = std::enable_if_t<std::is_arithmetic<U>::value>>
-          constexpr auto operator*(U other){
-            return forward{value * other, derivative * other};
-          }
-
-        constexpr auto operator*(const forward& other){
-          return forward{
-            value * other.value,
-            derivative*other.value + value*other.derivative
-          };
-        }
-
-        constexpr auto operator/(const forward& other){
-          return forward{
-            value/other.value,
-            (derivative*other.value - value*other.derivative)
-              /(other.value*other.value)
-          };
-        }
-    };
-}
+//Active variable x with initial value of 6
+numpp::differentiation::automatic::forward x{6};
+//Inactive variable y with initial value of 4;
+numpp::differentiation::automatic::forward y{4};
+//Calculate value and partial derivative into two seperate variables
+auto z = std::cos(x+y)*std::sin(y) + 3
+std::cout << "Function value: " << z.value << std::endl;
+std::cout << "Function derivative wrt x: " << z.derivative<< std::endl;
+\endcode
 
 
-#if defined  __GNUC__ && !defined __clang__
-  #define CONSTEXPR constexpr
-#elif
-  #define CONSTEXPR
-#endif
+\sa \red numpp_symbolic_differentiation "Symbolic Differentiation"
 
-namespace std{
+*/
 
-  constexpr auto relu(const numpp::differentiation::automatic::forward<auto>& number){
-    return numpp::differentiation::automatic::forward{
-      ((number.value > 0) ? number.value : 0),
-      ((number.value > 0) ? 1 : 0)
-    };
-  }
-
-  CONSTEXPR auto pow(
-      const numpp::differentiation::automatic::forward<auto>& number,
-      const auto& exp
-      ){
-    return numpp::differentiation::automatic::forward{
-      std::pow(number.value, exp),
-      number.derivative*(exp * std::pow(number.value, exp-1))
-    };
-  }
-
-  CONSTEXPR auto exp(const numpp::differentiation::automatic::forward<auto>& number){
-    return numpp::differentiation::automatic::forward{
-      std::exp(number.value),
-      number.derivative * std::exp(number.value)
-    };
-  }
-  CONSTEXPR auto log(const numpp::differentiation::automatic::forward<auto>& number){
-    return numpp::differentiation::automatic::forward{
-      std::log(number.value),
-      number.derivative/number.value
-    };
-  }
-  CONSTEXPR auto sin(const numpp::differentiation::automatic::forward<auto>& number){
-    return numpp::differentiation::automatic::forward{
-      std::sin(number.value),
-      number.derivative*cos(number.value)
-    };
-  }
-
-  CONSTEXPR auto cos(const numpp::differentiation::automatic::forward<auto>& number){
-    return numpp::differentiation::automatic::forward{
-      std::cos(number.value),
-      -number.derivative * sin(number.value)
-    };
-  }
-
-  CONSTEXPR auto arctan(const numpp::differentiation::automatic::forward<auto>& number){
-    return numpp::differentiation::automatic::forward{
-      std::arctan(number.value),
-      number.derivative / (1 + number.value*number.value)
-    };
-  }
-
-  CONSTEXPR auto sqrt(const numpp::differentiation::automatic::forward<auto>& number){
-    return numpp::differentiation::automatic::forward{
-      std::sqrt(number.value),
-      number.derivative / (2 * std::sqrt(number.value))
-    };
-  }
-
-  CONSTEXPR auto asin(const numpp::differentiation::automatic::forward<auto>& number){
-    return numpp::differentiation::automatic::forward{
-      std::asin(number.value),
-      number.derivative / std::sqrt(1 - number*number)
-    };
-  }
-}
+#include"./forward/structure.hpp"
+#include"./forward/functions.hpp"
 
 #endif
