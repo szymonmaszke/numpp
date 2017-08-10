@@ -7,14 +7,59 @@
 
 
 namespace numpp::matrix::sparse{
-  template<typename T>
-    struct inner_block{
-      public:
-        std::vector<T> data;
-        std::size_t column;
-    };
+  namespace impl{
+    template<typename T>
+      struct inner_block{
+        public:
+          std::vector<T> data;
+          std::size_t column;
+      };
+  }
   //BLOCK OF CONTIGUOUS DATA IN MATRIX
 
+/**
+\ingroup numpp_structures_matrices_sparse
+
+\class nested
+
+\tparam T arithmetic type contained in matrix class
+\tparam Rows number of rows in matrix
+\tparam Columns number of columns in matrix
+
+\brief Block nested version of sparse matrix
+
+<b>This implementation is an experiment in cache hit-rate.\n </b>
+Whole sparse matrix is contained in one array, inside there is a nested block which contains each data block
+After each block operation calculating row is performed.
+
+\warning <b>For parallelization of the sparse matrix dense vector multiplication you need compiler with OpenMP support</b>
+\warning Only sparse matrix dense vector multiplication implemented
+\warning <b>Each row has to be seperate std::initializer_list</b>
+
+<b>Pros:</b>
+- Even smaller memory overhead than numpp::matrix::sparse::block (one less element per block kept in memory)
+- Higher possibility of SIMD optimization than above
+
+<b>Cons:</b>
+- Additional operations of read for every block
+- Cache locality may be worse as two vectors are nested inside each other
+
+<b>Example:</b>
+\code
+numpp::matrix::sparse::nested<double, 3,3> mat{{0,  0,   1},
+                                                {0,  2.3, 0},
+                                                {0,  0,   13.7}
+                                               };
+constexpr numpp::matrix::vector<double, 3> vec{1,2,3};
+auto result = mat*vec;
+\endcode
+
+
+\code
+#include"numpp/structures/matrices/sparse.hpp"
+\endcode
+
+*/
   template<typename T, std::size_t Rows, std::size_t Columns>
       //VERSION WITH MAXIMUM POSSIBLE CACHE HIT
       //ANALYZE BLOCK STRUCTURE WHERE THIS STYLE IS PREFFERED
@@ -60,14 +105,26 @@ namespace numpp::matrix::sparse{
             return matrix.size();
           }
 
-          const std::array<std::vector<inner_block<T>>, Rows>& data() const noexcept{
+          /**
+            Returns underlying data structure
+            */
+          const std::array<std::vector<impl::inner_block<T>>, Rows>& data() const noexcept{
             return matrix;
           }
 
-          std::array<std::vector<inner_block<T>>, Rows>& data() noexcept{
+          /**
+            Returns underlying data structure
+            */
+          std::array<std::vector<impl::inner_block<T>>, Rows>& data() noexcept{
             return matrix;
           }
 
+          /**
+             Function multiplying sparse matrix and dense vector
+
+             \param vec Vector which will be multiplied
+             \returns vector<U, Rows, false>
+          */
           template<typename U>
             auto operator*(const numpp::vector<U,Columns, false>& vec){
               vector<U,Rows,false> output{};
@@ -90,7 +147,7 @@ namespace numpp::matrix::sparse{
             }
 
         private:
-          std::array<std::vector<inner_block<T>>, Rows> matrix{};
+          std::array<std::vector<impl::inner_block<T>>, Rows> matrix{};
       };
 }
 

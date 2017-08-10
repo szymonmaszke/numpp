@@ -7,6 +7,49 @@
 
 namespace numpp::matrix::sparse{
   template<typename T, std::size_t Rows, std::size_t Columns>
+/**
+\ingroup numpp_structures_matrices_sparse
+
+\class block
+
+\tparam T arithmetic type contained in matrix class
+\tparam Rows number of rows in matrix
+\tparam Columns number of columns in matrix
+
+\brief Block version of sparse matrix
+
+<b>This implementation is an experiment in cache hit-rate.\n </b>
+Whole sparse matrix is contained in one array, divided based on blocks of contiguous non-zero numbers.\n
+After each block operation calculating row is performed.
+
+\warning <b>For parallelization of the sparse matrix dense vector multiplication you need compiler with OpenMP support</b>
+\warning Only sparse matrix dense vector multiplication implemented
+\warning <b>Each row has to be seperate std::initializer_list</b>
+
+<b>Pros:</b>
+- Obviously lower memory overhead, for 50% sparse matrix with no blocks it contains only 150% storage of dense matrix.
+- Higher cache locality (at least in theory)
+
+<b>Cons:</b>
+- Impossible SIMD optimization
+- Additional operations of read for every block
+
+<b>Example:</b>
+\code
+numpp::matrix::sparse::nested<double, 3,3> mat{{0,  0,   1},
+                                                {0,  2.3, 0},
+                                                {0,  0,   13.7}
+                                               };
+constexpr numpp::matrix::vector<double, 3> vec{1,2,3};
+auto result = mat*vec;
+\endcode
+
+
+\code
+#include"numpp/structures/matrices/sparse.hpp"
+\endcode
+
+*/
       //VERSION WITH MAXIMUM POSSIBLE CACHE HIT
       //ANALYZE BLOCK STRUCTURE WHERE THIS STYLE IS PREFFERED
       class block{
@@ -74,6 +117,13 @@ namespace numpp::matrix::sparse{
           std::array<std::vector<T>, Rows>&  data() noexcept{
             return matrix;
           }
+
+          /**
+             Function multiplying sparse matrix and dense vector
+
+             \param vec Vector which will be multiplied
+             \returns vector<U, Rows, false>
+          */
 
           template<typename U>
             auto operator*(const numpp::vector<U,Columns, false>& vec){
