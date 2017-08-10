@@ -35,6 +35,11 @@ namespace numpp::matrix{
 
   template<typename T, std::size_t Rows, std::size_t Columns>
     constexpr dense<T, Columns, Rows> transpose(const dense<T, Rows, Columns>& matrix){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Transposes given matrix
+  \returns Transposed dense matrix
+*/
       return impl::unpack<T, Columns, Rows>(
           impl::transpose_column_expand(matrix, std::make_index_sequence<Columns>{}),
           std::make_index_sequence<Rows*Columns>{}

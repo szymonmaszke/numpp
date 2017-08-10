@@ -3,7 +3,7 @@
 
 /** \defgroup numpp_roots Root Finding
 
-  This module provides methods for finding roots of \f$f(x) = 0\f$
+  \brief This module provides methods for finding roots of \f$f(x) = 0\f$
 
   Namespace:
   \code
@@ -15,12 +15,6 @@
   numpp/roots.h #includes every method in the module
   numpp/roots/METHOD.hpp #include specific METHOD
   \endcode
-
-
-  Provided functions:
-  - bisection
-  - newton
-  - halley
 
 */
 

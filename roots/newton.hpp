@@ -97,6 +97,12 @@ namespace numpp::roots{
       typename T
       /* typename = std::enable_if_t<std::is_floating_point<T>::value> */
     >
+      constexpr auto newton(
+          FunctionAndDerivative&& f,
+          T&& value,
+          std::size_t iterations=1000,
+          const double epsilon = 1e-7
+      ){
 /** \ingroup numpp_roots
 
     \brief AUTOMATIC DIFFERENTIATION OVERLOAD
@@ -107,15 +113,9 @@ namespace numpp::roots{
 
     \warning FunctionAndDerivative should be of type automatic differentiation forward
 
-    \sa Automatic Differentiation
+    \sa \ref numpp_differentiation_automatic "Automatic Differentiation"
 
 */
-      constexpr auto newton(
-          FunctionAndDerivative&& f,
-          T&& value,
-          std::size_t iterations=1000,
-          const double epsilon = 1e-7
-      ){
           auto argument{value};
           for(std::size_t i=0; i<iterations; ++i){
             auto [root, derivative] = f(argument);

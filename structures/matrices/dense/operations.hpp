@@ -79,6 +79,11 @@ namespace numpp::matrix{
         const dense<T, Rows, Columns>& first,
         const dense<U, Rows, Columns>& second
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Element-wise addition of two matrices of the same size
+
+*/
       return impl::accumulate(first, second, std::plus<>{},
           std::make_index_sequence<Rows*Columns>{});
     }
@@ -88,6 +93,11 @@ namespace numpp::matrix{
         const dense<T, Rows, Columns>& first,
         const dense<U, Rows, Columns>& second
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Element-wise subtraction of two matrices of the same size
+
+*/
       return impl::accumulate(first, second, std::minus<>{},
           std::make_index_sequence<Rows*Columns>{});
     }
@@ -97,6 +107,13 @@ namespace numpp::matrix{
         const dense<U, Rows, RowsColumns>& first,
         const dense<T, RowsColumns, Columns>& second
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Matrix row-column multiplication
+
+  \returns Matrix with appropriate size after multiplication (dense<common_type_t<U,T>, Rows, Columns>)
+
+*/
       return impl::unpack<std::common_type_t<T,U>, Rows, Columns>(
           impl::row_wise(first, second, std::make_index_sequence<Rows>{}),
           std::make_index_sequence<Rows*Columns>{}
@@ -109,6 +126,11 @@ namespace numpp::matrix{
         const dense<T,Rows,Columns>& first,
         const dense<U,Rows,Columns>& second
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Element-wise multiplication of two matrices of the same size
+
+*/
       return impl::accumulate(first, second, std::multiplies<>{},
           std::make_index_sequence<Rows*Columns>{});
     }
@@ -119,6 +141,11 @@ namespace numpp::matrix{
         const dense<T,Rows,Columns>& matrix,
         const U scalar
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Multiplication of dense matrix and scalar
+
+*/
       return impl::accumulate(matrix, scalar, std::multiplies<>{},
           std::make_index_sequence<Rows*Columns>{});
     }
@@ -129,6 +156,12 @@ namespace numpp::matrix{
         const U scalar,
         const dense<T,Rows,Columns>& matrix
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Multiplication of dense matrix and scalar
+
+*/
+
       return matrix*scalar;
     }
 
@@ -137,6 +170,11 @@ namespace numpp::matrix{
         const dense<T,Rows,Columns>& matrix,
         const U scalar
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Element-wise division of matrix against scalar
+
+*/
       return impl::accumulate(matrix, scalar, std::divides<>{},
           std::make_index_sequence<Rows*Columns>{});
     }
@@ -146,6 +184,11 @@ namespace numpp::matrix{
         const dense<T,Rows,Columns>& first,
         const dense<U,Rows,Columns>& second
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Element-wise division of two matrices
+
+*/
       return impl::accumulate(first, second, std::divides<>{},
           std::make_index_sequence<Rows*Columns>{});
     }

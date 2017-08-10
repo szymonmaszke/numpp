@@ -63,6 +63,10 @@ namespace numpp{
 				const vector<T,Size,Transposition>& first,
 				const vector<U,Size,Transposition>& second
 		){
+/**
+  \ingroup numpp_structures_vector
+  \brief returns the sum of two vectors \f$first+second\f$ which is a new vector object
+*/
       return impl::accumulate(first, second, std::plus<>{},
           std::make_index_sequence<Size>{});
 		}
@@ -72,6 +76,10 @@ namespace numpp{
 				const vector<T,Size,Transposition>& first,
 				const vector<U,Size,Transposition>& second
 		){
+/**
+  \ingroup numpp_structures_vector
+  \brief returns the subtraction of two vectors \f$first-second\f$ which is a new vector object
+*/
       return impl::accumulate(first, second, std::minus<>{},
           std::make_index_sequence<Size>{});
 		}
@@ -82,6 +90,10 @@ namespace numpp{
 				const vector<T,Size,Transposition>& vec,
 				U&& scalar
 		){
+/**
+  \ingroup numpp_structures_vector
+  \brief returns the multiplication of vector with scalar\f$vec*scalar\f$ which is a new vector object
+*/
       return impl::accumulate(std::forward<U>(scalar), vec, std::multiplies<>{},
           std::make_index_sequence<Size>{});
 		}
@@ -92,6 +104,10 @@ namespace numpp{
 				U scalar,
 				const vector<T,Size,Transposition>& vec
 		){
+/**
+  \ingroup numpp_structures_vector
+  \brief returns the multiplication of scalar and vector \f$scalar*vec\f$ which is a new vector object
+*/
       return vec*scalar;
 		}
 
@@ -100,6 +116,11 @@ namespace numpp{
 				const vector<T, Size, true>& first,
 				const vector<U, Size, false>& second
 		){
+/**
+  \ingroup numpp_structures_vector
+  \brief returns the multiplication of the form \f$first^T*second\f$
+  \returns common type of two vectors data type, e.g. double for float and double types
+*/
       std::common_type_t<T,U> ret{};
       for(std::size_t i=0; i<Size; ++i)
         ret += first(i)*second(i);
@@ -111,6 +132,11 @@ namespace numpp{
 				const vector<T, Rows, false>& first,
 				const vector<U, Columns, true>& second
 		){
+/**
+  \ingroup numpp_structures_vector
+  \brief returns the multiplication of the form \f$first*second^T\f$
+  \returns Matrix with data type common_type and size Rows and Columns
+*/
       return impl::accumulate(first, second, std::multiplies<>{},
           std::make_index_sequence<Rows>{}, std::make_index_sequence<Columns>{}
       );
@@ -121,6 +147,11 @@ namespace numpp{
 				const vector<T,Size,Transposition>& vec,
 				U scalar
 		){
+/**
+  \ingroup numpp_structures_vector
+  \brief returns the division of vector with scalar of the form \f$\frac{1}{scalar}*vec \f$
+  \returns vector divided by scalar
+*/
       return impl::accumulate(scalar, vec, std::divides<>{},
           std::make_index_sequence<Size>{});
 		}

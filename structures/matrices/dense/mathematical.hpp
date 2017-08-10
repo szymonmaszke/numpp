@@ -46,6 +46,13 @@ namespace std{
         const numpp::matrix::dense<T, Rows, Columns>& matrix,
         U&& exp
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Standard library overload, matrix with element-wise power \f$A^exp\f$
+
+  \param matrix Matrix whose elements will be taken to the exp power
+  \exp power for every element
+*/
       return numpp::matrix::impl::propagate_function_two_arguments<T, Rows, Columns>(
           std::pow,
           matrix, exp,
@@ -57,6 +64,12 @@ namespace std{
     CONSTEXPR numpp::matrix::dense<T, Rows, Columns> log(
         const numpp::matrix::dense<T, Rows, Columns>& matrix
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Standard library overload, matrix element-wise logarithm \f$ln(A)\f$
+
+  \param matrix Matrix whose elements will be logarithmized
+*/
       return numpp::matrix::impl::propagate_function_one_argument<T, Rows, Columns>(
           std::log, matrix, std::make_index_sequence<Rows*Columns>{}
       );
@@ -66,14 +79,28 @@ namespace std{
     CONSTEXPR numpp::matrix::dense<T, Rows, Columns> exp(
         const numpp::matrix::dense<T, Rows, Columns>& matrix
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Standard library overload, matrix element-wise exp function \f$e^(A)\f$
+
+  \param matrix Matrix whose elements will be exponentiated
+*/
       return numpp::matrix::impl::propagate_function_one_argument<T, Rows, Columns>(
           std::exp, matrix, std::make_index_sequence<Rows*Columns>{}
       );
     }
+
   template<typename T, std::size_t Rows, std::size_t Columns>
     CONSTEXPR numpp::matrix::dense<T, Rows, Columns> abs(
         const numpp::matrix::dense<T, Rows, Columns>& matrix
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Standard library overload, matrix element-wise abs function \f$|A|\f$
+
+  \param matrix Matrix with exact same elements, but in absolute value
+*/
+
       return numpp::matrix::impl::propagate_function_one_argument<T, Rows, Columns>(
           std::abs, matrix, std::make_index_sequence<Rows*Columns>{}
       );
@@ -82,6 +109,12 @@ namespace std{
     CONSTEXPR numpp::matrix::dense<T, Rows, Columns> sqrt(
         const numpp::matrix::dense<T, Rows, Columns>& matrix
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Standard library overload, matrix element-wise sqrt function \f$|A|\f$
+
+  \param matrix Matrix with elements passed through sqrt standard library function
+*/
       return numpp::matrix::impl::propagate_function_one_argument<T, Rows, Columns>(
           std::sqrt, matrix, std::make_index_sequence<Rows*Columns>{}
       );
@@ -91,6 +124,12 @@ namespace std{
     CONSTEXPR numpp::matrix::dense<T, Rows, Columns> sin(
         const numpp::matrix::dense<T, Rows, Columns>& matrix
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Standard library overload, matrix element-wise sin function \f$|A|\f$
+
+  \param matrix Matrix with elements passed through sin standard library function
+*/
       return numpp::matrix::impl::propagate_function_one_argument<T, Rows, Columns>(
           std::sin, matrix, std::make_index_sequence<Rows*Columns>{}
       );
@@ -100,6 +139,12 @@ namespace std{
     CONSTEXPR numpp::matrix::dense<T, Rows, Columns> cos(
         const numpp::matrix::dense<T, Rows, Columns>& matrix
         ){
+/**
+  \ingroup numpp_structures_matrices_dense
+  Standard library overload, matrix element-wise sin function \f$|A|\f$
+
+  \param matrix Matrix with elements passed through cos standard library function
+*/
       return numpp::matrix::impl::propagate_function_one_argument<T, Rows, Columns>(
           std::cos, matrix, std::make_index_sequence<Rows*Columns>{}
       );
