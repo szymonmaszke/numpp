@@ -16,6 +16,24 @@ by performing every calculation during the compilation step.
   Furthermore, it is template only, hence easy to install (via repo cloning and copying 
   or using the image provided in the banner docker image).
 
+Usage Example:
+==============
+
+**1. Differentiating cos(x1)\*sin(x2) two times with respect to x1 and y2.**
+
+```cpp
+#include"numpp/differentiation/symbolic.hpp"
+namespace nds = numpp::differentiation::symbolic; //Removes redundant namespace
+
+using Function = decltype(cos(nds::x<0>{})*sin(nds::x<1>{})); //Create function type
+using Derivative = differentiate<Function, 2>::with_respect_to<0,1>; //Differentiate type
+
+int main(){
+  std::cout << Derivative::calculate(std::array<double, 2>{3, 5}; //Evaluate derivative at point x1 = 3, x2 = 5
+  return 0;
+}
+```
+
 How does it compare?
 ====================
 
@@ -23,13 +41,14 @@ How does it compare?
 
   Best looking part is, without a doubt, **symbolic differentiation**.
 
-    Thanks to researchers from this paper: **https://arxiv.org/abs/1705.01729** and some improvements of mine,
+  Thanks to researchers from this paper: https://arxiv.org/abs/1705.01729 and some improvements of mine,
   it seems, that it can achieve around **10x speedup or more** in derivative evaluations against **SymPy**
   which approaches **efficiency of hand-coded derivatives**.
   When it comes to memory it should use 0b as it's only type based.
 
   For thorough compilation times comparison, I urge you to check their scientific paper!
-     **Credits for the squeezer idea and being first to publish it go to academics mentioned above.**
+  
+  **Credits for the squeezer idea and being first to publish it go to academics mentioned above.**
 
 ## 2. Overall Runtime speedup
 
