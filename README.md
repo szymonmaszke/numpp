@@ -8,13 +8,17 @@ numpp
 **numpp** is an open source numerical library aimed at maximizing runtime efficiency 
 by performing every calculation during the compilation step.
 
-  Currently it consists of **3 differentiation ways**, **linear algebra structures**, **root finding methods**.
+Currently it consists of: 
+  - **3 differentiation ways**, 
+  - **linear algebra structures**
+  - **root finding methods**
+  - **krylov subspace method**
 
-  It trims the runtime by using cutting edge **C++17** features, **template metaprogramming**,
-  numerical ideas seen in **recent numerical research papers** and many others.
+It trims the runtime by using cutting edge **C++17** features, **template metaprogramming**,
+numerical ideas seen in **recent numerical research papers** and many others.
 
-  Furthermore, it is template only, hence easy to install (via repo cloning and copying 
-  or using the image provided in the banner docker image).
+Furthermore, it is template only, hence easy to install (via repo cloning and copying 
+or using the image provided in the banner docker image).
 
 Usage Example:
 ==============
