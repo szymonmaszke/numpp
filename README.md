@@ -5,20 +5,17 @@ numpp
 |--------------------|----------------------------|------------------|
 | ![Build Status](https://travis-ci.org/vyzyv/numpp.svg?branch=master) | [![Docker Status](https://img.shields.io/badge/docker-passing-blue.svg)](https://hub.docker.com/r/vyzyv/numpp/) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4708552f40f3405cb80ed14a455d15f4)](https://www.codacy.com/app/vyz/numpp?utm_source=github.com&utm_medium=referral&utm_content=vyzyv/numpp&utm_campaign=badger) | 
 
-**numpp** is an open source numerical library aimed at maximizing runtime efficiency 
+**numpp** is an open source, template only, numerical library aimed at maximizing runtime efficiency 
 by performing every calculation during the compilation step.
 
 Currently it consists of: 
-  - **3 differentiation ways**, 
-  - **linear algebra structures**
-  - **root finding methods**
-  - **krylov subspace method**
+  - **three differentiation ways (symbolic, automatic, finite difference)**, 
+  - **linear algebra structures (matrix dense, sparse, vector)**
+  - **root finding methods (bisection, newton, halley)**
+  - **krylov subspace methods (conjugate gradient, preconditioned conjugate gradient)**
 
 It trims the runtime by using cutting edge **C++17** features, **template metaprogramming**,
 numerical ideas seen in **recent numerical research papers** and many others.
-
-Furthermore, it is template only, hence easy to install (via repo cloning and copying 
-or using the image provided in the banner docker image).
 
 Usage Example:
 ==============
