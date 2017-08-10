@@ -2,6 +2,9 @@ Dockerfile
 .dockerignore
 
 tags
+xml
+html
+latex
 
 README.md
 LICENSE

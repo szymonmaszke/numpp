@@ -126,3 +126,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+#Doxygen generated documentation
+xml/
+html/
+latex/
