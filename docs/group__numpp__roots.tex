@@ -1,0 +1,217 @@
+\hypertarget{group__numpp__roots}{}\section{Root Finding}
+\label{group__numpp__roots}\index{Root Finding@{Root Finding}}
+
+
+This module provides methods for finding roots of $f(x) = 0$.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename Func , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+floating\+\_\+point$<$\+T$>$\+::value$>$$>$ }\\constexpr auto \hyperlink{group__numpp__roots_ga8b5bb65b3192456c184a331f88af0b56}{numpp\+::roots\+::bisection} (Func \&\&f, T lower\+\_\+bound, T upper\+\_\+bound, std\+::size\+\_\+t iterations=1000)
+\item 
+{\footnotesize template$<$typename T , typename Func $>$ }\\constexpr auto \hyperlink{group__numpp__roots_ga1b4f2040358e71ad1fd2bfcc8c71a8d6}{numpp\+::roots\+::bisection} (Func \&\&f, T \&\&lower\+\_\+bound, T \&\&upper\+\_\+bound, const double epsilon, std\+::size\+\_\+t iterations)
+\item 
+{\footnotesize template$<$typename Function , typename Derivative , typename Second\+Derivative , typename T $>$ }\\constexpr auto \hyperlink{group__numpp__roots_ga30924012d656a67696860b51d3d3f315}{numpp\+::roots\+::halley} (T \&\&value, std\+::size\+\_\+t iterations=1000, const double epsilon=1e-\/7)
+\item 
+{\footnotesize template$<$typename Function , typename Derivative , typename Second\+Derivative , typename T $>$ }\\constexpr auto \hyperlink{group__numpp__roots_gaa5dcba977340c78cd587fc7f9a3c0648}{numpp\+::roots\+::halley} (T \&\&value, Function f, Derivative df, Second\+Derivative dfdf, std\+::size\+\_\+t iterations=1000, const double epsilon=1e-\/7)
+\item 
+{\footnotesize template$<$typename Function , typename Derivative , typename T $>$ }\\constexpr auto \hyperlink{group__numpp__roots_ga756a768c79701c5506809765b24f89a0}{numpp\+::roots\+::newton} (T \&\&value, std\+::size\+\_\+t iterations=1000, const double epsilon=1e-\/7)
+\item 
+{\footnotesize template$<$typename Function , typename Derivative , typename T $>$ }\\constexpr auto \hyperlink{group__numpp__roots_ga0c3358cbe925f1840d2332f81dec42ab}{numpp\+::roots\+::newton} (Function \&\&f, Derivative \&\&df, T \&\&value, std\+::size\+\_\+t iterations=1000, const double epsilon=1e-\/7)
+\item 
+{\footnotesize template$<$typename Function\+And\+Derivative , typename T $>$ }\\constexpr auto \hyperlink{group__numpp__roots_ga7784b72874be701ab11320a8ab594e6f}{numpp\+::roots\+::newton} (Function\+And\+Derivative \&\&f, T \&\&value, std\+::size\+\_\+t iterations=1000, const double epsilon=1e-\/7)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module provides methods for finding roots of $f(x) = 0$. 
+
+Namespace\+: 
+\begin{DoxyCode}
+\hyperlink{namespacenumpp_1_1roots}{numpp::roots}
+\end{DoxyCode}
+
+
+Include\+: 
+\begin{DoxyCode}
+\hyperlink{namespacenumpp}{numpp}/roots.h #includes every method in the module
+\hyperlink{namespacenumpp}{numpp}/roots/METHOD.hpp #include specific METHOD
+\end{DoxyCode}
+ 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__numpp__roots_ga8b5bb65b3192456c184a331f88af0b56}\label{group__numpp__roots_ga8b5bb65b3192456c184a331f88af0b56}} 
+\index{Root Finding@{Root Finding}!bisection@{bisection}}
+\index{bisection@{bisection}!Root Finding@{Root Finding}}
+\subsubsection{\texorpdfstring{bisection()}{bisection()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Func , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+floating\+\_\+point$<$\+T$>$\+::value$>$$>$ \\
+constexpr auto numpp\+::roots\+::bisection (\begin{DoxyParamCaption}\item[{Func \&\&}]{f,  }\item[{T}]{lower\+\_\+bound,  }\item[{T}]{upper\+\_\+bound,  }\item[{std\+::size\+\_\+t}]{iterations = {\ttfamily 1000} }\end{DoxyParamCaption})}
+
+Bisects given interval and finds the root of function.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & type of interval arguments \\
+\hline
+{\em Func} & type of Function (auto-\/deduced Functor or function pointer)\\
+\hline
+\end{DoxyTemplParams}
+Algorithm stops when it reaches automatically calculated precision or exceeds maximum number of iterations (default\+: 1000)
+
+Precision adjusted to the lower and upper arguments, accordingly to Numerical Recipees recipe.\mbox{\Hypertarget{group__numpp__roots_ga1b4f2040358e71ad1fd2bfcc8c71a8d6}\label{group__numpp__roots_ga1b4f2040358e71ad1fd2bfcc8c71a8d6}} 
+\index{Root Finding@{Root Finding}!bisection@{bisection}}
+\index{bisection@{bisection}!Root Finding@{Root Finding}}
+\subsubsection{\texorpdfstring{bisection()}{bisection()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename Func $>$ \\
+constexpr auto numpp\+::roots\+::bisection (\begin{DoxyParamCaption}\item[{Func \&\&}]{f,  }\item[{T \&\&}]{lower\+\_\+bound,  }\item[{T \&\&}]{upper\+\_\+bound,  }\item[{const double}]{epsilon,  }\item[{std\+::size\+\_\+t}]{iterations }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+Everything has to be specified by the user
+
+Algorithm stops when it reaches precision given by epsilon or exceeds iterations provided by the user\mbox{\Hypertarget{group__numpp__roots_ga30924012d656a67696860b51d3d3f315}\label{group__numpp__roots_ga30924012d656a67696860b51d3d3f315}} 
+\index{Root Finding@{Root Finding}!halley@{halley}}
+\index{halley@{halley}!Root Finding@{Root Finding}}
+\subsubsection{\texorpdfstring{halley()}{halley()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Function , typename Derivative , typename Second\+Derivative , typename T $>$ \\
+constexpr auto numpp\+::roots\+::halley (\begin{DoxyParamCaption}\item[{T \&\&}]{value,  }\item[{std\+::size\+\_\+t}]{iterations = {\ttfamily 1000},  }\item[{const double}]{epsilon = {\ttfamily 1e-\/7} }\end{DoxyParamCaption})}
+
+S\+Y\+M\+B\+O\+L\+I\+C\+AL O\+V\+E\+R\+L\+O\+AD\+:
+
+Halley\textquotesingle{}s algorithm for finding root of the function using first and second order derivatives.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & type of function argument \\
+\hline
+{\em Function} & type of function (has to be symbolic, check\+: symbolic) \\
+\hline
+{\em Derivative} & type of derivative (has to be symbolic, check\+: symbolic) \\
+\hline
+{\em Second\+Derivative} & type of second derivative (has to be symbolic, check\+: symbolic)\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyWarning}{Warning}
+Theorethically cubic convergence when $f'''$ continuous.
+
+Some problems may arise for this method, check professional literature
+\end{DoxyWarning}
+Algorithm stops when it reaches given precision or exceeds maximum number of iterations (default\+: 1000)
+
+\begin{DoxyReturn}{Returns}
+{\bfseries Type}\+: Same as Function return type 
+
+{\bfseries Value}\+: Root in the case of convergence
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+{\bfseries May not converge to the root, evaluate your result after obtaining it}
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+Symbolic Differentiation
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{group__numpp__roots_gaa5dcba977340c78cd587fc7f9a3c0648}\label{group__numpp__roots_gaa5dcba977340c78cd587fc7f9a3c0648}} 
+\index{Root Finding@{Root Finding}!halley@{halley}}
+\index{halley@{halley}!Root Finding@{Root Finding}}
+\subsubsection{\texorpdfstring{halley()}{halley()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Function , typename Derivative , typename Second\+Derivative , typename T $>$ \\
+constexpr auto numpp\+::roots\+::halley (\begin{DoxyParamCaption}\item[{T \&\&}]{value,  }\item[{Function}]{f,  }\item[{Derivative}]{df,  }\item[{Second\+Derivative}]{dfdf,  }\item[{std\+::size\+\_\+t}]{iterations = {\ttfamily 1000},  }\item[{const double}]{epsilon = {\ttfamily 1e-\/7} }\end{DoxyParamCaption})}
+
+F\+I\+N\+I\+TE D\+I\+F\+F\+E\+R\+E\+N\+C\+E/\+O\+T\+H\+ER M\+E\+T\+H\+O\+DS O\+V\+E\+R\+L\+O\+AD
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & type of function argument \\
+\hline
+{\em Function} & type of function (Functor or function) \\
+\hline
+{\em Derivative} & type of derivative (Functor of function) \\
+\hline
+{\em Second\+Derivative} & type of second derivative (Functor or function)\\
+\hline
+\end{DoxyTemplParams}
+\mbox{\Hypertarget{group__numpp__roots_ga756a768c79701c5506809765b24f89a0}\label{group__numpp__roots_ga756a768c79701c5506809765b24f89a0}} 
+\index{Root Finding@{Root Finding}!newton@{newton}}
+\index{newton@{newton}!Root Finding@{Root Finding}}
+\subsubsection{\texorpdfstring{newton()}{newton()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Function , typename Derivative , typename T $>$ \\
+constexpr auto numpp\+::roots\+::newton (\begin{DoxyParamCaption}\item[{T \&\&}]{value,  }\item[{std\+::size\+\_\+t}]{iterations = {\ttfamily 1000},  }\item[{const double}]{epsilon = {\ttfamily 1e-\/7} }\end{DoxyParamCaption})}
+
+S\+Y\+M\+B\+O\+L\+I\+C\+AL O\+V\+E\+R\+L\+O\+AD
+
+Newton\textquotesingle{}s algorithm for finding root of the function using first order derivative.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & type of function argument \\
+\hline
+{\em Function} & type of function (has to be symbolic, check\+: symbolic) \\
+\hline
+{\em Derivative} & type of derivative (has to be symbolic, check\+: symbolic)\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyWarning}{Warning}
+Theorethically quadratic convergence when $f''$ continuous.
+
+Some problems may arise for this method, check professional literature
+\end{DoxyWarning}
+Algorithm stops when it reaches given precision or exceeds maximum number of iterations (default\+: 1000)
+
+\begin{DoxyReturn}{Returns}
+{\bfseries Type}\+: Same as Function return type 
+
+{\bfseries Value}\+: Root in the case of convergence
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+{\bfseries May not converge to the root, evaluate your result after obtaining it}
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+Symbolic Differentiation
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{group__numpp__roots_ga0c3358cbe925f1840d2332f81dec42ab}\label{group__numpp__roots_ga0c3358cbe925f1840d2332f81dec42ab}} 
+\index{Root Finding@{Root Finding}!newton@{newton}}
+\index{newton@{newton}!Root Finding@{Root Finding}}
+\subsubsection{\texorpdfstring{newton()}{newton()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename Function , typename Derivative , typename T $>$ \\
+constexpr auto numpp\+::roots\+::newton (\begin{DoxyParamCaption}\item[{Function \&\&}]{f,  }\item[{Derivative \&\&}]{df,  }\item[{T \&\&}]{value,  }\item[{std\+::size\+\_\+t}]{iterations = {\ttfamily 1000},  }\item[{const double}]{epsilon = {\ttfamily 1e-\/7} }\end{DoxyParamCaption})}
+
+F\+U\+N\+C\+T\+O\+R/\+F\+U\+N\+C\+T\+I\+ON O\+V\+E\+R\+L\+O\+AD
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & type of function argument \\
+\hline
+{\em Function} & type of function (Functor or function) \\
+\hline
+{\em Derivative} & type of derivative (Functor or function)\\
+\hline
+\end{DoxyTemplParams}
+You may use finite difference code from differentiation module
+
+\begin{DoxySeeAlso}{See also}
+Finite Difference Differentiation
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{group__numpp__roots_ga7784b72874be701ab11320a8ab594e6f}\label{group__numpp__roots_ga7784b72874be701ab11320a8ab594e6f}} 
+\index{Root Finding@{Root Finding}!newton@{newton}}
+\index{newton@{newton}!Root Finding@{Root Finding}}
+\subsubsection{\texorpdfstring{newton()}{newton()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Function\+And\+Derivative , typename T $>$ \\
+constexpr auto numpp\+::roots\+::newton (\begin{DoxyParamCaption}\item[{Function\+And\+Derivative \&\&}]{f,  }\item[{T \&\&}]{value,  }\item[{std\+::size\+\_\+t}]{iterations = {\ttfamily 1000},  }\item[{const double}]{epsilon = {\ttfamily 1e-\/7} }\end{DoxyParamCaption})}
+
+A\+U\+T\+O\+M\+A\+T\+IC D\+I\+F\+F\+E\+R\+E\+N\+T\+I\+A\+T\+I\+ON O\+V\+E\+R\+L\+O\+AD
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & type of function argument \\
+\hline
+{\em Function\+And\+Derivative} & Functor returning tuple \mbox{[}value, derivative\mbox{]} \\
+\hline
+{\em Derivative} & type of derivative (Functor or function)\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyWarning}{Warning}
+Function\+And\+Derivative should be of type automatic differentiation forward
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{group__numpp__differentiation__automatic}{Automatic Differentiation}
+\end{DoxySeeAlso}

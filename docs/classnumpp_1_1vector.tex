@@ -1,0 +1,194 @@
+\hypertarget{classnumpp_1_1vector}{}\section{numpp\+:\+:vector$<$ T, Size, Transposition $>$ Class Template Reference}
+\label{classnumpp_1_1vector}\index{numpp\+::vector$<$ T, Size, Transposition $>$@{numpp\+::vector$<$ T, Size, Transposition $>$}}
+
+
+{\ttfamily \#include $<$structure.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a7b2560fd597d173de79e59646758e494}\label{classnumpp_1_1vector_a7b2560fd597d173de79e59646758e494}} 
+using {\bfseries value\+\_\+type} = T
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_aaef4605e241af000e8d48a159972435c}\label{classnumpp_1_1vector_aaef4605e241af000e8d48a159972435c}} 
+using {\bfseries size\+\_\+type} = std\+::size\+\_\+t
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a916b870a14ac1e76e8eab22b5c86d223}\label{classnumpp_1_1vector_a916b870a14ac1e76e8eab22b5c86d223}} 
+using {\bfseries difference\+\_\+type} = std\+::ptrdiff\+\_\+t
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_aafa7cc182e3024a9313adc6a04d42302}\label{classnumpp_1_1vector_aafa7cc182e3024a9313adc6a04d42302}} 
+using {\bfseries reference} = typename std\+::array$<$ T, Size $>$\+::reference
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a9c682af3da1dc34cb68c15585b06b19c}\label{classnumpp_1_1vector_a9c682af3da1dc34cb68c15585b06b19c}} 
+using {\bfseries const\+\_\+reference} = typename std\+::array$<$ T, Size $>$\+::const\+\_\+reference
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_acf8e239235faf0d77433f8c7133743b8}\label{classnumpp_1_1vector_acf8e239235faf0d77433f8c7133743b8}} 
+using {\bfseries pointer} = value\+\_\+type $\ast$
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_af533028c9a99dc86174df15ae28f323a}\label{classnumpp_1_1vector_af533028c9a99dc86174df15ae28f323a}} 
+using {\bfseries const\+\_\+pointer} = const value\+\_\+type $\ast$
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_abe494178a87f1be7dfe8078465dc1534}\label{classnumpp_1_1vector_abe494178a87f1be7dfe8078465dc1534}} 
+using {\bfseries iterator} = typename std\+::array$<$ T, Size $>$\+::iterator
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_aeb72fcde951bfd845ba24d9f01ec9d14}\label{classnumpp_1_1vector_aeb72fcde951bfd845ba24d9f01ec9d14}} 
+using {\bfseries const\+\_\+iterator} = typename std\+::array$<$ T, Size $>$\+::const\+\_\+iterator
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_ab3bb945307c72ee6f5e2b45097a2ed6d}\label{classnumpp_1_1vector_ab3bb945307c72ee6f5e2b45097a2ed6d}} 
+using {\bfseries reverse\+\_\+iterator} = typename std\+::array$<$ T, Size $>$\+::reverse\+\_\+iterator
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a761280bdf7e645f5fe7b7c44cf12fc65}\label{classnumpp_1_1vector_a761280bdf7e645f5fe7b7c44cf12fc65}} 
+using {\bfseries const\+\_\+reverse\+\_\+iterator} = typename std\+::array$<$ T, Size $>$\+::const\+\_\+reverse\+\_\+iterator
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_ad80c07beed6f1f5e24cd5b1b59e71938}\label{classnumpp_1_1vector_ad80c07beed6f1f5e24cd5b1b59e71938}} 
+constexpr {\bfseries vector} (const \hyperlink{classnumpp_1_1vector}{vector} \&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_aaa6ad1b5e7c8f71ff460c296486419a6}\label{classnumpp_1_1vector_aaa6ad1b5e7c8f71ff460c296486419a6}} 
+constexpr {\bfseries vector} (\hyperlink{classnumpp_1_1vector}{vector} \&\&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a2106f202b6dcf228cbd5c9c5eac519d6}\label{classnumpp_1_1vector_a2106f202b6dcf228cbd5c9c5eac519d6}} 
+constexpr \hyperlink{classnumpp_1_1vector}{vector} \& {\bfseries operator=} (const \hyperlink{classnumpp_1_1vector}{vector} \&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_aea654c76b157b8e826b15ef7da7bccec}\label{classnumpp_1_1vector_aea654c76b157b8e826b15ef7da7bccec}} 
+constexpr \hyperlink{classnumpp_1_1vector}{vector} \& {\bfseries operator=} (\hyperlink{classnumpp_1_1vector}{vector} \&\&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_aa56375d25f669ed670c3d04b844e8424}\label{classnumpp_1_1vector_aa56375d25f669ed670c3d04b844e8424}} 
+{\footnotesize template$<$typename... U, typename  = std\+::enable\+\_\+if\+\_\+t$<$						std\+::is\+\_\+same$<$\+T, std\+::common\+\_\+type\+\_\+t$<$\+T, U...$>$$>$\+::value					$>$$>$ }\\constexpr \hyperlink{classnumpp_1_1vector_aa56375d25f669ed670c3d04b844e8424}{vector} (U \&\&... args)
+\begin{DoxyCompactList}\small\item\em constructor acting exactly like std\+::initializer\+\_\+list one with type checking \end{DoxyCompactList}\item 
+constexpr \hyperlink{classnumpp_1_1vector_ac94f1a73274a498f76425a84cf6e395b}{vector} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, !Transposition $>$ \&\hyperlink{classnumpp_1_1vector_a81037f5cce7bd02354efe8b967c191bf}{transposed})
+\begin{DoxyCompactList}\small\item\em copy constructor for vector with different transposition \end{DoxyCompactList}\item 
+constexpr \hyperlink{classnumpp_1_1vector_aa1ce55da7e9a2ccf1b1624a9f5347d5e}{vector} (\hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, !Transposition $>$ \&\&\hyperlink{classnumpp_1_1vector_a81037f5cce7bd02354efe8b967c191bf}{transposed})
+\begin{DoxyCompactList}\small\item\em move constructor for vector with different transposition \end{DoxyCompactList}\item 
+constexpr bool \hyperlink{classnumpp_1_1vector_a81037f5cce7bd02354efe8b967c191bf}{transposed} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a1e85f0d698ea1fe89382b7f6856e2e9c}\label{classnumpp_1_1vector_a1e85f0d698ea1fe89382b7f6856e2e9c}} 
+constexpr std\+::size\+\_\+t {\bfseries size} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a43212e8baa84331d115e520883329c1e}\label{classnumpp_1_1vector_a43212e8baa84331d115e520883329c1e}} 
+constexpr std\+::size\+\_\+t {\bfseries max\+\_\+size} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a39ba91feb3daa1156002e4e9b58e8ee9}\label{classnumpp_1_1vector_a39ba91feb3daa1156002e4e9b58e8ee9}} 
+constexpr bool {\bfseries operator==} (const \hyperlink{classnumpp_1_1vector}{vector} \&x) const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a79df8fa5b519885aaae962f2464c0fe6}\label{classnumpp_1_1vector_a79df8fa5b519885aaae962f2464c0fe6}} 
+constexpr bool {\bfseries operator!=} (const \hyperlink{classnumpp_1_1vector}{vector} \&x) const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_ac4a8575eecf2826d5fd3490ca795f007}\label{classnumpp_1_1vector_ac4a8575eecf2826d5fd3490ca795f007}} 
+constexpr bool {\bfseries operator==} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, !Transposition $>$ \&x) const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a87f25e771d021a14b885f8b461f4bbff}\label{classnumpp_1_1vector_a87f25e771d021a14b885f8b461f4bbff}} 
+constexpr bool {\bfseries operator!=} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, !Transposition $>$ \&x) const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a8fe38963af92e47fbc3c60f5206f46a4}\label{classnumpp_1_1vector_a8fe38963af92e47fbc3c60f5206f46a4}} 
+constexpr reference {\bfseries operator()} (size\+\_\+type pos)
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_adccd806cababde7552083fd4e6dc1120}\label{classnumpp_1_1vector_adccd806cababde7552083fd4e6dc1120}} 
+constexpr const\+\_\+reference {\bfseries operator()} (size\+\_\+type pos) const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a4a6a323fba82f8d7e00a97e5c680f3ac}\label{classnumpp_1_1vector_a4a6a323fba82f8d7e00a97e5c680f3ac}} 
+constexpr iterator {\bfseries begin} ()
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_abf65526b58940a75270e79e8acb7f9de}\label{classnumpp_1_1vector_abf65526b58940a75270e79e8acb7f9de}} 
+constexpr const\+\_\+iterator {\bfseries begin} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a7a50f2bcccc47bc2cbbc3a14dd4d85cd}\label{classnumpp_1_1vector_a7a50f2bcccc47bc2cbbc3a14dd4d85cd}} 
+constexpr const\+\_\+iterator {\bfseries cbegin} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a554526a327c85c0abc597dff4917b220}\label{classnumpp_1_1vector_a554526a327c85c0abc597dff4917b220}} 
+constexpr iterator {\bfseries end} ()
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a82561fe6ed71bea8de02702a18d3d790}\label{classnumpp_1_1vector_a82561fe6ed71bea8de02702a18d3d790}} 
+constexpr const\+\_\+iterator {\bfseries end} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_ac8aecec72fe89e6b818753a2c44ca696}\label{classnumpp_1_1vector_ac8aecec72fe89e6b818753a2c44ca696}} 
+constexpr const\+\_\+iterator {\bfseries cend} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a4f7d7c70486774b877e59c072562a257}\label{classnumpp_1_1vector_a4f7d7c70486774b877e59c072562a257}} 
+constexpr reverse\+\_\+iterator {\bfseries rbegin} ()
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_aaf68aef32052dbc490633fc584443e16}\label{classnumpp_1_1vector_aaf68aef32052dbc490633fc584443e16}} 
+constexpr const\+\_\+reverse\+\_\+iterator {\bfseries rbegin} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_addd32fda791bcf70bfd1b59669b56858}\label{classnumpp_1_1vector_addd32fda791bcf70bfd1b59669b56858}} 
+constexpr const\+\_\+reverse\+\_\+iterator {\bfseries crbegin} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_ad25f7bea977b38be2df1a333063e4dac}\label{classnumpp_1_1vector_ad25f7bea977b38be2df1a333063e4dac}} 
+constexpr reverse\+\_\+iterator {\bfseries rend} ()
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_aa077f06cd578ae87860a55b3d1803608}\label{classnumpp_1_1vector_aa077f06cd578ae87860a55b3d1803608}} 
+constexpr const\+\_\+reverse\+\_\+iterator {\bfseries rend} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a953588920df3adbb93c0056f98a6d5cc}\label{classnumpp_1_1vector_a953588920df3adbb93c0056f98a6d5cc}} 
+constexpr const\+\_\+reverse\+\_\+iterator {\bfseries crend} () const
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1vector_a470ac88412839d0a338761e13103aa38}\label{classnumpp_1_1vector_a470ac88412839d0a338761e13103aa38}} 
+std\+::array$<$ T, Size $>$ {\bfseries vector\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, std\+::size\+\_\+t Size, bool Transposition = false$>$\newline
+class numpp\+::vector$<$ T, Size, Transposition $>$}
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & arithmetic type contained in vector class \\
+\hline
+{\em Size} & size of the vector \\
+\hline
+{\em Transposition} & bool indicating whether the vector is transposed\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include"numpp/structures/vector.hpp"}
+\end{DoxyCode}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnumpp_1_1vector_ac94f1a73274a498f76425a84cf6e395b}\label{classnumpp_1_1vector_ac94f1a73274a498f76425a84cf6e395b}} 
+\index{numpp\+::vector@{numpp\+::vector}!vector@{vector}}
+\index{vector@{vector}!numpp\+::vector@{numpp\+::vector}}
+\subsubsection{\texorpdfstring{vector()}{vector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T, std\+::size\+\_\+t Size, bool Transposition = false$>$ \\
+constexpr \hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$\+::\hyperlink{classnumpp_1_1vector}{vector} (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, !Transposition $>$ \&}]{transposed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+copy constructor for vector with different transposition 
+
+Cannot be used in implict casting, you have to cast it explicitly \mbox{\Hypertarget{classnumpp_1_1vector_aa1ce55da7e9a2ccf1b1624a9f5347d5e}\label{classnumpp_1_1vector_aa1ce55da7e9a2ccf1b1624a9f5347d5e}} 
+\index{numpp\+::vector@{numpp\+::vector}!vector@{vector}}
+\index{vector@{vector}!numpp\+::vector@{numpp\+::vector}}
+\subsubsection{\texorpdfstring{vector()}{vector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T, std\+::size\+\_\+t Size, bool Transposition = false$>$ \\
+constexpr \hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$\+::\hyperlink{classnumpp_1_1vector}{vector} (\begin{DoxyParamCaption}\item[{\hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, !Transposition $>$ \&\&}]{transposed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+move constructor for vector with different transposition 
+
+Cannot be used in implict casting, you have to cast it explicitly 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnumpp_1_1vector_a81037f5cce7bd02354efe8b967c191bf}\label{classnumpp_1_1vector_a81037f5cce7bd02354efe8b967c191bf}} 
+\index{numpp\+::vector@{numpp\+::vector}!transposed@{transposed}}
+\index{transposed@{transposed}!numpp\+::vector@{numpp\+::vector}}
+\subsubsection{\texorpdfstring{transposed()}{transposed()}}
+{\footnotesize\ttfamily template$<$typename T, std\+::size\+\_\+t Size, bool Transposition = false$>$ \\
+constexpr bool \hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$\+::transposed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+returns whether the vector is transposed. \begin{DoxyReturn}{Returns}
+true for transposed, false otherwise
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+structures/vector/structure.\+hpp\end{DoxyCompactItemize}

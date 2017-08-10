@@ -1,0 +1,71 @@
+\hypertarget{group__numpp__krylov}{}\section{Krylov Subspace methods}
+\label{group__numpp__krylov}\index{Krylov Subspace methods@{Krylov Subspace methods}}
+
+
+Group of methods used to iteratively solve linear equations of form $ Ax = b$.  
+
+
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , std\+::size\+\_\+t Size$>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__krylov_ga5e105c0002fbd19b7c8144540040550f}{numpp\+::krylov\+::conjugate\+\_\+gradient} (const \hyperlink{classnumpp_1_1matrix_1_1dense}{matrix\+::dense}$<$ T, Size, Size $>$ \&A, const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size $>$ \&x, const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size $>$ \&b, const double threshold=0.\+01, const std\+::size\+\_\+t iterations=Size $>$ 20 ? Size \+:20)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Group of methods used to iteratively solve linear equations of form $ Ax = b$. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__numpp__krylov_ga5e105c0002fbd19b7c8144540040550f}\label{group__numpp__krylov_ga5e105c0002fbd19b7c8144540040550f}} 
+\index{Krylov Subspace methods@{Krylov Subspace methods}!conjugate\+\_\+gradient@{conjugate\+\_\+gradient}}
+\index{conjugate\+\_\+gradient@{conjugate\+\_\+gradient}!Krylov Subspace methods@{Krylov Subspace methods}}
+\subsubsection{\texorpdfstring{conjugate\+\_\+gradient()}{conjugate\_gradient()}}
+{\footnotesize\ttfamily template$<$typename T , std\+::size\+\_\+t Size$>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto numpp\+::krylov\+::conjugate\+\_\+gradient (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1matrix_1_1dense}{matrix\+::dense}$<$ T, Size, Size $>$ \&}]{A,  }\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size $>$ \&}]{x,  }\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size $>$ \&}]{b,  }\item[{const double}]{threshold = {\ttfamily 0.01},  }\item[{const std\+::size\+\_\+t}]{iterations = {\ttfamily Size},  }\item[{20 ? Size \+:20}]{ }\end{DoxyParamCaption})}
+
+Calculates solution to linear equation $ Ax = b $ via conjugate gradient
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Argument type of the matrix (e.\+g. double) \\
+\hline
+{\em Size} & size of matrix row and column (have to be equal)\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em A} & matrix A of the method {\bfseries }\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+{\bfseries  Matrix A H\+AS TO be symmetric, it\textquotesingle{}s not enforced in anyway in this method} 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Vector containing an initial guess of the solution (solution won\textquotesingle{}t be placed here!). {\bfseries }\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+{\bfseries  If you are unsure about this parameter go with vector filled with 1\textquotesingle{}s.} 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Solution vector of the linear equations\\
+\hline
+{\em threshold} & Tolerance of the algorithm. If the error (as an euclidean norm of residual)~\newline
+is smaller than this value, the algorithm will stop\\
+\hline
+{\em iterations} & Maximum number of iterations performed by the algorithm\\
+\hline
+\end{DoxyParams}
+Conjugate gradient is one of the algorithms from the krylov subspace method.
+
+It may allow us to solve linear equations of the form $Ax = b$ in a more efficient manner~\newline
+than popular direct methods like LU, Cholesky or similiar.
+
+For exact use cases consult the professional literature.
+
+\begin{DoxyReturn}{Returns}
+vector of type identical to x filled with an answer
+\end{DoxyReturn}

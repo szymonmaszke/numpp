@@ -1,0 +1,46 @@
+\hypertarget{group__numpp__differentiation__finite}{}\section{Finite Differentiation}
+\label{group__numpp__differentiation__finite}\index{Finite Differentiation@{Finite Differentiation}}
+
+
+This module provides the means for performing finite difference differentiation.  
+
+
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__numpp__differentiation__finite__backward}{Backward Finite Differentiation}
+\item 
+\hyperlink{group__numpp__differentiation__finite__central}{Central Finite Differentiation}
+\item 
+\hyperlink{group__numpp__differentiation__finite__forward}{Forward Finite Differentiation}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module provides the means for performing finite difference differentiation. 
+
+{\bfseries Calculates the derivative by using finite difference formulas For higher order derivatives check numpp\+\_\+symbolic\+\_\+differentiation Symbolic Differentiation }
+
+\begin{DoxyWarning}{Warning}
+For automatically calculated epsilon type has to fullfil std\+::is\+\_\+floating\+\_\+point trait.
+
+To specify your own type used in automatic epsilon overload, you have to specialize is\+\_\+floating\+\_\+point S\+TL trait. Such type has to provide additional epsilon trait and few other operations.
+
+Check source code for more info.
+\end{DoxyWarning}
+Namespace\+: 
+\begin{DoxyCode}
+\hyperlink{namespacenumpp_1_1differentiation_1_1finite}{numpp::differentiation::finite}
+\end{DoxyCode}
+
+
+Include\+: 
+\begin{DoxyCode}
+\hyperlink{namespacenumpp}{numpp}/differentiation/finite.hpp #includes every method in the module
+\hyperlink{namespacenumpp}{numpp}/differentiation/automatic/SUBCLASS.hpp #include specific methods
+\end{DoxyCode}
+
+
+\begin{DoxyWarning}{Warning}
+{\bfseries Second include option S\+H\+O\+U\+L\+DN\textquotesingle{}T be used} 
+\end{DoxyWarning}

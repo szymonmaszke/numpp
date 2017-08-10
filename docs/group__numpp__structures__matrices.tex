@@ -1,0 +1,33 @@
+\hypertarget{group__numpp__structures__matrices}{}\section{Matrices}
+\label{group__numpp__structures__matrices}\index{Matrices@{Matrices}}
+
+
+Module containing different matrix implementation.  
+
+
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__numpp__structures__matrices__dense}{Dense}
+\begin{DoxyCompactList}\small\item\em Module containg constexpr dense matrix implementation. \end{DoxyCompactList}\item 
+\hyperlink{group__numpp__structures__matrices__sparse}{Sparse}
+\begin{DoxyCompactList}\small\item\em Module containg sparse matrix implementations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Module containing different matrix implementation. 
+
+\begin{DoxyWarning}{Warning}
+{\bfseries Compile-\/time implementation of dense matrix will be inefficient for bigger matrices compile-\/wise, but runtime is much faster.~\newline
+ Sparse vector isn\textquotesingle{}t be affected by this way of implementation}
+\end{DoxyWarning}
+This is a summary header including every matrix structure provided by numpp.
+
+{\bfseries \begin{DoxyWarning}{Warning}
+If you are looking for more compile-\/runtime balanced implementations check Eigen, Armadillo or other libraries
+\end{DoxyWarning}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include"numpp/structures/matrices.hpp"}
+\end{DoxyCode}
+ }

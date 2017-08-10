@@ -1,0 +1,137 @@
+\hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward}{}\section{numpp\+:\+:differentiation\+:\+:automatic\+:\+:forward$<$ T $>$ Class Template Reference}
+\label{classnumpp_1_1differentiation_1_1automatic_1_1forward}\index{numpp\+::differentiation\+::automatic\+::forward$<$ T $>$@{numpp\+::differentiation\+::automatic\+::forward$<$ T $>$}}
+
+
+{\ttfamily \#include $<$structure.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_ad360786eabc5ef8ba98e13431dc43f9e}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_ad360786eabc5ef8ba98e13431dc43f9e}} 
+using {\bfseries value\+\_\+type} = T
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_a5cf8dbc6f2eaea64516093d742238cef}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_a5cf8dbc6f2eaea64516093d742238cef}} 
+using {\bfseries size\+\_\+type} = std\+::size\+\_\+t
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_ae322ba3bb0f58f80595bf463907b8312}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_ae322ba3bb0f58f80595bf463907b8312}} 
+constexpr {\bfseries forward} (T \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward_a64a2339eab5772de4da0483fd5c4f895}{value}, T \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward_abcaca75164fca6c9d423d6b11b5517e9}{derivative}=1)
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_aee3aa201c624dcba4d203b667eebdc42}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_aee3aa201c624dcba4d203b667eebdc42}} 
+constexpr {\bfseries forward} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{forward} \&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_a6977f29fb9a93d34ccf17997a762da79}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_a6977f29fb9a93d34ccf17997a762da79}} 
+constexpr {\bfseries forward} (\hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{forward} \&\&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_ae986202a11b02333dce05cead206cc4f}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_ae986202a11b02333dce05cead206cc4f}} 
+constexpr \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{forward} \& {\bfseries operator=} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{forward} \&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_a082c8f6cb5faada6017dad74cc64370a}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_a082c8f6cb5faada6017dad74cc64370a}} 
+constexpr \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{forward} \& {\bfseries operator=} (\hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{forward} \&\&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_a5600c62c6caba359305c2f8facbe06a0}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_a5600c62c6caba359305c2f8facbe06a0}} 
+constexpr auto {\bfseries operator+} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{forward} \&other)
+\item 
+{\footnotesize template$<$typename U , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic$<$\+U$>$\+::value$>$$>$ }\\constexpr auto \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward_ac97b21e3e666a20f4f731a65faafae79}{operator+} (U other)
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_a4f7666eff1d116c6b7c3d9aefe19d69c}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_a4f7666eff1d116c6b7c3d9aefe19d69c}} 
+constexpr auto {\bfseries operator-\/} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{forward} \&other)
+\item 
+{\footnotesize template$<$typename U , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic$<$\+U$>$\+::value$>$$>$ }\\constexpr auto \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward_afe3627daed4fc827b0e31886ddfd5dd9}{operator-\/} (U other)
+\item 
+{\footnotesize template$<$typename U , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic$<$\+U$>$\+::value$>$$>$ }\\constexpr auto \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward_a006d157f743938e11eb54668c41da769}{operator$\ast$} (U other)
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_a021e057d791fb9786c0a5cd0f1c35fbe}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_a021e057d791fb9786c0a5cd0f1c35fbe}} 
+constexpr auto {\bfseries operator$\ast$} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{forward} \&other)
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_a1e7b473c400fcf510d8d24712821e72e}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_a1e7b473c400fcf510d8d24712821e72e}} 
+constexpr auto {\bfseries operator/} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{forward} \&other)
+\item 
+{\footnotesize template$<$typename U , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic$<$\+U$>$\+::value$>$$>$ }\\constexpr auto \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward_a630cf420f7160392da3f4c575b2d8e66}{operator/} (U other)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const T \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward_a64a2339eab5772de4da0483fd5c4f895}{value}
+\item 
+const T \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward_abcaca75164fca6c9d423d6b11b5517e9}{derivative}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class numpp\+::differentiation\+::automatic\+::forward$<$ T $>$}
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & arithmetic type contained in forward class \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyWarning}{Warning}
+You have to specialize std\+::is\+\_\+arithmetic if you want to use type other than built-\/ins.
+\end{DoxyWarning}
+{\bfseries  value data member contains function value, derivative data member contains certain derivative }
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include"numpp/differentiation/automatic/forward.h"}
+\end{DoxyCode}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_a006d157f743938e11eb54668c41da769}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_a006d157f743938e11eb54668c41da769}} 
+\index{numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+template$<$typename U , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic$<$\+U$>$\+::value$>$$>$ \\
+constexpr auto \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{U}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+operator$\ast$ for built-\/in arithmetic\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_ac97b21e3e666a20f4f731a65faafae79}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_ac97b21e3e666a20f4f731a65faafae79}} 
+\index{numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}!operator+@{operator+}}
+\index{operator+@{operator+}!numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+template$<$typename U , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic$<$\+U$>$\+::value$>$$>$ \\
+constexpr auto \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$\+::operator+ (\begin{DoxyParamCaption}\item[{U}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+operator+ for built-\/in arithmetic\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_afe3627daed4fc827b0e31886ddfd5dd9}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_afe3627daed4fc827b0e31886ddfd5dd9}} 
+\index{numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}}
+\subsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+template$<$typename U , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic$<$\+U$>$\+::value$>$$>$ \\
+constexpr auto \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$\+::operator-\/ (\begin{DoxyParamCaption}\item[{U}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+operator-\/ for built-\/in arithmetic\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_a630cf420f7160392da3f4c575b2d8e66}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_a630cf420f7160392da3f4c575b2d8e66}} 
+\index{numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}!operator/@{operator/}}
+\index{operator/@{operator/}!numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}}
+\subsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+template$<$typename U , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+arithmetic$<$\+U$>$\+::value$>$$>$ \\
+constexpr auto \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$\+::operator/ (\begin{DoxyParamCaption}\item[{U}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+operator/ for built-\/in arithmetic
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_abcaca75164fca6c9d423d6b11b5517e9}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_abcaca75164fca6c9d423d6b11b5517e9}} 
+\index{numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}!derivative@{derivative}}
+\index{derivative@{derivative}!numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}}
+\subsubsection{\texorpdfstring{derivative}{derivative}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+const T \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$\+::derivative}
+
+Contains calculated derivative of an expression \mbox{\Hypertarget{classnumpp_1_1differentiation_1_1automatic_1_1forward_a64a2339eab5772de4da0483fd5c4f895}\label{classnumpp_1_1differentiation_1_1automatic_1_1forward_a64a2339eab5772de4da0483fd5c4f895}} 
+\index{numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}!value@{value}}
+\index{value@{value}!numpp\+::differentiation\+::automatic\+::forward@{numpp\+::differentiation\+::automatic\+::forward}}
+\subsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+const T \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$\+::value}
+
+Contains calculated value of an expression 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+differentiation/automatic/forward/structure.\+hpp\end{DoxyCompactItemize}

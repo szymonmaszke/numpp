@@ -1,0 +1,86 @@
+\hypertarget{group__numpp__differentiation__finite__forward}{}\section{Forward Finite Differentiation}
+\label{group__numpp__differentiation__finite__forward}\index{Forward Finite Differentiation@{Forward Finite Differentiation}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Func , typename T , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+floating\+\_\+point$<$\+T$>$\+::value$>$$>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__differentiation__finite__forward_gae6e65093878d82dc320ee7a66ccb1aab}{numpp\+::differentiation\+::finite\+::forward} (Func \&\&f, T x)
+\item 
+{\footnotesize template$<$typename Func , typename T , typename U , typename  = std\+::enable\+\_\+if\+\_\+t$<$      std\+::is\+\_\+floating\+\_\+point$<$\+T$>$\+::value and      std\+::is\+\_\+arithmetic$<$\+U$>$\+::value    $>$$>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__differentiation__finite__forward_ga30e4e4b2bacc6da290b47bc94906b404}{numpp\+::differentiation\+::finite\+::forward} (Func \&\&f, T x, U y)
+\item 
+{\footnotesize template$<$typename Func , typename T , typename U $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__finite__forward_ga8388c3abacb4e48777bb284330f24490}{numpp\+::differentiation\+::finite\+::forward} (Func \&\&f, T \&\&x, U \&\&y, T \&\&h)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Calculates forward finite derivative $\frac{f(x+h)-f(x)}{h}$
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Func} & Function whose finite difference derivative should be calcuated \\
+\hline
+{\em T} & Argument type (e.\+g. double)\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Functor or function whose derivative we want to obtain \\
+\hline
+{\em x} & Point where the derivative is calculated \\
+\hline
+{\em h} & Disturbtion to x argument, should be around e-\/7 usually\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+If you are unsure about parameter h use function with the automatically calculated overload!
+\end{DoxyWarning}
+Eventual error performed by this calculation is not provided.
+
+For better accuracy and numerical stability see\+:
+
+\hyperlink{group__numpp__differentiation__symbolic}{Symbolic Differentiation} \hyperlink{group__numpp__differentiation__automatic}{Automatic Differentiation}
+
+\begin{DoxyReturn}{Returns}
+Derivative at point x
+\end{DoxyReturn}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__numpp__differentiation__finite__forward_gae6e65093878d82dc320ee7a66ccb1aab}\label{group__numpp__differentiation__finite__forward_gae6e65093878d82dc320ee7a66ccb1aab}} 
+\index{Forward Finite Differentiation@{Forward Finite Differentiation}!forward@{forward}}
+\index{forward@{forward}!Forward Finite Differentiation@{Forward Finite Differentiation}}
+\subsubsection{\texorpdfstring{forward()}{forward()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Func , typename T , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+floating\+\_\+point$<$\+T$>$\+::value$>$$>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto numpp\+::differentiation\+::finite\+::forward (\begin{DoxyParamCaption}\item[{Func \&\&}]{f,  }\item[{T}]{x }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+Automatically calculated disturbtion h to argument x, taken from Numerical Recipees (add source)\mbox{\Hypertarget{group__numpp__differentiation__finite__forward_ga30e4e4b2bacc6da290b47bc94906b404}\label{group__numpp__differentiation__finite__forward_ga30e4e4b2bacc6da290b47bc94906b404}} 
+\index{Forward Finite Differentiation@{Forward Finite Differentiation}!forward@{forward}}
+\index{forward@{forward}!Forward Finite Differentiation@{Forward Finite Differentiation}}
+\subsubsection{\texorpdfstring{forward()}{forward()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename Func , typename T , typename U , typename  = std\+::enable\+\_\+if\+\_\+t$<$      std\+::is\+\_\+floating\+\_\+point$<$\+T$>$\+::value and      std\+::is\+\_\+arithmetic$<$\+U$>$\+::value    $>$$>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto numpp\+::differentiation\+::finite\+::forward (\begin{DoxyParamCaption}\item[{Func \&\&}]{f,  }\item[{T}]{x,  }\item[{U}]{y }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+Automatically calculated disturbtion h to argument x, taken from Numerical Recipees (add source) 
+\begin{DoxyParams}{Parameters}
+{\em y} & Calculated value of f(x) for improved efficiency\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__numpp__differentiation__finite__forward_ga8388c3abacb4e48777bb284330f24490}\label{group__numpp__differentiation__finite__forward_ga8388c3abacb4e48777bb284330f24490}} 
+\index{Forward Finite Differentiation@{Forward Finite Differentiation}!forward@{forward}}
+\index{forward@{forward}!Forward Finite Differentiation@{Forward Finite Differentiation}}
+\subsubsection{\texorpdfstring{forward()}{forward()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Func , typename T , typename U $>$ \\
+constexpr auto numpp\+::differentiation\+::finite\+::forward (\begin{DoxyParamCaption}\item[{Func \&\&}]{f,  }\item[{T \&\&}]{x,  }\item[{U \&\&}]{y,  }\item[{T \&\&}]{h }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & Calculated value of f(x) for improved efficiency \\
+\hline
+{\em h} & Specified disturbtion to argument x\\
+\hline
+\end{DoxyParams}

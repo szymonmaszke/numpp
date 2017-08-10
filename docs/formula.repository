@@ -1,0 +1,43 @@
+\form#0:$\max(0,x)$
+\form#1:$x^n$
+\form#2:$e^x$
+\form#3:$\ln(x)$
+\form#4:$\sin(x)$
+\form#5:$\cos(x)$
+\form#6:$\arctan(x)$
+\form#7:$\sqrt(x)$
+\form#8:$\arcsin(x)$
+\form#9:$ \frac{\partial z}{\partial x} \cos(x+y)*\sin(y) + 3 $
+\form#10:$\frac{f(x-h)-f(x)}{h}$
+\form#11:$\frac{f(x+ 0.5*h)-f(x-0.5*h)}{h}$
+\form#12:$\frac{f(x+h)-f(x)}{h}$
+\form#13:$ Left^N $
+\form#14:$ e^T $
+\form#15:$ \log(T) $
+\form#16:$ \sin(T) $
+\form#17:$ \cos(T) $
+\form#18:$ \sin(\cos(\frac{x_0}{x_1})*\log(x_0)) + x_2 $
+\form#19:$x_0, x_0, x_1 $
+\form#20:$x_0$
+\form#21:$ Ax = b $
+\form#22:$Ax = b$
+\form#23:$ Ax = b$
+\form#24:$f'''$
+\form#25:$f''$
+\form#26:$f(x) = 0$
+\form#27:$A^exp$
+\form#28:$ln(A)$
+\form#29:$e^(A)$
+\form#30:$|A|$
+\form#31:$first^T * second $
+\form#32:$vec^T * vec$
+\form#33:$ l^2 $
+\form#34:$ ||x|| = \max(|x_1|) $
+\form#35:$mat*vec$
+\form#36:$first+second$
+\form#37:$first-second$
+\form#38:$vec*scalar$
+\form#39:$scalar*vec$
+\form#40:$first^T*second$
+\form#41:$first*second^T$
+\form#42:$\frac{1}{scalar}*vec $

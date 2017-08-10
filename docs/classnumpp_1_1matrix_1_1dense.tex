@@ -1,0 +1,87 @@
+\hypertarget{classnumpp_1_1matrix_1_1dense}{}\section{numpp\+:\+:matrix\+:\+:dense$<$ T, Rows, Columns $>$ Class Template Reference}
+\label{classnumpp_1_1matrix_1_1dense}\index{numpp\+::matrix\+::dense$<$ T, Rows, Columns $>$@{numpp\+::matrix\+::dense$<$ T, Rows, Columns $>$}}
+
+
+{\ttfamily \#include $<$structure.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_a460095662946aba4485ddff9fd9c9c25}\label{classnumpp_1_1matrix_1_1dense_a460095662946aba4485ddff9fd9c9c25}} 
+using {\bfseries value\+\_\+type} = T
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_a8933da0e49a2b85f5d814e308f0b6f7d}\label{classnumpp_1_1matrix_1_1dense_a8933da0e49a2b85f5d814e308f0b6f7d}} 
+using {\bfseries size\+\_\+type} = std\+::size\+\_\+t
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_a39ae02ee26477d867dedccd83d8ad9a5}\label{classnumpp_1_1matrix_1_1dense_a39ae02ee26477d867dedccd83d8ad9a5}} 
+using {\bfseries difference\+\_\+type} = std\+::ptrdiff\+\_\+t
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_ab341437bcc4946c78b724ed4759571c3}\label{classnumpp_1_1matrix_1_1dense_ab341437bcc4946c78b724ed4759571c3}} 
+using {\bfseries reference} = T \&
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_a13cc8d63196c50e0d5ff0d5d3bc72216}\label{classnumpp_1_1matrix_1_1dense_a13cc8d63196c50e0d5ff0d5d3bc72216}} 
+using {\bfseries const\+\_\+reference} = const T \&
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_af5460c5096c0c2a4b8b2af82be785106}\label{classnumpp_1_1matrix_1_1dense_af5460c5096c0c2a4b8b2af82be785106}} 
+using {\bfseries pointer} = T $\ast$
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_a6ab2185898454a33e3435cbf9344b9b9}\label{classnumpp_1_1matrix_1_1dense_a6ab2185898454a33e3435cbf9344b9b9}} 
+using {\bfseries const\+\_\+pointer} = const T $\ast$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_a47826545acba433708f30d8d46ed66fa}\label{classnumpp_1_1matrix_1_1dense_a47826545acba433708f30d8d46ed66fa}} 
+constexpr bool {\bfseries operator==} (const \hyperlink{classnumpp_1_1matrix_1_1dense}{dense}$<$ T, Rows, Columns $>$ \&a) const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_ab9b6f88f2dec14a80a72e99913a3f068}\label{classnumpp_1_1matrix_1_1dense_ab9b6f88f2dec14a80a72e99913a3f068}} 
+constexpr bool {\bfseries operator!=} (const \hyperlink{classnumpp_1_1matrix_1_1dense}{dense}$<$ T, Rows, Columns $>$ \&a) const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_ae10fc38c7fc7866eb9e7eced95721197}\label{classnumpp_1_1matrix_1_1dense_ae10fc38c7fc7866eb9e7eced95721197}} 
+constexpr size\+\_\+type {\bfseries size} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_ab5285a02970247cd61d5ec34a387b5b1}\label{classnumpp_1_1matrix_1_1dense_ab5285a02970247cd61d5ec34a387b5b1}} 
+constexpr size\+\_\+type {\bfseries max\+\_\+size} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_a2fccc43bbe43b24a927b6ee064b5d76f}\label{classnumpp_1_1matrix_1_1dense_a2fccc43bbe43b24a927b6ee064b5d76f}} 
+constexpr size\+\_\+type {\bfseries row\+\_\+size} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_a19093013442e9a37259a1e793a1e8f91}\label{classnumpp_1_1matrix_1_1dense_a19093013442e9a37259a1e793a1e8f91}} 
+constexpr size\+\_\+type {\bfseries column\+\_\+size} () const
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_a87a5f2fd595bd9fa0f91dd6d823dfc0d}\label{classnumpp_1_1matrix_1_1dense_a87a5f2fd595bd9fa0f91dd6d823dfc0d}} 
+reference {\bfseries operator()} (size\+\_\+type row, size\+\_\+type col) noexcept
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_acb213c3d0d2c08160b473f2d08ec4da3}\label{classnumpp_1_1matrix_1_1dense_acb213c3d0d2c08160b473f2d08ec4da3}} 
+constexpr const\+\_\+reference {\bfseries operator()} (size\+\_\+type row, size\+\_\+type col) const
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1dense_a0a1a99929da160a7c41fec853669bf39}\label{classnumpp_1_1matrix_1_1dense_a0a1a99929da160a7c41fec853669bf39}} 
+std\+::array$<$ std\+::array$<$ T, Columns $>$, Rows $>$ {\bfseries matrix\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, std\+::size\+\_\+t Rows, std\+::size\+\_\+t Columns$>$\newline
+class numpp\+::matrix\+::dense$<$ T, Rows, Columns $>$}
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & arithmetic type contained in matrix class \\
+\hline
+{\em Rows} & number of rows in matrix \\
+\hline
+{\em Columns} & number of columns in matrix\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include"numpp/structures/matrices/dense.hpp"}
+\end{DoxyCode}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+structures/matrices/dense/structure.\+hpp\end{DoxyCompactItemize}
