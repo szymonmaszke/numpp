@@ -42,8 +42,8 @@ How does it compare?
 
   Best looking part is, without a doubt, **symbolic differentiation**.
 
-  Thanks to researchers from this paper: https://arxiv.org/abs/1705.01729 and some improvements of mine,
-  it seems, that it can achieve around **10x speedup or more** in derivative evaluations against **SymPy**
+  Thanks to researchers from this **[paper](https://arxiv.org/abs/1705.01729)** and some improvements of mine,
+  it seems, that it can achieve around **10x speedup or more** in derivative evaluations against **[SymPy](https://github.com/sympy/sympy)**
   which approaches **efficiency of hand-coded derivatives**.
   When it comes to memory it should use 0b as it's only type based.
 
@@ -53,9 +53,9 @@ How does it compare?
 
 ## 2. Overall Runtime speedup
 
-  **30 x** speedups in matrix multiplication is not uncommon (compared to **Eigen**), 
+  **30 x** speedups in matrix multiplication is not uncommon (compared to **[Eigen](https://bitbucket.org/eigen/eigen/)**), 
   and binaries created are shorter by about the same amount. 
-  In other areas, for example numerical differentiation, speed up over **GSL** can exceed **50x**.
+  In other areas, for example numerical differentiation, speed up over **[GNU Scientific Library](https://www.gnu.org/software/gsl/)**  can exceed **50x**.
 
 ## 3. Compilation times
 
@@ -81,7 +81,8 @@ Documentation:
 ==============
 
 For more specific informations about what the library has to offer check below:
-<link to gh-pages>
+
+[Documentation](https://vyzyv.github.io/numpp/modules.html "numpp's documentation")
 
 For in-depth dissertation of provided functionality check the paper below and others linked inside:
 <link to dissertation>
