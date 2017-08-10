@@ -67,10 +67,12 @@ Installation:
 =============
 
 **1. Normal installation**
+
   Just clone this repository into your /usr/include/ path or other performing the same functionality. 
   It needs GCC7.0 or more for it to work. It should work for Clang as well, but it wasn't thoroughly tests
  
 **2. Dockerized installation**
+
   If your distro doesn't have GCC7.0 just run the image provided in the banner at the top via command:
   **docker run -i -t vyzyv/numpp:latest /bin/bash** to enter the container, which has everything you need to
   run your applications based on **numpp**.
