@@ -18,6 +18,31 @@ namespace numpp::roots{
           std::size_t iterations=1000,
           const double epsilon = 1e-7
       ){
+/** \ingroup numpp_roots
+
+    \brief SYMBOLICAL OVERLOAD
+
+    Newton's algorithm for finding root of the function using first order derivative.
+
+    \tparam T type of function argument
+    \tparam Function type of function (has to be symbolic, check: symbolic)
+    \tparam Derivative type of derivative (has to be symbolic, check: symbolic)
+
+    \warning Theorethically quadratic convergence when \f$f''\f$ continuous.
+
+    \warning Some problems may arise for this method, check professional literature
+
+    Algorithm stops when it reaches given precision
+    or exceeds maximum number of iterations (default: 1000)
+
+    \return <b>Type</b>: Same as Function return type
+    \return <b>Value</b>: Root in the case of convergence
+
+    \warning <b>May not converge to the root, evaluate your result after obtaining it</b>
+
+    \sa Symbolic Differentiation
+
+*/
           auto argument{value};
           for(std::size_t i=0; i<iterations; ++i){
             auto root = Function::calculate(std::experimental::make_array(argument));
@@ -42,6 +67,19 @@ namespace numpp::roots{
           std::size_t iterations=1000,
           const double epsilon = 1e-7
       ){
+/** \ingroup numpp_roots
+
+    \brief FUNCTOR/FUNCTION OVERLOAD
+
+    \tparam T type of function argument
+    \tparam Function type of function (Functor or function)
+    \tparam Derivative type of derivative (Functor or function)
+
+    You may use finite difference code from differentiation module
+
+    \sa Finite Difference Differentiation
+
+*/
           auto argument{value};
           for(std::size_t i=0; i<iterations; ++i){
             auto root = f(argument);
@@ -65,6 +103,19 @@ namespace numpp::roots{
           std::size_t iterations=1000,
           const double epsilon = 1e-7
       ){
+/** \ingroup numpp_roots
+
+    \brief AUTOMATIC DIFFERENTIATION OVERLOAD
+
+    \tparam T type of function argument
+    \tparam FunctionAndDerivative Functor returning tuple [value, derivative]
+    \tparam Derivative type of derivative (Functor or function)
+
+    \warning FunctionAndDerivative should be of type automatic differentiation forward
+
+    \sa \ref numpp_differentiation_automatic "Automatic Differentiation"
+
+*/
           auto argument{value};
           for(std::size_t i=0; i<iterations; ++i){
             auto [root, derivative] = f(argument);

@@ -119,33 +119,86 @@ namespace numpp::differentiation::symbolic{
   //TEMPLATE OVERLOADS FOR READABILITY
 
   template<typename Left, typename Right>
-    constexpr add<Left, Right> operator+(const Left&, const Right&){
-      return add<Left, Right>{};
+    constexpr auto operator+(const Left&, const Right&){
+/**
+  \ingroup numpp_differentiation_symbolic
+
+  \brief operator+ returns object representing addition of Left and Right hand-side
+  \tparam Left Parameter representing left hand-side (can be complex like sin(x))
+  \tparam Right Parameter representing Right hand-side (can be complex like sin(x))
+
+  \returns Type representing addition of Left and Right
+
+  @{
+*/
+      return simplify_addition<Left, Right>{};
     }
 
   template<typename Left, typename Right>
     constexpr auto operator-(const Left&, const Right&){
+/**
+  \brief operator- returns object representing subtraction of Left and Right hand-side
+  \tparam Left Parameter representing left hand-side (can be complex like sin(x))
+  \tparam Right Parameter representing Right hand-side (can be complex like sin(x))
+
+  \returns Type representing subtraction of Left and Right
+*/
       return simplify_subtraction<Left, Right>{};
     }
 
   template<typename T>
     constexpr auto operator-(const T&){
+/**
+  \brief operator- returns object representing the negative of it, e.g. sin(x)-> -sin(x)
+  \tparam T Parameter representing any type (can be complex like sin(x))
+
+  \returns Type representing negative of a given object
+*/
       return simplify_minus<T>{};
     }
 
   template<typename Left, typename Right>
     constexpr auto operator*(const Left&, const Right&){
+/**
+  \brief operator* returns object representing multiplication of Left and Right hand-side
+  \tparam Left Parameter representing left hand-side (can be complex like sin(x))
+  \tparam Right Parameter representing Right hand-side (can be complex like sin(x))
+
+  \returns Type representing multiplication of Left and Right
+*/
       return simplify_multiplication<Left, Right>{};
     }
 
   template<typename Left, typename Right>
     constexpr auto operator/(const Left&, const Right&){
-      return divide<Left, Right>{};
+/**
+  \brief operator/ returns object representing division of Left and Right hand-side
+  \tparam Left Parameter representing left hand-side (can be complex like sin(x))
+  \tparam Right Parameter representing Right hand-side (can be complex like sin(x))
+
+  \returns Type representing division of Left and Right
+*/
+      return simplify_division<Left, Right>{};
     }
 
-  template<std::size_t Exp, typename Left>
+  template<std::size_t N, typename Left>
     constexpr auto pow(const Left&){
-      return power<Left, Exp>{};
+/**
+  \brief  returns object representing Left hand-side to the n-th power
+
+  <b>Example usage:</b>
+  \code
+  using Function = decltype(pow<4>(nds::x<0>{}));
+  \endcode
+
+  \warning Unluckily there seems to be no workaround around passing exponent as a template parameter
+
+  \tparam N Power of the function, Left is taken to the power of N
+  \tparam Right Parameter representing type being any valid symbolic expression (can be complex like sin(x))
+
+  \returns Type representing \f$ Left^N \f$
+*/
+      return power<Left, N>{};
     }
 
 }

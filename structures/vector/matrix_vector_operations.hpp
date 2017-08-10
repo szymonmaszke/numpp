@@ -32,6 +32,10 @@ namespace numpp{
         const matrix::dense<T, Rows, Columns>& mat,
         const vector<U,Columns, false>& vec
         ){
+/**
+  \ingroup numpp_structures_vector
+  \brief returns the result of \f$mat*vec\f$ which is a new vector object
+*/
       return impl::make_vector(mat, vec, std::make_index_sequence<Rows>{});
     }
 }

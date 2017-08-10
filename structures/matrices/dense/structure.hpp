@@ -4,6 +4,21 @@
 #include<array>
 
 namespace numpp::matrix{
+/**
+\ingroup numpp_structures_matrices_dense
+
+\class dense
+
+\tparam T arithmetic type contained in matrix class
+\tparam Rows number of rows in matrix
+\tparam Columns number of columns in matrix
+
+\code
+#include"numpp/structures/matrices/dense.hpp"
+\endcode
+
+*/
+
   template<typename T, std::size_t Rows, std::size_t Columns>
     class dense{
       public:

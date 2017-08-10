@@ -5,6 +5,20 @@
 #include<type_traits>
 
 namespace numpp{
+/**
+\ingroup numpp_structures_vector
+
+\class vector
+
+\tparam T arithmetic type contained in vector class
+\tparam Size size of the vector
+\tparam Transposition bool indicating whether the vector is transposed
+
+\code
+#include"numpp/structures/vector.hpp"
+\endcode
+
+*/
 		template<typename T, std::size_t Size, bool Transposition=false>
 			class vector{
 			public:
@@ -28,6 +42,7 @@ namespace numpp{
 				constexpr vector& operator=(const vector&)=default;
 				constexpr vector& operator=(vector&&)=default;
 
+
 				template<
 					typename... U,
 					typename = std::enable_if_t<
@@ -35,20 +50,37 @@ namespace numpp{
 					>
 				>
 					constexpr vector(U&&... args):
+        /**
+          \brief constructor acting exactly like std::initializer_list one with type checking
+        */
 						vector_{std::forward<T>(args)...}
 				{}
 				//COPY/MOVE WHEN VECTOR HAS DIFFERENT TRANSPOSITION
 				explicit constexpr vector(const vector<T,Size, !Transposition>& transposed):
+        /**
+          \brief copy constructor for vector with different transposition
+
+          Cannot be used in implict casting, you have to cast it explicitly
+        */
 					vector_{transposed.vector_}
 				{}
 
 				explicit constexpr vector(vector<T,Size, !Transposition>&& transposed):
+        /**
+          \brief move constructor for vector with different transposition
+
+          Cannot be used in implict casting, you have to cast it explicitly
+        */
 					vector_{std::move(transposed.vector_)}
 				{}
 
 				//UTILITY FUNCTIONS
 
 				constexpr bool transposed()const {
+          /**
+            \brief returns whether the vector is transposed.
+            \returns true for transposed, false otherwise
+          */
 					return Transposition;
 				}
 
@@ -59,7 +91,6 @@ namespace numpp{
 				constexpr std::size_t max_size()const {
 					return Size;
 				}
-
 				constexpr bool operator==(const vector& x)const {
 					return x.vector_ == vector_;
 				}

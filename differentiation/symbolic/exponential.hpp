@@ -37,12 +37,31 @@ namespace numpp::differentiation::symbolic{
     };
 
   template<typename T>
-    constexpr exponential<T> exp(const T&){
+    constexpr auto exp(const T&){
+/**
+  \ingroup numpp_differentiation_symbolic
+
+  \brief exp returns object representing \f$ e^T \f$
+  \tparam T Parameter representing type of the exponent (can be complex like sin(x))
+
+  \returns Type representing \f$ e^T \f$
+
+  @{
+*/
       return exponential<T>{};
     }
 
   template<typename T>
-    constexpr logarithm<T> log(const T&){
+    constexpr auto log(const T&){
+/**
+  \ingroup numpp_differentiation_symbolic
+
+  \brief log returns object representing \f$ \log(T) \f$
+  \tparam T Parameter representing type being logarithmized (can be complex like sin(x))
+
+  \returns Type representing \f$ \log(T) \f$
+
+*/
       return logarithm<T>{};
     }
 

@@ -44,12 +44,31 @@ namespace numpp::differentiation::symbolic{
     };
 
   template<typename T>
-    constexpr sinus<T> sin(const T&){
+    constexpr auto sin(const T&){
+/**
+  \ingroup numpp_differentiation_symbolic
+
+  \brief sin returns object representing \f$ \sin(T) \f$
+  \tparam T Parameter representing type of the argument (can be complex like log(x))
+
+  \returns Type representing \f$ \sin(T) \f$
+
+  @{
+*/
       return sinus<T>{};
     }
 
   template<typename T>
-    constexpr cosinus<T> cos(const T&){
+    constexpr auto cos(const T&){
+/**
+  \ingroup numpp_differentiation_symbolic
+
+  \brief cos returns object representing \f$ \cos(T) \f$
+  \tparam T Parameter representing type of the argument (can be complex like log(x))
+
+  \returns Type representing \f$ \cos(T) \f$
+
+*/
       return cosinus<T>{};
     }
 

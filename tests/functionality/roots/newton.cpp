@@ -21,7 +21,7 @@ TEST_CASE(
   class Derivative{
     public:
       constexpr auto operator()(const double x){
-        return numpp::derivative::finite::central(Function{}, x);
+        return numpp::differentiation::finite::central(Function{}, x);
       }
   };
 
@@ -31,9 +31,9 @@ TEST_CASE(
         numpp::differentiation::automatic::forward<double> x{val};
         auto function= x*x*x - x - 2;
         return std::make_tuple(function.value, function.derivative);
+
       }
   };
-
   namespace nds = numpp::differentiation::symbolic;
   using TypeFunction = decltype(nds::pow<3>(nds::x<0>{}) - nds::x<0>{} - nds::constant<2>{});
   using TypeDerivative = nds::differentiate<TypeFunction, 1>::with_respect_to<0>;

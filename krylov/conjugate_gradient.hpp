@@ -16,14 +16,43 @@ namespace numpp::krylov{
         const vector<T, Size>& x,
         const vector<T, Size>& b,
         const double threshold = 0.01,
-        const std::size_t max_iterations= Size > 20 ? Size : 20
+        const std::size_t iterations= Size > 20 ? Size : 20
         ){
+  /**
+    \ingroup numpp_krylov
+
+    \brief Calculates solution to linear equation \f$ Ax = b \f$ via conjugate gradient
+
+    \tparam T Argument type of the matrix (e.g. double)
+    \tparam Size size of matrix row and column (have to be equal)
+
+    \param A matrix A of the method
+    <b>\warning Matrix A HAS TO be symmetric, it's not enforced in anyway in this method</b>
+    \param x Vector containing an initial guess of the solution (solution won't be placed here!).
+    <b>\warning If you are unsure about this parameter go with vector filled with 1's.</b>
+    \param b Solution vector of the linear equations
+
+    \param threshold Tolerance of the algorithm. If the error (as an euclidean norm of residual)\n
+    is smaller than this value, the algorithm will stop
+
+    \param iterations Maximum number of iterations performed by the algorithm
+
+    Conjugate gradient is one of the algorithms from the krylov subspace method.
+
+    It may allow us to solve linear equations of the form \f$Ax = b\f$ in a more efficient manner\n
+    than popular direct methods like LU, Cholesky or similiar.
+
+    For exact use cases consult the professional literature.
+
+    \returns vector of type identical to x filled with an answer
+    @{
+  */
 
       auto residual = b - (A*x);
       auto direction{residual};
 
       auto temp{x};
-      for(std::size_t i = 0; i<b.size(); ++i){
+      for(std::size_t i = 0; i<iterations; ++i){
         const auto alpha {sum(residual)/(sum(direction, A*direction))};
 
 
@@ -46,17 +75,24 @@ namespace numpp::krylov{
         const matrix::dense<T, Size, Size>& A,
         const vector<T, Size>& b,
         const vector<T, Size>& x,
-        const matrix::dense<T, Size, Size>& preconditioner_matrix,
+        const matrix::dense<T, Size, Size>& preconditioner,
         const double threshold = 0.01,
-        const std::size_t max_iterations= Size > 20 ? Size : 20
+        const std::size_t iterations= Size > 20 ? Size : 20
         ){
+  /**
+    \overload
+    \param preconditioner matrix being a preconditioner to the method. \n
+    If used correctly it can speed up algorithm convergence.
+    \warning If you are unsure about this parameter use the version without it!
+
+  */
       auto residual = b - (A*x);
-      auto preconditioner = preconditioner_matrix * residual;
-      auto direction{preconditioner};
+      auto precondition = preconditioner * residual;
+      auto direction{precondition};
 
       auto temp{x};
 
-      for(int i=0; i<max_iterations; ++i){
+      for(int i=0; i<iterations; ++i){
         const auto alpha {sum(residual)/(sum(direction, A*direction))};
 
         temp += alpha * direction;
@@ -64,13 +100,13 @@ namespace numpp::krylov{
         if(norm::euclidean(residual_next) < threshold)
           break;
 
-        auto preconditioner_next = preconditioner_matrix * residual_next;
+        auto preconditioner_next = preconditioner * residual_next;
 
-        auto beta = sum(preconditioner_next, residual_next)/sum(preconditioner, residual);
+        auto beta = sum(preconditioner_next, residual_next)/sum(precondition, residual);
 
         direction = preconditioner_next + beta*direction;
         residual = std::move(residual_next);
-        preconditioner = std::move(preconditioner_next);
+        precondition = std::move(preconditioner_next);
       }
 
       return temp;

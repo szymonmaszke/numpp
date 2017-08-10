@@ -33,7 +33,7 @@ run_test(
         '#include"numpp/differentiation/finite.hpp"\n', 5,
         'gsl_deriv_central(&F, ', 29,
         '''constexpr auto result_numpp =
-        numpp::derivative::finite::central(numpp_function{}, ''', 37,
+        numpp::differentiation::finite::central(numpp_function{}, ''', 37,
         9, 16,
         "./differentiation/logs/central/compile"
         )

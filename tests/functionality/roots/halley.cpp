@@ -21,7 +21,7 @@ TEST_CASE(
   class Derivative{
     public:
       constexpr auto operator()(const double x){
-        return numpp::derivative::finite::central(Function{}, x);
+        return numpp::differentiation::finite::central(Function{}, x);
       }
   };
 
