@@ -1,0 +1,328 @@
+\hypertarget{group__numpp__differentiation__symbolic}{}\section{Symbolic Differentiation}
+\label{group__numpp__differentiation__symbolic}\index{Symbolic Differentiation@{Symbolic Differentiation}}
+
+
+This module provides the means for performing symbolic differentiation.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1differentiate}{numpp\+::differentiation\+::symbolic\+::differentiate$<$ Function, Order $>$}
+\begin{DoxyCompactList}\small\item\em Allows differentiation of N-\/th order. \end{DoxyCompactList}\item 
+class \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1constant}{numpp\+::differentiation\+::symbolic\+::constant$<$ Value $>$}
+\begin{DoxyCompactList}\small\item\em Class representing constant integer number. \end{DoxyCompactList}\item 
+class \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{numpp\+::differentiation\+::symbolic\+::variable$<$ T, Number $>$}
+\begin{DoxyCompactList}\small\item\em Class representing variable of any type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{group__numpp__differentiation__symbolic_gac865497d2896f51d0cab2e9c64799a15}\label{group__numpp__differentiation__symbolic_gac865497d2896f51d0cab2e9c64799a15}} 
+{\footnotesize template$<$std\+::size\+\_\+t Number$>$ }\\using \hyperlink{group__numpp__differentiation__symbolic_gac865497d2896f51d0cab2e9c64799a15}{numpp\+::differentiation\+::symbolic\+::x} = \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{variable}$<$ double, Number $>$
+\begin{DoxyCompactList}\small\item\em Convenience alias for variable with specified variable type as double. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__symbolic_ga186ca63e28a816d1cb9c8175c7839468}{numpp\+::differentiation\+::symbolic\+::log} (const T \&)
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__symbolic_gad414fd158986bf7fff7e258a6ebf182c}{numpp\+::differentiation\+::symbolic\+::cos} (const T \&)
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Left , typename Right $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__symbolic_ga45bd7508b366431d72157d0f1ef6fac2}{numpp\+::differentiation\+::symbolic\+::operator+} (const Left \&, const Right \&)
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__symbolic_ga4aecf7125ae67f3c834ed8ab5e14248a}{numpp\+::differentiation\+::symbolic\+::operator-\/} (const T \&)
+\item 
+{\footnotesize template$<$typename Left , typename Right $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__symbolic_ga0f6f3d22e3e712ce154f7f6c91e0cf46}{numpp\+::differentiation\+::symbolic\+::operator$\ast$} (const Left \&, const Right \&)
+\item 
+{\footnotesize template$<$typename Left , typename Right $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__symbolic_gac882bc2dcbffae1107c46bc3eac93a44}{numpp\+::differentiation\+::symbolic\+::operator/} (const Left \&, const Right \&)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t N, typename Left $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__symbolic_gaa52e3714ea3492f60c68cdb4974fe495}{numpp\+::differentiation\+::symbolic\+::pow} (const Left \&)
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__symbolic_ga4bcf2dcdbc549b58c9fb7cd1b8c1cf70}{numpp\+::differentiation\+::symbolic\+::exp} (const T \&)
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__symbolic_ga49ba3eed5ff463e79a88f4952f73f435}{numpp\+::differentiation\+::symbolic\+::sin} (const T \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module provides the means for performing symbolic differentiation. 
+
+
+\begin{DoxyCode}
+\hyperlink{namespacenumpp}{numpp}/differentiation/symbolic.hpp #includes every method in the module
+\hyperlink{namespacenumpp}{numpp}/differentiation/symbolic/SUBCLASS.hpp #include specific SUBCLASS
+\end{DoxyCode}
+
+
+\begin{DoxyWarning}{Warning}
+{\bfseries Second include option S\+H\+O\+U\+L\+DN\textquotesingle{}T be used}
+\end{DoxyWarning}
+Idea developed independently, but merged with the research paper \href{https://arxiv.org/abs/1705.01729}{\tt Compile Time Symbolical Differentiation 2017} and many ideas based on theirs. ~\newline
+{\bfseries Thank you for this paper, most of the credits belong to them! Please refer to their paper for thourough speed comparison against automatic differentiation.}
+
+For differences mine and theirs application of the type differentiation see this paper\+: \href{https://github.com}{\tt numpp dissertation } ~\newline
+ For comparison against \href{https://github.com/symengine/symengine}{\tt symengine}, base of \href{http://www.sympy.org/en/index.html}{\tt Sym\+Py} see these tests\+: \href{https://github.com}{\tt sympy vs numpp }
+
+{\bfseries Details and usage\+:}
+
+Overloads for common mathemathical operations are provided (details in classes).~\newline
+Approach taken by type differentiating doesn\textquotesingle{}t resemble well-\/known symbolic differentiation in C++, hence some examples are needed\+:
+
+\begin{DoxyWarning}{Warning}
+For convenience, in the following examples, namespace numpp\+::differentiation\+::symbolic is abbreviated as nds.
+\end{DoxyWarning}
+{\bfseries 1. Variables and constants }
+
+Basing building blocks of the function. Can be defined as follows\+: 
+\begin{DoxyCode}
+\hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{nds::x<0>} x0\{\};
+\hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{nds::x<1>} x1\{\};
+\end{DoxyCode}
+
+
+Above x variables are implicilty of type double. To express type explicitly use\+:
+
+
+\begin{DoxyCode}
+\hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{nds::variable<int, 0>} x0\{\};
+\end{DoxyCode}
+
+
+Numeric parameter (of type std\+::size\+\_\+t) differentiates every variable from the others.
+
+
+\begin{DoxyCode}
+\hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1constant}{nds::constant<14>} cons\{\};
+\end{DoxyCode}
+
+
+Currently only integer constants are supported.
+
+{\bfseries 2. Defining functions }
+
+We only have to define Function type, there is no need to create the object.~\newline
+Arithmetic operators and some other mathematical functions are overloaded for convenience in function defining.
+
+You should use the
+\begin{DoxyCode}
+\textcolor{keyword}{using} and decltype() 
+\end{DoxyCode}
+ when defining it.
+
+{\bfseries Example of $ \sin(\cos(\frac{x_0}{x_1})*\log(x_0)) + x_2 $ creation} \+:
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include"numpp/differentiation/symbolic.hpp"}
+
+\textcolor{keyword}{using} Function = decltype(\hyperlink{group__numpp__differentiation__forward__automatic_ga6f6f07250087b18ada9ea1f84418f24f}{sin}(\hyperlink{group__numpp__differentiation__forward__automatic_gaa5a06320f93037d94fda441546d7d690}{cos}(\hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{nds::x<0>}\{\}/\hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{nds::x<1>}\{\})*
+      \hyperlink{group__numpp__differentiation__forward__automatic_ga0f6011595edffe756a984de60358fe5f}{log}(\hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{nds::x<0>}\{\})) + \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{nds::x<2>}\{\});
+\end{DoxyCode}
+
+
+{\bfseries 3. Differentiating the function\+:}
+
+There are two ways to differentiate type, as shown below\+:
+
+{\bfseries 3.\+1. Predicate with\+\_\+respect\+\_\+to\+:} 
+\begin{DoxyCode}
+\textcolor{comment}{//Function as defined above}
+\textcolor{keyword}{using} Derivative = \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1differentiate}{nds::differentiate<Function, 3>::with\_respect\_to}
+      <0,0,1>;
+\end{DoxyCode}
+
+
+Above code performs 3-\/rd order differentiation with respect to $x_0, x_0, x_1 $ in this exact order.
+
+{\bfseries 3.\+2. With derivative type\+:} 
+\begin{DoxyCode}
+\textcolor{comment}{//Function as defined above}
+\textcolor{keyword}{using} Derivative = Function::derivative<0>
+\end{DoxyCode}
+
+
+Above performs differentiation with respect to $x_0$.
+
+{\bfseries 4. Obtaining numerical values from expressions}
+
+After obtaining Function type (or Derivative or similiar) you would probably like to obtain value at a given point. ~\newline
+To do so, you have to create an array which size is equal to the number of independent variables~\newline
+and pass it to the static constexpr function {\bfseries calculate}
+
+{\bfseries Example}
+
+
+\begin{DoxyCode}
+\textcolor{comment}{//Derivative as defined above}
+constexpr \textcolor{keyword}{auto} value = Derivative::calculate(std::array<double, 3>\{1.,5.,7.\});
+\end{DoxyCode}
+
+
+Any object providing operator\mbox{[}\mbox{]} may be used as an argument to calculate.
+
+{\bfseries Technical Details\+:}
+
+Approach of type differentiating allows this module to obtain near hand-\/coded efficiency for n-\/th order partial derivatives.
+
+Cons -\/ compilation may take longer as order and complexity of formula increases after this initial phase, every derivative evaluation or next differentiation will take substantially shorter amount of time than current available approaches. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__numpp__differentiation__symbolic_gad414fd158986bf7fff7e258a6ebf182c}\label{group__numpp__differentiation__symbolic_gad414fd158986bf7fff7e258a6ebf182c}} 
+\index{Symbolic Differentiation@{Symbolic Differentiation}!cos@{cos}}
+\index{cos@{cos}!Symbolic Differentiation@{Symbolic Differentiation}}
+\subsubsection{\texorpdfstring{cos()}{cos()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr auto numpp\+::differentiation\+::symbolic\+::cos (\begin{DoxyParamCaption}\item[{const T \&}]{ }\end{DoxyParamCaption})}
+
+cos returns object representing $ \cos(T) $ 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Parameter representing type of the argument (can be complex like log(x))\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Type representing $ \cos(T) $
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__symbolic_ga4bcf2dcdbc549b58c9fb7cd1b8c1cf70}\label{group__numpp__differentiation__symbolic_ga4bcf2dcdbc549b58c9fb7cd1b8c1cf70}} 
+\index{Symbolic Differentiation@{Symbolic Differentiation}!exp@{exp}}
+\index{exp@{exp}!Symbolic Differentiation@{Symbolic Differentiation}}
+\subsubsection{\texorpdfstring{exp()}{exp()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr auto numpp\+::differentiation\+::symbolic\+::exp (\begin{DoxyParamCaption}\item[{const T \&}]{ }\end{DoxyParamCaption})}
+
+exp returns object representing $ e^T $ 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Parameter representing type of the exponent (can be complex like sin(x))\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Type representing $ e^T $
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__symbolic_ga186ca63e28a816d1cb9c8175c7839468}\label{group__numpp__differentiation__symbolic_ga186ca63e28a816d1cb9c8175c7839468}} 
+\index{Symbolic Differentiation@{Symbolic Differentiation}!log@{log}}
+\index{log@{log}!Symbolic Differentiation@{Symbolic Differentiation}}
+\subsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr auto numpp\+::differentiation\+::symbolic\+::log (\begin{DoxyParamCaption}\item[{const T \&}]{ }\end{DoxyParamCaption})}
+
+log returns object representing $ \log(T) $ 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Parameter representing type being logarithmized (can be complex like sin(x))\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Type representing $ \log(T) $
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__symbolic_ga0f6f3d22e3e712ce154f7f6c91e0cf46}\label{group__numpp__differentiation__symbolic_ga0f6f3d22e3e712ce154f7f6c91e0cf46}} 
+\index{Symbolic Differentiation@{Symbolic Differentiation}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Symbolic Differentiation@{Symbolic Differentiation}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily template$<$typename Left , typename Right $>$ \\
+constexpr auto numpp\+::differentiation\+::symbolic\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const Left \&}]{,  }\item[{const Right \&}]{ }\end{DoxyParamCaption})}
+
+operator$\ast$ returns object representing multiplication of Left and Right hand-\/side 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Left} & Parameter representing left hand-\/side (can be complex like sin(x)) \\
+\hline
+{\em Right} & Parameter representing Right hand-\/side (can be complex like sin(x))\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Type representing multiplication of Left and Right
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__symbolic_ga45bd7508b366431d72157d0f1ef6fac2}\label{group__numpp__differentiation__symbolic_ga45bd7508b366431d72157d0f1ef6fac2}} 
+\index{Symbolic Differentiation@{Symbolic Differentiation}!operator+@{operator+}}
+\index{operator+@{operator+}!Symbolic Differentiation@{Symbolic Differentiation}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily template$<$typename Left , typename Right $>$ \\
+constexpr auto numpp\+::differentiation\+::symbolic\+::operator+ (\begin{DoxyParamCaption}\item[{const Left \&}]{,  }\item[{const Right \&}]{ }\end{DoxyParamCaption})}
+
+operator+ returns object representing addition of Left and Right hand-\/side 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Left} & Parameter representing left hand-\/side (can be complex like sin(x)) \\
+\hline
+{\em Right} & Parameter representing Right hand-\/side (can be complex like sin(x))\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Type representing addition of Left and Right
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__symbolic_ga4aecf7125ae67f3c834ed8ab5e14248a}\label{group__numpp__differentiation__symbolic_ga4aecf7125ae67f3c834ed8ab5e14248a}} 
+\index{Symbolic Differentiation@{Symbolic Differentiation}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Symbolic Differentiation@{Symbolic Differentiation}}
+\subsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr auto numpp\+::differentiation\+::symbolic\+::operator-\/ (\begin{DoxyParamCaption}\item[{const T \&}]{ }\end{DoxyParamCaption})}
+
+operator-\/ returns object representing the negative of it, e.\+g. sin(x)-\/$>$ -\/sin(x) 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Parameter representing any type (can be complex like sin(x))\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Type representing negative of a given object
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__symbolic_gac882bc2dcbffae1107c46bc3eac93a44}\label{group__numpp__differentiation__symbolic_gac882bc2dcbffae1107c46bc3eac93a44}} 
+\index{Symbolic Differentiation@{Symbolic Differentiation}!operator/@{operator/}}
+\index{operator/@{operator/}!Symbolic Differentiation@{Symbolic Differentiation}}
+\subsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily template$<$typename Left , typename Right $>$ \\
+constexpr auto numpp\+::differentiation\+::symbolic\+::operator/ (\begin{DoxyParamCaption}\item[{const Left \&}]{,  }\item[{const Right \&}]{ }\end{DoxyParamCaption})}
+
+operator/ returns object representing division of Left and Right hand-\/side 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Left} & Parameter representing left hand-\/side (can be complex like sin(x)) \\
+\hline
+{\em Right} & Parameter representing Right hand-\/side (can be complex like sin(x))\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Type representing division of Left and Right
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__symbolic_gaa52e3714ea3492f60c68cdb4974fe495}\label{group__numpp__differentiation__symbolic_gaa52e3714ea3492f60c68cdb4974fe495}} 
+\index{Symbolic Differentiation@{Symbolic Differentiation}!pow@{pow}}
+\index{pow@{pow}!Symbolic Differentiation@{Symbolic Differentiation}}
+\subsubsection{\texorpdfstring{pow()}{pow()}}
+{\footnotesize\ttfamily template$<$std\+::size\+\_\+t N, typename Left $>$ \\
+constexpr auto numpp\+::differentiation\+::symbolic\+::pow (\begin{DoxyParamCaption}\item[{const Left \&}]{ }\end{DoxyParamCaption})}
+
+returns object representing Left hand-\/side to the n-\/th power
+
+{\bfseries Example usage\+:} 
+\begin{DoxyCode}
+\textcolor{keyword}{using} Function = decltype(pow<4>(\hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{nds::x<0>}\{\}));
+\end{DoxyCode}
+
+
+\begin{DoxyWarning}{Warning}
+Unluckily there seems to be no workaround around passing exponent as a template parameter
+\end{DoxyWarning}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em N} & Power of the function, Left is taken to the power of N \\
+\hline
+{\em Right} & Parameter representing type being any valid symbolic expression (can be complex like sin(x))\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Type representing $ Left^N $
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__symbolic_ga49ba3eed5ff463e79a88f4952f73f435}\label{group__numpp__differentiation__symbolic_ga49ba3eed5ff463e79a88f4952f73f435}} 
+\index{Symbolic Differentiation@{Symbolic Differentiation}!sin@{sin}}
+\index{sin@{sin}!Symbolic Differentiation@{Symbolic Differentiation}}
+\subsubsection{\texorpdfstring{sin()}{sin()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr auto numpp\+::differentiation\+::symbolic\+::sin (\begin{DoxyParamCaption}\item[{const T \&}]{ }\end{DoxyParamCaption})}
+
+sin returns object representing $ \sin(T) $ 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Parameter representing type of the argument (can be complex like log(x))\\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+Type representing $ \sin(T) $
+\end{DoxyReturn}

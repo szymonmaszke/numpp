@@ -1,0 +1,53 @@
+\hypertarget{group__numpp__differentiation__finite__central}{}\section{Central Finite Differentiation}
+\label{group__numpp__differentiation__finite__central}\index{Central Finite Differentiation@{Central Finite Differentiation}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Func , typename T , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+floating\+\_\+point$<$\+T$>$\+::value$>$$>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__differentiation__finite__central_ga310a47693c9fd648ccb763f452a813d0}{numpp\+::differentiation\+::finite\+::central} (Func \&\&f, T x)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Calculates central finite derivative $\frac{f(x+ 0.5*h)-f(x-0.5*h)}{h}$
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Func} & Function whose finite difference derivative should be calcuated \\
+\hline
+{\em T} & Argument type (e.\+g. double)\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Functor or function whose derivative we want to obtain \\
+\hline
+{\em x} & Point where the derivative is calculated \\
+\hline
+{\em h} & Disturbtion to x argument, should be around e-\/7 usually\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+If you are unsure about parameter h use function with automatically calculated overload!
+\end{DoxyWarning}
+Eventual error performed by this calculation is not provided.
+
+For better accuracy and numerical stability see\+:
+
+\hyperlink{group__numpp__differentiation__symbolic}{Symbolic Differentiation} \hyperlink{group__numpp__differentiation__automatic}{Automatic Differentiation}
+
+\begin{DoxyReturn}{Returns}
+Derivative at point x
+\end{DoxyReturn}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__numpp__differentiation__finite__central_ga310a47693c9fd648ccb763f452a813d0}\label{group__numpp__differentiation__finite__central_ga310a47693c9fd648ccb763f452a813d0}} 
+\index{Central Finite Differentiation@{Central Finite Differentiation}!central@{central}}
+\index{central@{central}!Central Finite Differentiation@{Central Finite Differentiation}}
+\subsubsection{\texorpdfstring{central()}{central()}}
+{\footnotesize\ttfamily template$<$typename Func , typename T , typename  = std\+::enable\+\_\+if\+\_\+t$<$std\+::is\+\_\+floating\+\_\+point$<$\+T$>$\+::value$>$$>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto numpp\+::differentiation\+::finite\+::central (\begin{DoxyParamCaption}\item[{Func \&\&}]{f,  }\item[{T}]{x }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+Automatically calculated disturbtion h to argument x, taken from Numerical Recipees (add source)

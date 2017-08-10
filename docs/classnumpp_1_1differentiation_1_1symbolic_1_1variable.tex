@@ -1,0 +1,71 @@
+\hypertarget{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{}\section{numpp\+:\+:differentiation\+:\+:symbolic\+:\+:variable$<$ T, Number $>$ Class Template Reference}
+\label{classnumpp_1_1differentiation_1_1symbolic_1_1variable}\index{numpp\+::differentiation\+::symbolic\+::variable$<$ T, Number $>$@{numpp\+::differentiation\+::symbolic\+::variable$<$ T, Number $>$}}
+
+
+Class representing variable of any type.  
+
+
+
+
+{\ttfamily \#include $<$types.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1symbolic_1_1variable_a982b8fd32deea706ecd44786a0a4b35a}\label{classnumpp_1_1differentiation_1_1symbolic_1_1variable_a982b8fd32deea706ecd44786a0a4b35a}} 
+{\footnotesize template$<$std\+::size\+\_\+t Active$>$ }\\using {\bfseries derivative} = std\+::conditional\+\_\+t$<$ Active==Number, \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1constant}{constant}$<$ 1 $>$, \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1constant}{constant}$<$ 0 $>$ $>$
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr auto \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable_ad73b5d668d3bcf9802a0464ea3389ac6}{calculate} (auto \&\&values)
+\begin{DoxyCompactList}\small\item\em Returns value of a certain variable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, std\+::size\+\_\+t Number$>$\newline
+class numpp\+::differentiation\+::symbolic\+::variable$<$ T, Number $>$}
+
+Class representing variable of any type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & type of value in variable (e.\+g. double) \\
+\hline
+{\em Number} & integer value differentiating variable from every other variable object\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include"numpp/differentiation/symbolic.hpp"}
+\end{DoxyCode}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnumpp_1_1differentiation_1_1symbolic_1_1variable_ad73b5d668d3bcf9802a0464ea3389ac6}\label{classnumpp_1_1differentiation_1_1symbolic_1_1variable_ad73b5d668d3bcf9802a0464ea3389ac6}} 
+\index{numpp\+::differentiation\+::symbolic\+::variable@{numpp\+::differentiation\+::symbolic\+::variable}!calculate@{calculate}}
+\index{calculate@{calculate}!numpp\+::differentiation\+::symbolic\+::variable@{numpp\+::differentiation\+::symbolic\+::variable}}
+\subsubsection{\texorpdfstring{calculate()}{calculate()}}
+{\footnotesize\ttfamily template$<$typename T , std\+::size\+\_\+t Number$>$ \\
+static constexpr auto \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable}{numpp\+::differentiation\+::symbolic\+::variable}$<$ T, Number $>$\+::calculate (\begin{DoxyParamCaption}\item[{auto \&\&}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns value of a certain variable. 
+
+For example\+: 
+\begin{DoxyCode}
+\textcolor{keyword}{auto} z = \hyperlink{classnumpp_1_1differentiation_1_1symbolic_1_1variable_ad73b5d668d3bcf9802a0464ea3389ac6}{nds::variable<double, 3>::calculate}(\textcolor{keywordtype}{double}[5]\{0,1,2,3,4\});
+std::cout << z << std::endl;
+\textcolor{comment}{//Will return 2, because it's the 3rd index specified in variable}
+\end{DoxyCode}
+
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+differentiation/symbolic/types.\+hpp\end{DoxyCompactItemize}

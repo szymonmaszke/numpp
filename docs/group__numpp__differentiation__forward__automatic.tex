@@ -1,0 +1,189 @@
+\hypertarget{group__numpp__differentiation__forward__automatic}{}\section{Forward Automatic Differentiation}
+\label{group__numpp__differentiation__forward__automatic}\index{Forward Automatic Differentiation@{Forward Automatic Differentiation}}
+
+
+First order automatic differentiation in forward mode.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward$<$ T $>$}
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\constexpr auto \hyperlink{group__numpp__differentiation__forward__automatic_ga2faff4e6f917370493a6c12f947e2573}{std\+::relu} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&x)
+\item 
+{\footnotesize template$<$typename T $>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__differentiation__forward__automatic_gab45ba058e4fd16d0f9f4c26426e385f9}{std\+::exp} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&x)
+\item 
+{\footnotesize template$<$typename T $>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__differentiation__forward__automatic_ga0f6011595edffe756a984de60358fe5f}{std\+::log} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&x)
+\item 
+{\footnotesize template$<$typename T $>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__differentiation__forward__automatic_ga6f6f07250087b18ada9ea1f84418f24f}{std\+::sin} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&x)
+\item 
+{\footnotesize template$<$typename T $>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__differentiation__forward__automatic_gaa5a06320f93037d94fda441546d7d690}{std\+::cos} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&x)
+\item 
+{\footnotesize template$<$typename T $>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__differentiation__forward__automatic_ga9547d13665c214d44b017b140ccc1a3e}{std\+::atan} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&x)
+\item 
+{\footnotesize template$<$typename T $>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__differentiation__forward__automatic_ga9c142d0a384bfa6e79bf6f614c98fe1d}{std\+::sqrt} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&x)
+\item 
+{\footnotesize template$<$typename T $>$ }\\C\+O\+N\+S\+T\+E\+X\+PR auto \hyperlink{group__numpp__differentiation__forward__automatic_ga2db415f6b1d59e1f1679ff7bbf4c426b}{std\+::asin} (const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&x)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+First order automatic differentiation in forward mode. 
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include"numpp/differentiation/automatic/forward.h"}
+\end{DoxyCode}
+
+
+You can use it almost in the same way as built-\/in arithmetic types, e.\+g. addition, multiplication and other similiar operations are provided.
+
+It is advised to use auto whenever possible to ease the need of explicit namespace/class names providing.
+
+You can use partial differentiation, but you have to specify the activity parameter in the constructor (equal to 0 for inactive node), example shown below.
+
+/warning\+If you need derivatives of higher order it is advised to use symbolic differentiation module for it\textquotesingle{}s simplifying ability.
+
+{\bfseries Example\+: Calculating $ \frac{\partial z}{\partial x} \cos(x+y)*\sin(y) + 3 $\+:} 
+\begin{DoxyCode}
+\textcolor{comment}{//Active variable x with initial value of 6}
+\hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp::differentiation::automatic::forward} 
+      \hyperlink{group__numpp__differentiation__symbolic_gac865497d2896f51d0cab2e9c64799a15}{x}\{6\};
+\textcolor{comment}{//Inactive variable y with initial value of 4;}
+\hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp::differentiation::automatic::forward} y\{4\};
+\textcolor{comment}{//Calculate value and partial derivative into two seperate variables}
+\textcolor{keyword}{auto} z = \hyperlink{group__numpp__differentiation__forward__automatic_gaa5a06320f93037d94fda441546d7d690}{std::cos}(\hyperlink{group__numpp__differentiation__symbolic_gac865497d2896f51d0cab2e9c64799a15}{x}+y)*\hyperlink{group__numpp__differentiation__forward__automatic_ga6f6f07250087b18ada9ea1f84418f24f}{std::sin}(y) + 3
+std::cout << \textcolor{stringliteral}{"Function value: "} << z.value << std::endl;
+std::cout << \textcolor{stringliteral}{"Function derivative wrt x: "} << z.derivative<< std::endl;
+\end{DoxyCode}
+
+
+\begin{DoxySeeAlso}{See also}
+numpp\+\_\+symbolic\+\_\+differentiation \char`\"{}\+Symbolic Differentiation\char`\"{} 
+\end{DoxySeeAlso}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__numpp__differentiation__forward__automatic_ga2db415f6b1d59e1f1679ff7bbf4c426b}\label{group__numpp__differentiation__forward__automatic_ga2db415f6b1d59e1f1679ff7bbf4c426b}} 
+\index{Forward Automatic Differentiation@{Forward Automatic Differentiation}!asin@{asin}}
+\index{asin@{asin}!Forward Automatic Differentiation@{Forward Automatic Differentiation}}
+\subsubsection{\texorpdfstring{asin()}{asin()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto std\+::asin (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&}]{x }\end{DoxyParamCaption})}
+
+Calculates $\arcsin(x)$ of a given variable 
+\begin{DoxyParams}{Parameters}
+{\em x} & forward node being the asin argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node passed through asin function
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__forward__automatic_ga9547d13665c214d44b017b140ccc1a3e}\label{group__numpp__differentiation__forward__automatic_ga9547d13665c214d44b017b140ccc1a3e}} 
+\index{Forward Automatic Differentiation@{Forward Automatic Differentiation}!atan@{atan}}
+\index{atan@{atan}!Forward Automatic Differentiation@{Forward Automatic Differentiation}}
+\subsubsection{\texorpdfstring{atan()}{atan()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto std\+::atan (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&}]{x }\end{DoxyParamCaption})}
+
+Calculates $\arctan(x)$ of a given variable 
+\begin{DoxyParams}{Parameters}
+{\em x} & forward node being the arctan argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node passed through arctan function
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__forward__automatic_gaa5a06320f93037d94fda441546d7d690}\label{group__numpp__differentiation__forward__automatic_gaa5a06320f93037d94fda441546d7d690}} 
+\index{Forward Automatic Differentiation@{Forward Automatic Differentiation}!cos@{cos}}
+\index{cos@{cos}!Forward Automatic Differentiation@{Forward Automatic Differentiation}}
+\subsubsection{\texorpdfstring{cos()}{cos()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto std\+::cos (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&}]{x }\end{DoxyParamCaption})}
+
+Calculates $\cos(x)$ of a given variable 
+\begin{DoxyParams}{Parameters}
+{\em x} & forward node being the cos argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node passed through cos function
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__forward__automatic_gab45ba058e4fd16d0f9f4c26426e385f9}\label{group__numpp__differentiation__forward__automatic_gab45ba058e4fd16d0f9f4c26426e385f9}} 
+\index{Forward Automatic Differentiation@{Forward Automatic Differentiation}!exp@{exp}}
+\index{exp@{exp}!Forward Automatic Differentiation@{Forward Automatic Differentiation}}
+\subsubsection{\texorpdfstring{exp()}{exp()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto std\+::exp (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&}]{x }\end{DoxyParamCaption})}
+
+Calculates $e^x$ of a given variable 
+\begin{DoxyParams}{Parameters}
+{\em x} & forward node being the exponent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node passed through exponential function
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__forward__automatic_ga0f6011595edffe756a984de60358fe5f}\label{group__numpp__differentiation__forward__automatic_ga0f6011595edffe756a984de60358fe5f}} 
+\index{Forward Automatic Differentiation@{Forward Automatic Differentiation}!log@{log}}
+\index{log@{log}!Forward Automatic Differentiation@{Forward Automatic Differentiation}}
+\subsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto std\+::log (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&}]{x }\end{DoxyParamCaption})}
+
+Calculates $\ln(x)$ of a given variable 
+\begin{DoxyParams}{Parameters}
+{\em x} & forward node being the logarithm argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node passed through logarithm function
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__forward__automatic_ga2faff4e6f917370493a6c12f947e2573}\label{group__numpp__differentiation__forward__automatic_ga2faff4e6f917370493a6c12f947e2573}} 
+\index{Forward Automatic Differentiation@{Forward Automatic Differentiation}!relu@{relu}}
+\index{relu@{relu}!Forward Automatic Differentiation@{Forward Automatic Differentiation}}
+\subsubsection{\texorpdfstring{relu()}{relu()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr auto std\+::relu (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&}]{x }\end{DoxyParamCaption})}
+
+Calculates rectified linear unit $\max(0,x)$ of a forward variable 
+\begin{DoxyParams}{Parameters}
+{\em x} & forward node being passed to Re\+LU \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node passed through Re\+LU
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__forward__automatic_ga6f6f07250087b18ada9ea1f84418f24f}\label{group__numpp__differentiation__forward__automatic_ga6f6f07250087b18ada9ea1f84418f24f}} 
+\index{Forward Automatic Differentiation@{Forward Automatic Differentiation}!sin@{sin}}
+\index{sin@{sin}!Forward Automatic Differentiation@{Forward Automatic Differentiation}}
+\subsubsection{\texorpdfstring{sin()}{sin()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto std\+::sin (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&}]{x }\end{DoxyParamCaption})}
+
+Calculates $\sin(x)$ of a given variable 
+\begin{DoxyParams}{Parameters}
+{\em x} & forward node being the sin argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node passed through sin function
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__differentiation__forward__automatic_ga9c142d0a384bfa6e79bf6f614c98fe1d}\label{group__numpp__differentiation__forward__automatic_ga9c142d0a384bfa6e79bf6f614c98fe1d}} 
+\index{Forward Automatic Differentiation@{Forward Automatic Differentiation}!sqrt@{sqrt}}
+\index{sqrt@{sqrt}!Forward Automatic Differentiation@{Forward Automatic Differentiation}}
+\subsubsection{\texorpdfstring{sqrt()}{sqrt()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR auto std\+::sqrt (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1differentiation_1_1automatic_1_1forward}{numpp\+::differentiation\+::automatic\+::forward}$<$ T $>$ \&}]{x }\end{DoxyParamCaption})}
+
+Calculates $\sqrt(x)$ of a given variable 
+\begin{DoxyParams}{Parameters}
+{\em x} & forward node being the sqrt argument \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Node passed through sqrt function
+\end{DoxyReturn}

@@ -1,0 +1,44 @@
+\hypertarget{group__numpp__differentiation__automatic}{}\section{Automatic Differentiation}
+\label{group__numpp__differentiation__automatic}\index{Automatic Differentiation@{Automatic Differentiation}}
+
+
+This module provides the means for performing automatic differentiation.  
+
+
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__numpp__differentiation__backward__automatic}{Backward Automatic Differentiation}
+\begin{DoxyCompactList}\small\item\em First order automatic differentiation in reverse mode. \end{DoxyCompactList}\item 
+\hyperlink{group__numpp__differentiation__forward__automatic}{Forward Automatic Differentiation}
+\begin{DoxyCompactList}\small\item\em First order automatic differentiation in forward mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module provides the means for performing automatic differentiation. 
+
+Only forward mode as of now, backward propagation should be provided later.
+
+{\bfseries Only first order partial differentiation supported.}
+
+{\bfseries For higher order derivatives check \hyperlink{group__numpp__differentiation__symbolic}{Symbolic Differentiation} }
+
+\begin{DoxyWarning}{Warning}
+Only arithmetic types are backed by the implementation. To specify your own type, you have to specialize is\+\_\+arithmetic S\+TL trait. Such type has to provide overload for addition and mathematical oprations like sin, cos etc. (constexpr versions for G\+CC compiler)
+\end{DoxyWarning}
+Namespace\+: 
+\begin{DoxyCode}
+\hyperlink{namespacenumpp_1_1differentiation_1_1automatic}{numpp::differentiation::automatic}
+\end{DoxyCode}
+
+
+Include\+: 
+\begin{DoxyCode}
+\hyperlink{namespacenumpp}{numpp}/differentiation/automatic.hpp #includes every method in the module
+\hyperlink{namespacenumpp}{numpp}/differentiation/automatic/SUBCLASS.hpp #include specific SUBCLASS
+\end{DoxyCode}
+
+
+\begin{DoxyWarning}{Warning}
+{\bfseries Second include option S\+H\+O\+U\+L\+DN\textquotesingle{}T be used} 
+\end{DoxyWarning}

@@ -1,0 +1,153 @@
+\hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested}{}\section{numpp\+:\+:matrix\+:\+:sparse\+:\+:nested$<$ T, Rows, Columns $>$ Class Template Reference}
+\label{classnumpp_1_1matrix_1_1sparse_1_1nested}\index{numpp\+::matrix\+::sparse\+::nested$<$ T, Rows, Columns $>$@{numpp\+::matrix\+::sparse\+::nested$<$ T, Rows, Columns $>$}}
+
+
+Block nested version of sparse matrix.  
+
+
+
+
+{\ttfamily \#include $<$sparse\+\_\+block\+\_\+nested.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_a7ee7220e8a4fb147645e5e041d5e5bec}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_a7ee7220e8a4fb147645e5e041d5e5bec}} 
+using {\bfseries value\+\_\+type} = T
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_ae6ff817777e93a23739de12daaff86ca}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_ae6ff817777e93a23739de12daaff86ca}} 
+using {\bfseries size\+\_\+type} = std\+::size\+\_\+t
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_ad9b24c32e0151135d3bf17a17109dc36}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_ad9b24c32e0151135d3bf17a17109dc36}} 
+using {\bfseries reference} = T \&
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_a1d0a0d4ab6c821ba46b43c4b96358da3}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_a1d0a0d4ab6c821ba46b43c4b96358da3}} 
+using {\bfseries const\+\_\+reference} = const T \&
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_ad93736ab4b7e04a671a5c2a1606129ee}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_ad93736ab4b7e04a671a5c2a1606129ee}} 
+using {\bfseries pointer} = T $\ast$
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_aa940950e23a925cc7deb8911ec803f47}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_aa940950e23a925cc7deb8911ec803f47}} 
+using {\bfseries const\+\_\+pointer} = const T $\ast$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_a7b64faee8e6532d8fd535fc069e75612}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_a7b64faee8e6532d8fd535fc069e75612}} 
+{\bfseries nested} (const \hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested}{nested} \&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_ae2635e88208229453ffa0ca7858801f8}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_ae2635e88208229453ffa0ca7858801f8}} 
+{\bfseries nested} (\hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested}{nested} \&\&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_acb521971efcd22e628a97c398c9af9ee}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_acb521971efcd22e628a97c398c9af9ee}} 
+\hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested}{nested} \& {\bfseries operator=} (\hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested}{nested} \&\&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_aefc9f1be3eb621a4a287f313fef69f08}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_aefc9f1be3eb621a4a287f313fef69f08}} 
+\hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested}{nested} \& {\bfseries operator=} (const \hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested}{nested} \&)=default
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_ad5277725c13cb3677aab4f3bedbe8601}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_ad5277725c13cb3677aab4f3bedbe8601}} 
+{\bfseries nested} (std\+::initializer\+\_\+list$<$ std\+::initializer\+\_\+list$<$ T $>$$>$ elements)
+\item 
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_ad9af43e4278ec50a869996a3b56a7ad1}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_ad9af43e4278ec50a869996a3b56a7ad1}} 
+size\+\_\+type {\bfseries size} () const noexcept
+\item 
+const std\+::array$<$ std\+::vector$<$ \hyperlink{structnumpp_1_1matrix_1_1sparse_1_1impl_1_1inner__block}{impl\+::inner\+\_\+block}$<$ T $>$ $>$, Rows $>$ \& \hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested_a56a31c654f21e001e6e4cc4aa7055ee1}{data} () const noexcept
+\item 
+std\+::array$<$ std\+::vector$<$ \hyperlink{structnumpp_1_1matrix_1_1sparse_1_1impl_1_1inner__block}{impl\+::inner\+\_\+block}$<$ T $>$ $>$, Rows $>$ \& \hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested_a1201f9550dded2b187221ccf768a88f3}{data} () noexcept
+\item 
+{\footnotesize template$<$typename U $>$ }\\auto \hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested_a5348b9ed5e038a10885b5b849614fdba}{operator$\ast$} (const \hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ U, Columns, false $>$ \&vec)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, std\+::size\+\_\+t Rows, std\+::size\+\_\+t Columns$>$\newline
+class numpp\+::matrix\+::sparse\+::nested$<$ T, Rows, Columns $>$}
+
+Block nested version of sparse matrix. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & arithmetic type contained in matrix class \\
+\hline
+{\em Rows} & number of rows in matrix \\
+\hline
+{\em Columns} & number of columns in matrix\\
+\hline
+\end{DoxyTemplParams}
+{\bfseries This implementation is an experiment in cache hit-\/rate.~\newline
+ } Whole sparse matrix is contained in one array, inside there is a nested block which contains each data block After each block operation calculating row is performed.
+
+\begin{DoxyWarning}{Warning}
+{\bfseries For parallelization of the sparse matrix dense vector multiplication you need compiler with Open\+MP support} 
+
+Only sparse matrix dense vector multiplication implemented 
+
+{\bfseries Each row has to be seperate std\+::initializer\+\_\+list}
+\end{DoxyWarning}
+{\bfseries Pros\+:}
+\begin{DoxyItemize}
+\item Even smaller memory overhead than \hyperlink{classnumpp_1_1matrix_1_1sparse_1_1block}{numpp\+::matrix\+::sparse\+::block} (one less element per block kept in memory)
+\item Higher possibility of S\+I\+MD optimization than above
+\end{DoxyItemize}
+
+{\bfseries Cons\+:}
+\begin{DoxyItemize}
+\item Additional operations of read for every block
+\item Cache locality may be worse as two vectors are nested inside each other
+\end{DoxyItemize}
+
+{\bfseries Example\+:} 
+\begin{DoxyCode}
+\hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested}{numpp::matrix::sparse::nested<double, 3,3>} mat\{\{0,  0,   1\},
+                                                \{0,  2.3, 0\},
+                                                \{0,  0,   13.7\}
+                                               \};
+constexpr numpp::matrix::vector<double, 3> vec\{1,2,3\};
+\textcolor{keyword}{auto} result = mat*vec;
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include"numpp/structures/matrices/sparse.hpp"}
+\end{DoxyCode}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_a56a31c654f21e001e6e4cc4aa7055ee1}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_a56a31c654f21e001e6e4cc4aa7055ee1}} 
+\index{numpp\+::matrix\+::sparse\+::nested@{numpp\+::matrix\+::sparse\+::nested}!data@{data}}
+\index{data@{data}!numpp\+::matrix\+::sparse\+::nested@{numpp\+::matrix\+::sparse\+::nested}}
+\subsubsection{\texorpdfstring{data()}{data()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , std\+::size\+\_\+t Rows, std\+::size\+\_\+t Columns$>$ \\
+const std\+::array$<$std\+::vector$<$\hyperlink{structnumpp_1_1matrix_1_1sparse_1_1impl_1_1inner__block}{impl\+::inner\+\_\+block}$<$T$>$ $>$, Rows$>$\& \hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested}{numpp\+::matrix\+::sparse\+::nested}$<$ T, Rows, Columns $>$\+::data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Returns underlying data structure \mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_a1201f9550dded2b187221ccf768a88f3}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_a1201f9550dded2b187221ccf768a88f3}} 
+\index{numpp\+::matrix\+::sparse\+::nested@{numpp\+::matrix\+::sparse\+::nested}!data@{data}}
+\index{data@{data}!numpp\+::matrix\+::sparse\+::nested@{numpp\+::matrix\+::sparse\+::nested}}
+\subsubsection{\texorpdfstring{data()}{data()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , std\+::size\+\_\+t Rows, std\+::size\+\_\+t Columns$>$ \\
+std\+::array$<$std\+::vector$<$\hyperlink{structnumpp_1_1matrix_1_1sparse_1_1impl_1_1inner__block}{impl\+::inner\+\_\+block}$<$T$>$ $>$, Rows$>$\& \hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested}{numpp\+::matrix\+::sparse\+::nested}$<$ T, Rows, Columns $>$\+::data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+Returns underlying data structure \mbox{\Hypertarget{classnumpp_1_1matrix_1_1sparse_1_1nested_a5348b9ed5e038a10885b5b849614fdba}\label{classnumpp_1_1matrix_1_1sparse_1_1nested_a5348b9ed5e038a10885b5b849614fdba}} 
+\index{numpp\+::matrix\+::sparse\+::nested@{numpp\+::matrix\+::sparse\+::nested}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!numpp\+::matrix\+::sparse\+::nested@{numpp\+::matrix\+::sparse\+::nested}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily template$<$typename T , std\+::size\+\_\+t Rows, std\+::size\+\_\+t Columns$>$ \\
+template$<$typename U $>$ \\
+auto \hyperlink{classnumpp_1_1matrix_1_1sparse_1_1nested}{numpp\+::matrix\+::sparse\+::nested}$<$ T, Rows, Columns $>$\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ U, Columns, false $>$ \&}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function multiplying sparse matrix and dense vector
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & Vector which will be multiplied \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$\+U, Rows, false$>$ 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+structures/matrices/sparse/sparse\+\_\+block\+\_\+nested.\+hpp\end{DoxyCompactItemize}

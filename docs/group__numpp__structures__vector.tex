@@ -1,0 +1,230 @@
+\hypertarget{group__numpp__structures__vector}{}\section{Vector}
+\label{group__numpp__structures__vector}\index{Vector@{Vector}}
+
+
+Class representing one-\/dimensional numerical vector.  
+
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classnumpp_1_1vector}{numpp\+::vector$<$ T, Size, Transposition $>$}
+\item 
+class \hyperlink{classtuple__size}{tuple\+\_\+size}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classtuple__size}{tuple\+\_\+size} specialization for \hyperlink{classnumpp_1_1vector}{numpp\+::vector} \end{DoxyCompactList}\item 
+class \hyperlink{classtuple__element}{tuple\+\_\+element}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classtuple__element}{tuple\+\_\+element} specialization for \hyperlink{classnumpp_1_1vector}{numpp\+::vector} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr auto \hyperlink{group__numpp__structures__vector_gab3289765a30dd71552bb3735d1eed2cb}{numpp\+::transpose} (\hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ vec)
+\item 
+{\footnotesize template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition\+One, bool Transposition\+Two$>$ }\\constexpr std\+::common\+\_\+type\+\_\+t$<$ T, U $>$ \hyperlink{group__numpp__structures__vector_ga14b45cfacf9d631e87eb16702849698b}{numpp\+::sum} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition\+One $>$ \&first, const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Size, Transposition\+Two $>$ \&second)
+\item 
+{\footnotesize template$<$typename T , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr T \hyperlink{group__numpp__structures__vector_ga433e83681dca06467aaa4960cb631c79}{numpp\+::sum} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&vec)
+\item 
+{\footnotesize template$<$typename T , std\+::size\+\_\+t Size, bool Transposition$>$ }\\C\+O\+N\+S\+T\+E\+X\+PR T \hyperlink{group__numpp__structures__vector_ga0a9e277caa2ef944ec7f28a794523a19}{numpp\+::norm\+::euclidean} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&vec)
+\item 
+{\footnotesize template$<$typename T , std\+::size\+\_\+t Size, bool Transposition$>$ }\\C\+O\+N\+S\+T\+E\+X\+PR T \hyperlink{group__numpp__structures__vector_ga4847adde1fdd241339308615285974ad}{numpp\+::norm\+::max} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&vec)
+\item 
+{\footnotesize template$<$typename T , std\+::size\+\_\+t Size, bool Transposition$>$ }\\C\+O\+N\+S\+T\+E\+X\+PR T \hyperlink{group__numpp__structures__vector_ga51b9bb12dcc29ec7b36896742be8438c}{numpp\+::norm\+::taxicab} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&vec)
+\item 
+{\footnotesize template$<$typename T , typename U , std\+::size\+\_\+t Rows, std\+::size\+\_\+t Columns$>$ }\\constexpr auto \hyperlink{group__numpp__structures__vector_ga631ef12f529e5fc50704b55b8fa8b6df}{numpp\+::operator$\ast$} (const \hyperlink{classnumpp_1_1matrix_1_1dense}{matrix\+::dense}$<$ T, Rows, Columns $>$ \&mat, const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Columns, false $>$ \&vec)
+\item 
+{\footnotesize template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr auto \hyperlink{group__numpp__structures__vector_ga3942b8e2790d5d9b328632be6cf4aeb4}{numpp\+::operator+} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&first, const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Size, Transposition $>$ \&second)
+\item 
+{\footnotesize template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr auto \hyperlink{group__numpp__structures__vector_gaed4254f0627625649e3db732b6ff7f76}{numpp\+::operator-\/} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&first, const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Size, Transposition $>$ \&second)
+\item 
+{\footnotesize template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr auto \hyperlink{group__numpp__structures__vector_gab6aeead62bc88777e4664a8eadfa7720}{numpp\+::operator$\ast$} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&vec, U \&\&scalar)
+\item 
+{\footnotesize template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr auto \hyperlink{group__numpp__structures__vector_gae2786c050a7f51f3f0c9d23e2093de91}{numpp\+::operator$\ast$} (U scalar, const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&vec)
+\item 
+{\footnotesize template$<$typename T , typename U , std\+::size\+\_\+t Size$>$ }\\constexpr std\+::common\+\_\+type\+\_\+t$<$ T, U $>$ \hyperlink{group__numpp__structures__vector_ga8d85eefc2eadd9008013c43e7e90f65f}{numpp\+::operator$\ast$} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, true $>$ \&first, const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Size, false $>$ \&second)
+\item 
+{\footnotesize template$<$typename T , typename U , std\+::size\+\_\+t Rows, std\+::size\+\_\+t Columns$>$ }\\constexpr auto \hyperlink{group__numpp__structures__vector_ga79a0f32943f0dde6c938f804d132c42e}{numpp\+::operator$\ast$} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Rows, false $>$ \&first, const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Columns, true $>$ \&second)
+\item 
+{\footnotesize template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr auto \hyperlink{group__numpp__structures__vector_ga5089883ef7a3d2a243647cb2cc543735}{numpp\+::operator/} (const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&vec, U scalar)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t Index, typename T , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr T \& \hyperlink{group__numpp__structures__vector_ga01dd4b7887091df5206acba15d280d48}{numpp\+::get} (\hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$ \&v)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t Index, typename T , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr T \&\& \hyperlink{group__numpp__structures__vector_ga9172642419f215f74fbfe6616c8453b2}{numpp\+::get} (\hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$ \&\&v)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t Index, typename T , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr const T \& \hyperlink{group__numpp__structures__vector_ga1a445b047ad3c94be0a15bf228bb5b5d}{numpp\+::get} (const \hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$ \&v)
+\item 
+{\footnotesize template$<$std\+::size\+\_\+t Index, typename T , std\+::size\+\_\+t Size, bool Transposition$>$ }\\constexpr const T \&\& \hyperlink{group__numpp__structures__vector_ga492c948b84cb987e083a913814549e8a}{numpp\+::get} (const \hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$ \&\&v)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing one-\/dimensional numerical vector. 
+
+This class provides vector with it\textquotesingle{}s basic functionality. Every operations should be done in compile time.
+
+{\bfseries \begin{DoxyWarning}{Warning}
+This implementation is obviously faster in runtime, but the compilation time may mitigate the positive effects.~\newline
+ {\bfseries Example\+:} 
+\begin{DoxyCode}
+\(\backslash\)\(\backslash\)Create vector
+\hyperlink{classnumpp_1_1vector}{numpp::vector<double, 5>} \hyperlink{group__numpp__differentiation__symbolic_gac865497d2896f51d0cab2e9c64799a15}{x}\{1,2,3,4,5\}; \textcolor{comment}{//Implicit transposition equal to false}
+\hyperlink{classnumpp_1_1vector}{numpp::vector<double, 5, true>} y\{1,2,3,4,5\}; \textcolor{comment}{//Transposed vector}
+
+\textcolor{keywordtype}{double} scalar = y*\hyperlink{group__numpp__differentiation__symbolic_gac865497d2896f51d0cab2e9c64799a15}{x} \textcolor{comment}{//Returns scalar y^T * x}
+\textcolor{keyword}{auto} matrix = \hyperlink{group__numpp__differentiation__symbolic_gac865497d2896f51d0cab2e9c64799a15}{x}*y \textcolor{comment}{//Returns matrix of x * y^T}
+
+std::cout << \hyperlink{group__numpp__structures__vector_ga0a9e277caa2ef944ec7f28a794523a19}{norm::euclidean}(\hyperlink{group__numpp__differentiation__symbolic_gac865497d2896f51d0cab2e9c64799a15}{x}) << std::endl; \textcolor{comment}{//prints euclidean norm of the vector}
+\end{DoxyCode}
+
+\end{DoxyWarning}
+{\bfseries \begin{DoxyWarning}{Warning}
+If you are looking for more compile-\/runtime balanced implementations check Eigen, Armadillo or other libraries
+\end{DoxyWarning}
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include"numpp/structures/vector.hpp"}
+\end{DoxyCode}
+ }}
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{group__numpp__structures__vector_ga0a9e277caa2ef944ec7f28a794523a19}\label{group__numpp__structures__vector_ga0a9e277caa2ef944ec7f28a794523a19}} 
+\index{Vector@{Vector}!euclidean@{euclidean}}
+\index{euclidean@{euclidean}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{euclidean()}{euclidean()}}
+{\footnotesize\ttfamily template$<$typename T , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR T numpp\+::norm\+::euclidean (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+returns Euclidean ( $ l^2 $) norm of the vector\mbox{\Hypertarget{group__numpp__structures__vector_ga01dd4b7887091df5206acba15d280d48}\label{group__numpp__structures__vector_ga01dd4b7887091df5206acba15d280d48}} 
+\index{Vector@{Vector}!get@{get}}
+\index{get@{get}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$std\+::size\+\_\+t Index, typename T , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr T\& numpp\+::get (\begin{DoxyParamCaption}\item[{\hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$ \&}]{v }\end{DoxyParamCaption})}
+
+Overload standard operator get for vector \begin{DoxyReturn}{Returns}
+Element of vector of passed index
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__structures__vector_ga9172642419f215f74fbfe6616c8453b2}\label{group__numpp__structures__vector_ga9172642419f215f74fbfe6616c8453b2}} 
+\index{Vector@{Vector}!get@{get}}
+\index{get@{get}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$std\+::size\+\_\+t Index, typename T , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr T\&\& numpp\+::get (\begin{DoxyParamCaption}\item[{\hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$ \&\&}]{v }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.\mbox{\Hypertarget{group__numpp__structures__vector_ga1a445b047ad3c94be0a15bf228bb5b5d}\label{group__numpp__structures__vector_ga1a445b047ad3c94be0a15bf228bb5b5d}} 
+\index{Vector@{Vector}!get@{get}}
+\index{get@{get}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$std\+::size\+\_\+t Index, typename T , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr const T\& numpp\+::get (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$ \&}]{v }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.\mbox{\Hypertarget{group__numpp__structures__vector_ga492c948b84cb987e083a913814549e8a}\label{group__numpp__structures__vector_ga492c948b84cb987e083a913814549e8a}} 
+\index{Vector@{Vector}!get@{get}}
+\index{get@{get}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$std\+::size\+\_\+t Index, typename T , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr const T\&\& numpp\+::get (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{numpp\+::vector}$<$ T, Size, Transposition $>$ \&\&}]{v }\end{DoxyParamCaption})}
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.\mbox{\Hypertarget{group__numpp__structures__vector_ga4847adde1fdd241339308615285974ad}\label{group__numpp__structures__vector_ga4847adde1fdd241339308615285974ad}} 
+\index{Vector@{Vector}!max@{max}}
+\index{max@{max}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{max()}{max()}}
+{\footnotesize\ttfamily template$<$typename T , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR T numpp\+::norm\+::max (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+returns maximum norm of the vector which has the form\+: $ ||x|| = \max(|x_1|) $\mbox{\Hypertarget{group__numpp__structures__vector_ga631ef12f529e5fc50704b55b8fa8b6df}\label{group__numpp__structures__vector_ga631ef12f529e5fc50704b55b8fa8b6df}} 
+\index{Vector@{Vector}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily template$<$typename T , typename U , std\+::size\+\_\+t Rows, std\+::size\+\_\+t Columns$>$ \\
+constexpr auto numpp\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1matrix_1_1dense}{matrix\+::dense}$<$ T, Rows, Columns $>$ \&}]{mat,  }\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Columns, false $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+returns the result of $mat*vec$ which is a new vector object\mbox{\Hypertarget{group__numpp__structures__vector_gab6aeead62bc88777e4664a8eadfa7720}\label{group__numpp__structures__vector_gab6aeead62bc88777e4664a8eadfa7720}} 
+\index{Vector@{Vector}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr auto numpp\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&}]{vec,  }\item[{U \&\&}]{scalar }\end{DoxyParamCaption})}
+
+returns the multiplication of vector with scalar $vec*scalar$ which is a new vector object\mbox{\Hypertarget{group__numpp__structures__vector_gae2786c050a7f51f3f0c9d23e2093de91}\label{group__numpp__structures__vector_gae2786c050a7f51f3f0c9d23e2093de91}} 
+\index{Vector@{Vector}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr auto numpp\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{U}]{scalar,  }\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+returns the multiplication of scalar and vector $scalar*vec$ which is a new vector object\mbox{\Hypertarget{group__numpp__structures__vector_ga8d85eefc2eadd9008013c43e7e90f65f}\label{group__numpp__structures__vector_ga8d85eefc2eadd9008013c43e7e90f65f}} 
+\index{Vector@{Vector}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily template$<$typename T , typename U , std\+::size\+\_\+t Size$>$ \\
+constexpr std\+::common\+\_\+type\+\_\+t$<$T,U$>$ numpp\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, true $>$ \&}]{first,  }\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Size, false $>$ \&}]{second }\end{DoxyParamCaption})}
+
+returns the multiplication of the form $first^T*second$ \begin{DoxyReturn}{Returns}
+common type of two vectors data type, e.\+g. double for float and double types
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__structures__vector_ga79a0f32943f0dde6c938f804d132c42e}\label{group__numpp__structures__vector_ga79a0f32943f0dde6c938f804d132c42e}} 
+\index{Vector@{Vector}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator$\ast$()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily template$<$typename T , typename U , std\+::size\+\_\+t Rows, std\+::size\+\_\+t Columns$>$ \\
+constexpr auto numpp\+::operator$\ast$ (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Rows, false $>$ \&}]{first,  }\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Columns, true $>$ \&}]{second }\end{DoxyParamCaption})}
+
+returns the multiplication of the form $first*second^T$ \begin{DoxyReturn}{Returns}
+Matrix with data type common\+\_\+type and size Rows and Columns
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__structures__vector_ga3942b8e2790d5d9b328632be6cf4aeb4}\label{group__numpp__structures__vector_ga3942b8e2790d5d9b328632be6cf4aeb4}} 
+\index{Vector@{Vector}!operator+@{operator+}}
+\index{operator+@{operator+}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr auto numpp\+::operator+ (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&}]{first,  }\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Size, Transposition $>$ \&}]{second }\end{DoxyParamCaption})}
+
+returns the sum of two vectors $first+second$ which is a new vector object\mbox{\Hypertarget{group__numpp__structures__vector_gaed4254f0627625649e3db732b6ff7f76}\label{group__numpp__structures__vector_gaed4254f0627625649e3db732b6ff7f76}} 
+\index{Vector@{Vector}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr auto numpp\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&}]{first,  }\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Size, Transposition $>$ \&}]{second }\end{DoxyParamCaption})}
+
+returns the subtraction of two vectors $first-second$ which is a new vector object\mbox{\Hypertarget{group__numpp__structures__vector_ga5089883ef7a3d2a243647cb2cc543735}\label{group__numpp__structures__vector_ga5089883ef7a3d2a243647cb2cc543735}} 
+\index{Vector@{Vector}!operator/@{operator/}}
+\index{operator/@{operator/}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{operator/()}{operator/()}}
+{\footnotesize\ttfamily template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr auto numpp\+::operator/ (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&}]{vec,  }\item[{U}]{scalar }\end{DoxyParamCaption})}
+
+returns the division of vector with scalar of the form $\frac{1}{scalar}*vec $ \begin{DoxyReturn}{Returns}
+vector divided by scalar
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__numpp__structures__vector_ga14b45cfacf9d631e87eb16702849698b}\label{group__numpp__structures__vector_ga14b45cfacf9d631e87eb16702849698b}} 
+\index{Vector@{Vector}!sum@{sum}}
+\index{sum@{sum}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{sum()}{sum()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename U , std\+::size\+\_\+t Size, bool Transposition\+One, bool Transposition\+Two$>$ \\
+constexpr std\+::common\+\_\+type\+\_\+t$<$T,U$>$ numpp\+::sum (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition\+One $>$ \&}]{first,  }\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ U, Size, Transposition\+Two $>$ \&}]{second }\end{DoxyParamCaption})}
+
+returns result of the operation $first^T * second $ without performing pointless transposition
+
+You are advised to use this version, not explicit transposition of vector\mbox{\Hypertarget{group__numpp__structures__vector_ga433e83681dca06467aaa4960cb631c79}\label{group__numpp__structures__vector_ga433e83681dca06467aaa4960cb631c79}} 
+\index{Vector@{Vector}!sum@{sum}}
+\index{sum@{sum}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{sum()}{sum()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr T numpp\+::sum (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+returns result of the operation $vec^T * vec$ without performing pointless transposition
+
+You are advised to use this version, not explicit transposition of vector\mbox{\Hypertarget{group__numpp__structures__vector_ga51b9bb12dcc29ec7b36896742be8438c}\label{group__numpp__structures__vector_ga51b9bb12dcc29ec7b36896742be8438c}} 
+\index{Vector@{Vector}!taxicab@{taxicab}}
+\index{taxicab@{taxicab}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{taxicab()}{taxicab()}}
+{\footnotesize\ttfamily template$<$typename T , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+C\+O\+N\+S\+T\+E\+X\+PR T numpp\+::norm\+::taxicab (\begin{DoxyParamCaption}\item[{const \hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+returns Taxicab/\+Mahattan norm of the vector\mbox{\Hypertarget{group__numpp__structures__vector_gab3289765a30dd71552bb3735d1eed2cb}\label{group__numpp__structures__vector_gab3289765a30dd71552bb3735d1eed2cb}} 
+\index{Vector@{Vector}!transpose@{transpose}}
+\index{transpose@{transpose}!Vector@{Vector}}
+\subsubsection{\texorpdfstring{transpose()}{transpose()}}
+{\footnotesize\ttfamily template$<$typename T , std\+::size\+\_\+t Size, bool Transposition$>$ \\
+constexpr auto numpp\+::transpose (\begin{DoxyParamCaption}\item[{\hyperlink{classnumpp_1_1vector}{vector}$<$ T, Size, Transposition $>$}]{vec }\end{DoxyParamCaption})}
+
+returns transposed vector
