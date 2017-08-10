@@ -59,9 +59,9 @@ How does it compare?
 
 ## 3. Compilation times
 
-  I'm not going to lie, this is the place, where some modules lose a lot in favor of competition. 
-  In the case of matrix multiplication, memory bandwith and **lack of parallelism during compilation**
-  slows the matrix operations by a few seconds even. When comparing to GSL such drop hasn't beend noticed.
+  I'm not going to lie, this is the place, where some modules loses to the competition. 
+  In the case of matrix multiplication, **memory bandwith** and **lack of parallelism during compilation**
+  may slow the matrix operations even by a few seconds.
 
 Installation:
 =============
@@ -73,8 +73,13 @@ Installation:
  
 **2. Dockerized installation**
 
-  If your distro doesn't have GCC7.0 just run the image provided in the banner at the top via command:
-  **docker run -i -t vyzyv/numpp:latest /bin/bash** to enter the container, which has everything you need to
+  If your distro doesn't have GCC7.0 just run the **[Docker](https://www.docker.com/)** image provided in the banner at the top via command:
+  
+  ```
+  $ docker run -i -t vyzyv/numpp:latest /bin/bash
+  ```
+  
+  to enter the container, which has everything you need to
   run your applications based on **numpp**.
 
 Documentation:
@@ -82,7 +87,7 @@ Documentation:
 
 For more specific informations about what the library has to offer check below:
 
-[Documentation](https://vyzyv.github.io/numpp/modules.html "numpp's documentation")
+**[Documentation](https://vyzyv.github.io/numpp/modules.html "numpp's documentation")**
 
 For in-depth dissertation of provided functionality check the paper below and others linked inside:
 <link to dissertation>
