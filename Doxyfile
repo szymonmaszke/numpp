@@ -1085,6 +1085,7 @@ GENERATE_HTML          = YES
 
 HTML_OUTPUT            = docs
 
+
 # The HTML_FILE_EXTENSION tag can be used to specify the file extension for each
 # generated HTML page (for example: .htm, .php, .asp).
 # The default value is: .html.
@@ -1899,7 +1900,9 @@ MAN_LINKS              = NO
 # captures the structure of the code including all documentation.
 # The default value is: NO.
 
+
 GENERATE_XML           = NO
+
 
 # The XML_OUTPUT tag is used to specify where the XML pages will be put. If a
 # relative path is entered the value of OUTPUT_DIRECTORY will be put in front of
