@@ -5,7 +5,7 @@ SYMPY_LINKING=`cmake --find-package -DNAME=SymEngine -DCOMPILER_ID=GNU -DLANGUAG
 
 CXXFLAGS = -std=c++17 -Wall -Werror -Weffc++ -O3 -march=native -fopenmp -fopenmp-simd
 
-SYMENGINE_CASES=100
+SYMENGINE_CASES=10000
 SYMENGINE_LOW=10
 SYMENGINE_HIGH=20
 

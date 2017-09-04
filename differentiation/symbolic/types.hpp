@@ -23,10 +23,7 @@ namespace numpp::differentiation::symbolic{
   template<int Value>
     class constant{
       public:
-        using active = std::false_type;
         template<std::size_t Active> using derivative = constant<0>;
-        using type = int;
-
 /**
   \brief Returns Value no matter the argument
   \returns int

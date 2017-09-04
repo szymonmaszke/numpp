@@ -88,7 +88,6 @@ int main(int argc, char** argv){
   auto per_derivative_numpp = std::chrono::duration_cast<std::chrono::nanoseconds>(numpp_end-derivative_creation).count()/TEST_CASES;
   std::cout << "Average time per one derivative evaluation in nanoseconds: " << per_derivative_numpp << std::endl;
   std::cout << "Overall time in nanoseconds: " << std::chrono::duration_cast<std::chrono::nanoseconds>(numpp_end-numpp_start).count() << std::endl;
-  std::cout << "\nCHECK RESULT OF EVALUATION:" << std::endl;
 
 
   //IF NUMPP ISN'T 5x FASTER RETURN ERROR
