@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:latest AS test
 MAINTAINER a395ux91 (vyzyv) <vyz@protonmail.com>
 
 COPY . /usr/include/numpp
@@ -17,7 +17,7 @@ RUN apt-get update && \
     cd ./symengine && cmake . && make && make install
 
 
-FROM ubuntu:latest
+FROM ubuntu:latest AS deploy
 MAINTAINER a395ux91 (vyzyv) <vyz@protonmail.com>
 
 COPY . /usr/include/numpp
