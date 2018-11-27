@@ -3,10 +3,10 @@ language: generic
 
 jobs:
   include:
-    - stage: build docker images
+    - stage: build docker image
       script:
         - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-        - docker build -t $DOCKER_USERNAME/numpp:tests .
+        - docker build -t $DOCKER_USERNAME/numpp:tests -f DockerfileTests .
         - docker push $DOCKER_USERNAME/numpp:tests
     - stage: tests
       script:
@@ -14,3 +14,8 @@ jobs:
     - stage: tests
       script:
         - travis_wait 45 docker run $DOCKER_USERNAME/numpp:tests make -C /usr/include/numpp/tests/speed
+    - stage: deploy
+      script:
+        - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+        - docker build -t $DOCKER_USERNAME/numpp:latest .
+        - docker push $DOCKER_USERNAME/numpp:latest
