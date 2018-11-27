@@ -1,10 +1,10 @@
-FROM ubuntu:latest AS test
-MAINTAINER a395ux91 (vyzyv) <vyz@protonmail.com>
+FROM ubuntu:18.04 AS test
+LABEL maintainer="a395ux91 (vyzyv) <vyz@protonmail.com>"
 
 COPY . /usr/include/numpp
 
 RUN apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
             gcc \
             libeigen3-dev \
             libgsl-dev \
@@ -13,14 +13,16 @@ RUN apt-get update && \
             cmake \
             bc \
             git && \
-    cd /tmp && git clone https://github.com/symengine/symengine && \
-    cd ./symengine && cmake . && make && make install
+    git clone https://github.com/symengine/symengine /tmp/symengine
+
+WORKDIR /tmp/symengine
+RUN cmake . && make && make install
 
 
-FROM ubuntu:latest AS deploy
-MAINTAINER a395ux91 (vyzyv) <vyz@protonmail.com>
+FROM ubuntu:18.04 AS deploy
+LABEL maintainer="a395ux91 (vyzyv) <vyz@protonmail.com>"
 
 COPY . /usr/include/numpp
 
 RUN apt-get update && \
-    apt-get install -y gcc
+    apt-get install -y --no-install-recommends gcc
