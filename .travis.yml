@@ -17,5 +17,5 @@ jobs:
     - stage: deploy
       script:
         - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-        - docker build -t $DOCKER_USERNAME/numpp:latest -f DockerfileDeploy .
+        - docker build -t $DOCKER_USERNAME/numpp:latest .
         - docker push $DOCKER_USERNAME/numpp:latest
