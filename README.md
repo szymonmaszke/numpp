@@ -3,7 +3,7 @@ numpp
 
 | **Build** | **Docker image** | **Style** |
 |--------------------|----------------------------|------------------|
-| ![Build Status](https://travis-ci.org/vyzyv/numpp.svg?branch=master) | [![Docker Status](https://img.shields.io/badge/docker-passing-blue.svg)](https://hub.docker.com/r/vyzyv/numpp/) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4708552f40f3405cb80ed14a455d15f4)](https://www.codacy.com/app/vyz/numpp?utm_source=github.com&utm_medium=referral&utm_content=vyzyv/numpp&utm_campaign=badger) | 
+| ![Build Status](https://travis-ci.org/szymonmaszke/numpp.svg?branch=master) | [![Docker Status](https://img.shields.io/badge/docker-passing-blue.svg)](https://hub.docker.com/r/vyzyv/numpp/) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4708552f40f3405cb80ed14a455d15f4)](https://www.codacy.com/app/vyz/numpp?utm_source=github.com&utm_medium=referral&utm_content=vyzyv/numpp&utm_campaign=badger) | 
 
 **numpp** is an open source, template only, numerical library aimed at maximizing runtime efficiency 
 by performing every calculation during the compilation step.
