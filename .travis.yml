@@ -13,7 +13,7 @@ jobs:
         - docker run $DOCKER_USERNAME/numpp:tests make -C /usr/include/numpp/tests/functionality
     - stage: tests
       script:
-        - travis_wait 45 docker run $DOCKER_USERNAME/numpp:tests make -C /usr/include/numpp/tests/speed
+        - travis_wait 120 docker run $DOCKER_USERNAME/numpp:tests make -C /usr/include/numpp/tests/speed
     - stage: deploy
       script:
         - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
